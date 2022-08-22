@@ -1,13 +1,12 @@
-# Use fig only for completion, not for dotfiles management
 # Fig pre block. Keep at the top of this file.
 [[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
 
+### Oh-my-zsh ###
 # Path to oh-my-zsh installation
 export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load
 ZSH_THEME="spaceship"
-SPACESHIP_TIME_SHOW=true # Show time in spaceship prompt
 
 # Update oh-my-zsh
 zstyle ':omz:update' mode auto # update automatically without asking
@@ -29,8 +28,8 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Plugins
 # keep zsh-syntax-highlighting at last
 plugins=(
-autoupdate
 you-should-use
+autoupdate
 zsh-autosuggestions
 zsh-syntax-highlighting
 )
@@ -38,26 +37,18 @@ zsh-syntax-highlighting
 # zsh-completions config
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
-# you-should-use config (customize prompt)
-export YSU_MESSAGE_FORMAT="$(tput setaf 1)Found %alias_type for %command: %alias$(tput sgr0)"
-
-# You may need to manually set your language environment
+# Manually set language environment
 export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+export EDITOR="code -w"
 
 source $ZSH/oh-my-zsh.sh
 
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR="code -w"
-else
-  export EDITOR="code -w"
-fi
-
-## Aliases
-# Override default exa
-alias exa="exa -laF"
-# To fix brew doctor's warning ""config" scripts exist outside your system or Homebrew directories"
-alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
+### normal config ###
+# Aliases
+alias exa="exa -laF" # Override default exa
+alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew' # Fix brew doctor's warning ""config" scripts exist outside your system or Homebrew directories"
 
 # pyenv config
 export PYENV_ROOT="$HOME/.pyenv"
@@ -72,7 +63,10 @@ export NVM_DIR="$HOME/.nvm"
 # batman, syntax-highlighting for man
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
-## Functions
+# Disable macOS's Gatekeeper for homebrew
+export HOMEBREW_CASK_OPTS="--no-quarantine"
+
+# Functions
 function update(){
   upgrade_oh_my_zsh_all # call autoupdate manually
   brew update && brew upgrade && brew upgrade --cask && brew cleanup && brew autoremove
