@@ -1,5 +1,6 @@
 # Quick setup of development environment
 
+## Basic
 1. Upgrade `macOS`
 2. Install `Xcode` from App Store
 3. Install `Command Line Tools`
@@ -25,4 +26,10 @@
 7. Restart terminal or source changes to confirm if all work
    ```shell
    source ~/.zshrc
+   ```
+
+## Advanced
+1. Delete all `.DS_Store` files and set a default view option
+   ```shell
+   find . -name ".DS_Store" -type f -delete
    ```
