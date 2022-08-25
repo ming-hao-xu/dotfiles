@@ -67,9 +67,13 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export HOMEBREW_CASK_OPTS="--no-quarantine"
 
 # Functions
-function update(){
-  upgrade_oh_my_zsh_all # call autoupdate manually
+function update_package(){
   brew update && brew upgrade && brew upgrade --cask && brew cleanup && brew autoremove
+  mas upgrade # upgrade mac app store apps through mas
+}
+
+function update_zsh(){
+  upgrade_oh_my_zsh_all # call zsh autoupdate manually (include plugins and themes)
 }
 
 # Fig post block. Keep at the bottom of this file.
