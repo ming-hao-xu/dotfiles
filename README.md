@@ -12,20 +12,21 @@
    git clone https://github.com/xu-minghao317/dotfiles.git ~/.dotfiles --depth=1
    ~/.dotfiles/install
    ```
-5. Install `homebrew`
+5. Setup Spaceship Prompt
+   ```shell
+   git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
+   ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+   ```
+6. Install `homebrew`
    ```shell
    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
    eval $(/opt/homebrew/bin/brew shellenv)
    brew analytics off
    ```
-6. Install `tap` `formula` `cask`
+7. Install `tap` `formula` `cask` `mas`
    ```shell
    brew bundle --verbose
    brew cleanup && brew autoremove
-   ```
-7. Restart terminal or source changes to confirm if all work
-   ```shell
-   source ~/.zshrc
    ```
 
 ## Advanced
@@ -33,3 +34,4 @@
    ```shell
    find . -name ".DS_Store" -type f -delete
    ```
+2. Migrate `GPG` `SSH` keys
