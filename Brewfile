@@ -51,6 +51,8 @@ cask "logi-options-plus"
 cask "mongodb-compass"
 # All system and utility switches in one place
 cask "one-switch"
+# Desktop virtualization software
+cask "parallels"
 # PDF reader, editor and annotator
 cask "pdf-expert"
 # Team communication and collaboration software
@@ -61,6 +63,8 @@ cask "spotify"
 cask "typora"
 # Open-source code editor
 cask "visual-studio-code"
+# Free messaging and calling application
+cask "wechat"
 # Youdao Dictionary
 cask "youdaodict"
 # Video communication and virtual meeting platform
@@ -71,7 +75,7 @@ mas "GoodNotes", id: 1444383602
 mas "LINE", id: 539883307
 mas "Magnet", id: 441258766
 mas "Noir", id: 1592917505
+mas "Refined GitHub", id: 1519867270
 mas "Spark", id: 1176895641
 mas "The Unarchiver", id: 425424353
-mas "WeChat", id: 836500024
 mas "Xcode", id: 497799835
