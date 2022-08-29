@@ -30,6 +30,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(
 you-should-use
 autoupdate
+git
 zsh-autosuggestions
 zsh-syntax-highlighting
 )
