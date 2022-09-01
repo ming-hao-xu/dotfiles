@@ -48,8 +48,9 @@ source $ZSH/oh-my-zsh.sh
 
 ### normal config ###
 # Aliases
-alias exa="exa -laF" # Override default exa
+alias exa="exa -laFh --git" # Override default exa
 alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew' # Fix brew doctor's warning ""config" scripts exist outside your system or Homebrew directories"
+alias path='<<<${(F)path}' # Print path in a column
 
 # pyenv config
 export PYENV_ROOT="$HOME/.pyenv"
