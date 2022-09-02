@@ -10,7 +10,7 @@
    ```
 3. Surpass `sudo` check from `brew`.  
    Run `sudo` version first. This is safe because `brew` refuse installing under root  
-   (view [issue #3](https://github.com/xu-minghao317/dotfiles/issues/3#issue-1353082809))
+   (view [issue #5](https://github.com/xu-minghao317/dotfiles/issues/5#issue-1359849454))
    ```shell
    git clone https://github.com/xu-minghao317/dotfiles.git ~/.dotfiles
    cd ~/.dotfiles && sudo ./setup_brew.zsh
