@@ -65,8 +65,11 @@ export NVM_DIR="$HOME/.nvm"
 # batman, syntax-highlighting for man
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
-# Disable macOS's Gatekeeper for homebrew
+# Disable macOS's Gatekeeper for homebrew, some package may fail to get permissons (e.g Avira)
 export HOMEBREW_CASK_OPTS="--no-quarantine"
+
+# Default NULLCMD is cat, use bat when commands like `<<EOF` are used
+export NULLCMD=bat
 
 # Functions
 function update_package(){
