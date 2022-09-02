@@ -1,5 +1,8 @@
 [user]
 	email = 85087583+xu-minghao317@users.noreply.github.com
 	signingKey = 4C980500
+	name = Minghao Xu
 [commit]
 	gpgsign = true
+[tag]
+	forceSignAnnotated = true
