@@ -1,4 +1,11 @@
-[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
+<p>
+   <a href="https://conventionalcommits.org" alt="Conventional Commits">
+      <img src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white"/>
+   </a>
+   <a href="https://github.com/xu-minghao317/dotfiles/issues" alt="Issues">
+      <img src="https://img.shields.io/github/issues/xu-minghao317/dotfiles" />
+   </a>
+</p>
 
 # Dev-Env Quick Setup
 
@@ -46,3 +53,4 @@
    ```shell
    sudo chmod -w /etc/pam.d/sudo
    ```
+   
