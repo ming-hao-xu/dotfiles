@@ -31,6 +31,8 @@ cask "baidunetdisk"
 cask "bartender"
 # Trains AIs to understand and translate texts
 cask "deepl"
+# Voice and text chat software
+cask "discord"
 # App to build and share containerized applications and microservices
 cask "docker"
 # Reimagine your terminal
@@ -41,6 +43,8 @@ cask "gitkraken"
 cask "gpg-suite-no-mail"
 # Utility to fix grammar errors and style issues in text
 cask "grammarly"
+# Grammarly for desktop
+cask "grammarly-desktop"
 # Free and open-source media player
 cask "iina"
 # Terminal emulator as alternative to Apple's Terminal app
