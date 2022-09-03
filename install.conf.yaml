@@ -4,6 +4,7 @@
       force: true
     shell:
       quiet: true
+      stdin: true
       stdout: true
       stderr: true
 
