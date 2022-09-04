@@ -1,42 +1,45 @@
-<p>
-   <a href="https://conventionalcommits.org" alt="Conventional Commits">
-      <img src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white"/>
-   </a>
-   <a href="https://github.com/xu-minghao317/dotfiles/issues" alt="Issues">
-      <img src="https://img.shields.io/github/issues/xu-minghao317/dotfiles" />
-   </a>
-</p>
-
 # Dev-Env Quick Setup
 
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
+[![Issues](https://img.shields.io/github/issues/xu-minghao317/dotfiles)](https://github.com/xu-minghao317/dotfiles/issues)
+
 ## Minimal
+
 1. Upgrade macOS.
 2. Install `Command Line Tools`.
+
    ```shell
    xcode-select --install
    ```
+
 3. Run `dotbot`.  
-   Remove `Xcode` from `Brewfile` if in hurry.
+   *Remove `Xcode` from `Brewfile` if in hurry.*
+
    ```shell
    git clone https://github.com/xu-minghao317/dotfiles.git ~/.dotfiles --recursive
    cd ~/.dotfiles && ./install
    ```
-4. Install [Fira Code](https://github.com/tonsky/FiraCode/releases) and restart terminal.
+
+4. Install [Fira Code](https://github.com/tonsky/FiraCode/releases).
 
 5. Migrate `GPG` `SSH` keys safely.
 
 ## Optional
+
 1. Delete all `.DS_Store` files and set a default Finder view option.
+
    ```shell
    find . -name ".DS_Store" -type f -delete
    ```
-2. Hack Touch ID for `sudo`.
+
+2. Turn on Touch ID for `sudo`.
+
    ```shell
    sudo chmod +w /etc/pam.d/sudo
-   sudo code /etc/pam.d/sudo
+   sudo vi /etc/pam.d/sudo
    ```
 
-   Change it to
+   Change it to ⬇
 
    ```shell
    # sudo: auth account password session
@@ -53,4 +56,3 @@
    ```shell
    sudo chmod -w /etc/pam.d/sudo
    ```
-   
