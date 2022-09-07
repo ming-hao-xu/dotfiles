@@ -1,7 +1,11 @@
 # Fig pre block. Keep at the top of this file.
 [[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
 
-### Oh-my-zsh ###
+#define colors
+YELLOW="\033[1;33m"
+NOCOLOR="\033[0m"
+
+### oh-my-zsh ###
 # Path to oh-my-zsh installation
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -10,9 +14,9 @@ ZSH_THEME="spaceship"
 
 # Update oh-my-zsh
 zstyle ':omz:update' mode auto # update automatically without asking
-zstyle ':omz:update' frequency 14 # every 14 days
+zstyle ':omz:update' frequency 30 # every 30 days
 # Update plugins and themes (autoupdate plugin config)
-export UPDATE_ZSH_DAYS=14 # every 14 days
+export UPDATE_ZSH_DAYS=30 # every 30 days
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -26,10 +30,10 @@ COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Plugins
-# keep zsh-syntax-highlighting at last
+# * keep zsh-syntax-highlighting at last
 plugins=(
-you-should-use
 autoupdate
+you-should-use
 git
 zsh-autosuggestions
 zsh-syntax-highlighting
@@ -47,11 +51,6 @@ export EDITOR="code -w"
 source $ZSH/oh-my-zsh.sh
 
 ### normal config ###
-# Aliases
-alias exa="exa -laFh --git" # Override default exa
-alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew' # Fix brew doctor's warning ""config" scripts exist outside your system or Homebrew directories"
-alias path='<<<${(F)path}' # Print path in a column
-
 # pyenv config
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
@@ -62,12 +61,11 @@ export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-# pnpm
+# pnpm config
 export PNPM_HOME="/Users/kevin/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
-# pnpm end
 
-# batman, syntax-highlighting for man
+# set syntax-highlighting for man using bat
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # Disable macOS's Gatekeeper for homebrew, some package may fail to get permissons (e.g Avira)
@@ -75,6 +73,15 @@ export HOMEBREW_CASK_OPTS="--no-quarantine"
 
 # Default NULLCMD is cat, use bat when commands like `<<EOF` are used
 export NULLCMD=bat
+
+# Aliases
+alias exa="exa -laFh --git" # Override default exa
+
+alias cat='echo "Use ${YELLOW}bat${NOCOLOR} instead"; false'
+alias rm='echo "Use ${YELLOW}trash${NOCOLOR} instead"; false'
+
+alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew' # Fix brew doctor's warning ""config" scripts exist outside your system or Homebrew directories"
+alias path='<<<${(F)path}' # Print path in a column
 
 # Functions
 function update_package(){
@@ -84,7 +91,12 @@ function update_package(){
 
 function update_zsh(){
   upgrade_oh_my_zsh_all # call zsh autoupdate manually (include plugins and themes)
+  # this function is from autoupdate plugin
 }
+
+# magic one-liner to remove duplicates, preserves the ordering of paths,
+# and doesn't add a colon at the end
+PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
