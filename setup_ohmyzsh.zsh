@@ -15,4 +15,5 @@ git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins "$ZSH_CUSTOM"/
 git clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH_CUSTOM"/plugins/zsh-autosuggestions --depth=1
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_CUSTOM"/plugins/zsh-syntax-highlighting --depth=1
 
-rm -f "$HOME"/.zshrc.pre-oh-my-zsh
+# Remove archieved zshrc
+rm -f ~/.zshrc.pre-oh-my-zsh
