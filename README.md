@@ -39,7 +39,7 @@
    sudo vi /etc/pam.d/sudo
    ```
 
-   Change it to ⬇
+   Change it to ↓
 
    ```shell
    # sudo: auth account password session
@@ -51,7 +51,7 @@
    session    required       pam_permit.so
    ```
 
-   **Remember to restore permissions**
+   Then
 
    ```shell
    sudo chmod -w /etc/pam.d/sudo
