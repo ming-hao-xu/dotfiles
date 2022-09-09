@@ -1,4 +1,4 @@
-# Dev-Env Quick Setup
+# Dev-Env Setup Workflow
 
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
 [![Issues](https://img.shields.io/github/issues/xu-minghao317/dotfiles)](https://github.com/xu-minghao317/dotfiles/issues)
@@ -51,7 +51,7 @@
    session    required       pam_permit.so
    ```
 
-   Then
+   Then restore permissions
 
    ```shell
    sudo chmod -w /etc/pam.d/sudo
