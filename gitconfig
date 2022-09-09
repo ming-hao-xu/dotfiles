@@ -6,3 +6,15 @@
 	gpgsign = true
 [tag]
 	forceSignAnnotated = true
+[init]
+	defaultBranch = main
+[core]
+	editor = code --wait
+[merge]
+	tool = code
+[mergetool "code"]
+	cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
+[diff]
+	tool = code
+[difftool "code"]
+	cmd = code --wait --diff $LOCAL $REMOTE
