@@ -1,7 +1,7 @@
 # Fig pre block. Keep at the top of this file.
 [[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
 
-#define colors
+#define some colors
 YELLOW="\033[1;33m"
 NOCOLOR="\033[0m"
 
@@ -90,7 +90,8 @@ function update_package(){
 }
 
 function update_zsh(){
-  upgrade_oh_my_zsh_all # call zsh autoupdate manually (include plugins and themes)
+  echo "Wait until Spaceship prompt is fixed"
+  # upgrade_oh_my_zsh_all # call zsh autoupdate manually (include plugins and themes)
   # this function is from autoupdate plugin
 }
 
