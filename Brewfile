@@ -7,10 +7,16 @@ tap "homebrew/services"
 brew "bat"
 # Modern replacement for 'ls'
 brew "exa"
+# Command-line fuzzy finder written in Go
+brew "fzf"
 # Distributed revision control system
 brew "git"
+# Pager program similar to more
+brew "less"
 # Mac App Store command-line interface
 brew "mas"
+# Free (GNU) replacement for the Pico text editor
+brew "nano"
 # Manage multiple Node.js versions
 brew "nvm"
 # Development kit for the Java programming language
