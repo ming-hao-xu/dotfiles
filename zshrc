@@ -75,7 +75,7 @@ export HOMEBREW_CASK_OPTS="--no-quarantine"
 export NULLCMD=bat
 
 # Aliases
-alias exa="exa -laFh --git" # Override default exa
+alias exa="exa -laFh --git --icons" # Display a table of files with header, showing each file's metadata, Git status, and icons
 
 alias cat='echo "Use ${YELLOW}bat${NOCOLOR} instead"; false'
 alias rm='echo "Use ${YELLOW}trash${NOCOLOR} instead"; false'
