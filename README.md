@@ -20,9 +20,9 @@
    cd ~/.dotfiles && ./install
    ```
 
-4. Install [Fira Code](https://github.com/tonsky/FiraCode/releases).
+4. Install [Fira Code Nerd Font](https://www.nerdfonts.com/font-downloads) for Terminal.
 
-5. Migrate `GPG` `SSH` keys safely.
+5. Migrate `GPG` `SSH` Pub/Private keys safely.
 
 ## Optional
 
