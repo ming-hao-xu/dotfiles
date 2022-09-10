@@ -1,8 +1,8 @@
-# Fig pre block. Keep at the top of this file
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
+### Fig pre block. Keep at the top of this file ###
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 
 # Define some colors
-YELLOW="\033[1;33m"
+RED="\033[1;31m"
 NOCOLOR="\033[0m"
 
 ### oh-my-zsh config ###
@@ -81,7 +81,9 @@ load-nvmrc
 export PNPM_HOME="/Users/kevin/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 
-# set syntax-highlighting for man using bat
+# bat config
+export BAT_CONFIG_PATH="$HOME/bat.conf"
+# Set syntax-highlighting for man using bat
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # Disable macOS's Gatekeeper for homebrew
@@ -94,20 +96,20 @@ export NULLCMD=bat
 alias exa="exa -laFh --git --icons" # Display a table of files with header, showing each file's metadata, Git status, and icons
 
 alias cat="bat"
-alias rm='echo "Use ${YELLOW}trash${NOCOLOR} instead"; false' # trash-cli is quite different from rm (e.g. -r), better no to override rm
+alias rm='echo "Use ${RED}trash${NOCOLOR} instead"; false' # trash-cli is quite different from rm (e.g. -r), better no to override rm
 
 alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew' # Fix brew doctor's warning ""config" scripts exist outside your system or Homebrew directories"
 alias path='<<<${(F)path}' # Print path in a column
 
 # Functions
 function update_packages(){
-  echo "${YELLOW}Updating brew...${NOCOLOR}"
+  echo "${RED}Updating brew...${NOCOLOR}"
   brew update && brew upgrade && brew upgrade --cask && brew autoremove
 
-  echo "${YELLOW}Updating AppStore Apps...${NOCOLOR}"
+  echo "${RED}Updating AppStore Apps...${NOCOLOR}"
   mas upgrade
 
-  echo "${YELLOW}Updating pip packages...${NOCOLOR}"
+  echo "${RED}Updating pip packages...${NOCOLOR}"
   pipupgrade --self && pipupgrade --yes 2>/dev/null # discard stderr
 }
 
@@ -119,5 +121,5 @@ function update_zsh(){
 # one-liner to remove duplicates, preserves the ordering of paths, and doesn't add a colon at the end
 PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
 
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
+### Fig post block. Keep at the bottom of this file ###
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
