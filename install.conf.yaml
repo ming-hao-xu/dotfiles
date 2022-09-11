@@ -19,8 +19,9 @@
     description: Installing oh-my-zsh 🐚...
 
 - link:
-    ~/.gitconfig:
-    ~/.zshrc:
+    ~/.zshenv:
     ~/.zprofile:
+    ~/.zshrc:
+    ~/.gitconfig:
     ~/bat.conf:
     ~/.fzf.zsh:
