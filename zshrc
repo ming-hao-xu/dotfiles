@@ -24,7 +24,7 @@ COMPLETION_WAITING_DOTS="true"
 # This makes repository status check for large repositories much, much faster
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Plugins
+# Plugins to load
 # * keep zsh-syntax-highlighting at last
 plugins=(
 autoupdate
@@ -41,7 +41,7 @@ fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-export EDITOR="code -w"
+export EDITOR="code --wait"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -83,8 +83,18 @@ export PATH="$PNPM_HOME:$PATH"
 
 # bat config
 export BAT_CONFIG_PATH="$HOME/bat.conf"
-# Set syntax-highlighting for man using bat
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'" # Set syntax-highlighting for man using bat
+
+# fzf config
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
+export FZF_DEFAULT_OPTS='--no-height --exact'
+
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="--preview-window wrap --preview 'bat --force-colorization --style="plain" --line-range :50 {}'"
+
+export FZF_ALT_C_COMMAND='fd --type d --strip-cwd-prefix --hidden --follow --exclude .git'
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -50'"
 
 # Disable macOS's Gatekeeper for homebrew
 export HOMEBREW_CASK_OPTS="--no-quarantine"
@@ -93,32 +103,32 @@ export HOMEBREW_CASK_OPTS="--no-quarantine"
 export NULLCMD=bat
 
 # Aliases
-alias exa="exa -laFh --git --icons" # Display a table of files with header, showing each file's metadata, Git status, and icons
+alias exa='exa -laFh --git --icons' # Display a table of files with header, showing each file's metadata, Git status, and icons
 
-alias cat="bat"
-alias rm='echo "Use ${RED}trash${NOCOLOR} instead"; false' # trash-cli is quite different from rm (e.g. -r), better no to override rm
+alias cat='bat'
+alias rm='echo "Use ${RED}trash-cli${NOCOLOR} instead"; false' # trash-cli is quite different from rm (e.g. no -r), better not to override it
 
 alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew' # Fix brew doctor's warning ""config" scripts exist outside your system or Homebrew directories"
-alias path='<<<${(F)path}' # Print path in a column
+alias path='<<<${(F)path}' # Print path in a column using bat (NULLCMD)
 
 # Functions
 function update_packages(){
-  echo "${RED}Updating brew...${NOCOLOR}"
+  echo "📦 ${RED}Updating brew, package, tap, cask...${NOCOLOR}"
   brew update && brew upgrade && brew upgrade --cask && brew autoremove
 
-  echo "${RED}Updating AppStore Apps...${NOCOLOR}"
+  echo "📦 ${RED}Updating App Store Apps...${NOCOLOR}"
   mas upgrade
 
-  echo "${RED}Updating pip packages...${NOCOLOR}"
-  pipupgrade --self && pipupgrade --yes 2>/dev/null # discard stderr
+  echo "📦 ${RED}Updating pip packages...${NOCOLOR}"
+  pipupgrade --self && pipupgrade --yes 2>/dev/null
 }
 
 function update_zsh(){
   echo "Wait until Spaceship prompt is fixed"
-  # upgrade_oh_my_zsh_all # * this function is from autoupdate plugin, update all plugins and themes
+  # upgrade_oh_my_zsh_all # * this function comes from autoupdate plugin, update all plugins and themes
 }
 
-# one-liner to remove duplicates, preserves the ordering of paths, and doesn't add a colon at the end
+# remove duplicates, preserves the ordering of paths, and doesn't add a colon at the end
 PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
 
 ### Fig post block. Keep at the bottom of this file ###
