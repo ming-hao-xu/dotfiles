@@ -10,7 +10,7 @@ NOCOLOR="\033[0m"
 export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load
-ZSH_THEME="spaceship"
+# ZSH_THEME="spaceship"
 
 # Update oh-my-zsh
 zstyle ':omz:update' mode auto # update omz every 30 days
@@ -36,12 +36,6 @@ zsh-syntax-highlighting
 
 # zsh-completions config
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
-
-# Manually set language environment
-export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-export EDITOR="code --wait"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -79,7 +73,7 @@ load-nvmrc
 
 # pnpm config
 export PNPM_HOME="/Users/kevin/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"
+command -v pnpm >/dev/null || export PATH="$PNPM_HOME:$PATH"
 
 # bat config
 export BAT_CONFIG_PATH="$HOME/bat.conf"
@@ -88,13 +82,13 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'" # Set syntax-highlighting for 
 # fzf config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
-export FZF_DEFAULT_OPTS='--no-height --exact'
+export FZF_DEFAULT_OPTS='--exact --cycle --border'
 
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_CTRL_T_OPTS="--preview-window wrap --preview 'bat --force-colorization --style="plain" --line-range :50 {}'"
+export FZF_CTRL_T_OPTS="--height 100% --preview-window wrap --preview 'bat --force-colorization --style="plain" --line-range :100 {}'"
 
 export FZF_ALT_C_COMMAND='fd --type d --strip-cwd-prefix --hidden --follow --exclude .git'
-export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -50'"
+export FZF_ALT_C_OPTS="--height 100% --preview 'tree -C {} | head -50'"
 
 # Disable macOS's Gatekeeper for homebrew
 export HOMEBREW_CASK_OPTS="--no-quarantine"
@@ -124,12 +118,14 @@ function update_packages(){
 }
 
 function update_zsh(){
-  echo "Wait until Spaceship prompt is fixed"
-  # upgrade_oh_my_zsh_all # * this function comes from autoupdate plugin, update all plugins and themes
+  upgrade_oh_my_zsh_all # * this function comes from autoupdate plugin, update all plugins and themes
 }
 
 # remove duplicates, preserves the ordering of paths, and doesn't add a colon at the end
-PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
+# PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
+
+# Init startship prompt, keep at the bottom of this file
+eval "$(starship init zsh)"
 
 ### Fig post block. Keep at the bottom of this file ###
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
