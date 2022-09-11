@@ -7,6 +7,8 @@ tap "homebrew/services"
 brew "bat"
 # Modern replacement for 'ls'
 brew "exa"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # Distributed revision control system
@@ -23,6 +25,10 @@ brew "nvm"
 brew "openjdk"
 # Python version management
 brew "pyenv"
+# Cross-shell prompt for astronauts
+brew "starship"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
 # Stand alone ad blocker
 cask "adguard"
 # VPN for privacy and security
