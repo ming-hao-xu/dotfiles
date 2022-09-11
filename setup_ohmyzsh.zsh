@@ -16,4 +16,4 @@ git clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH_CUSTOM"/plugins
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_CUSTOM"/plugins/zsh-syntax-highlighting --depth=1
 
 # Remove archieved zshrc
-rm -f ~/.zshrc.pre-oh-my-zsh
+rm -f "$HOME"/.zshrc.pre-oh-my-zsh
