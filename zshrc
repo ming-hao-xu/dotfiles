@@ -73,7 +73,7 @@ load-nvmrc
 
 # pnpm config
 export PNPM_HOME="/Users/kevin/Library/pnpm"
-command -v pnpm >/dev/null || export PATH="$PNPM_HOME:$PATH"
+[[ ":$PATH:" == *":$PNPM_HOME:"* ]] || export PATH="$PNPM_HOME:$PATH"
 
 # bat config
 export BAT_CONFIG_PATH="$HOME/bat.conf"
@@ -107,16 +107,16 @@ alias path='<<<${(F)path}' # Print path in a column using bat (NULLCMD)
 
 # Functions
 function update_packages(){
-  echo "⬆️ ${RED}Updating brew...${NOCOLOR}"
+  echo "⬆️  ${RED}Updating brew...${NOCOLOR}"
   brew update && brew upgrade && brew upgrade --cask && brew autoremove
 
-  echo "⬆️ ${RED}Updating App Store Apps...${NOCOLOR}"
+  echo "⬆️  ${RED}Updating App Store Apps...${NOCOLOR}"
   mas upgrade
 
-  echo "⬆️ ${RED}Updating pip packages...${NOCOLOR}"
+  echo "⬆️  ${RED}Updating pip packages...${NOCOLOR}"
   pipupgrade --self && pipupgrade --yes 2>/dev/null
 
-  echo "⬆️ ${RED}Updating npm & pnpm packages...${NOCOLOR}"
+  echo "⬆️  ${RED}Updating npm & pnpm packages...${NOCOLOR}"
   npm update -g
   pnpm update -g
 }
