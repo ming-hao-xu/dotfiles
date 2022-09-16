@@ -85,6 +85,7 @@ cask "wechat"
 cask "youdaodict"
 # Video communication and virtual meeting platform
 cask "zoom"
+mas "Amphetamine", id: 937984704
 mas "Encrypto", id: 935235287
 mas "Flow", id: 1423210932
 mas "GoodNotes", id: 1444383602
