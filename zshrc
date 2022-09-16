@@ -9,7 +9,7 @@ NOCOLOR="\033[0m"
 # Path to oh-my-zsh installation
 export ZSH="$HOME/.oh-my-zsh"
 
-# Set name of the theme to load
+# ! Deprecated (now using starship)
 # ZSH_THEME="spaceship"
 
 # Update oh-my-zsh
@@ -107,14 +107,18 @@ alias path='<<<${(F)path}' # Print path in a column using bat (NULLCMD)
 
 # Functions
 function update_packages(){
-  echo "📦 ${RED}Updating brew, package, tap, cask...${NOCOLOR}"
+  echo "⬆️ ${RED}Updating brew...${NOCOLOR}"
   brew update && brew upgrade && brew upgrade --cask && brew autoremove
 
-  echo "📦 ${RED}Updating App Store Apps...${NOCOLOR}"
+  echo "⬆️ ${RED}Updating App Store Apps...${NOCOLOR}"
   mas upgrade
 
-  echo "📦 ${RED}Updating pip packages...${NOCOLOR}"
+  echo "⬆️ ${RED}Updating pip packages...${NOCOLOR}"
   pipupgrade --self && pipupgrade --yes 2>/dev/null
+
+  echo "⬆️ ${RED}Updating npm & pnpm packages...${NOCOLOR}"
+  npm update -g
+  pnpm update -g
 }
 
 function update_zsh(){
