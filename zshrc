@@ -125,6 +125,15 @@ function update_zsh(){
   upgrade_oh_my_zsh_all # * this function comes from autoupdate plugin, update all plugins and themes
 }
 
+function new_md(){
+  # create and open a new markdown file
+  if [[ -f "$1.md" ]]; then
+    open "$1.md"
+  else
+    touch "$1.md" && open "$1.md"
+  fi
+}
+
 # remove duplicates, preserves the ordering of paths, and doesn't add a colon at the end
 # PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
 
