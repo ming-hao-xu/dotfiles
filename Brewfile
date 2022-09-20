@@ -37,10 +37,10 @@ cask "adguard-vpn"
 cask "alfred"
 # Enable Windows-like alt-tab
 cask "alt-tab"
+# Electronics prototyping platform
+cask "arduino-ide"
 # Cloud storage service
 cask "baidunetdisk"
-# Menu bar icon organizer
-cask "bartender"
 # Trains AIs to understand and translate texts
 cask "deepl"
 # Voice and text chat software
@@ -53,8 +53,6 @@ cask "fig"
 cask "gitkraken"
 # Tools to protect your files
 cask "gpg-suite-no-mail"
-# Utility to fix grammar errors and style issues in text
-cask "grammarly"
 # Grammarly for desktop
 cask "grammarly-desktop"
 # Free and open-source media player
@@ -63,8 +61,6 @@ cask "iina"
 cask "iterm2"
 # Software for Logitech devices
 cask "logi-options-plus"
-# Explore and manipulate your MongoDB data
-cask "mongodb-compass"
 # All system and utility switches in one place
 cask "one-switch"
 # Desktop virtualization software
@@ -73,8 +69,6 @@ cask "parallels"
 cask "pdf-expert"
 # Team communication and collaboration software
 cask "slack"
-# Music streaming service
-cask "spotify"
 # Configurable document editor that supports Markdown
 cask "typora"
 # Open-source code editor
@@ -87,7 +81,6 @@ cask "youdaodict"
 cask "zoom"
 mas "Amphetamine", id: 937984704
 mas "Encrypto", id: 935235287
-mas "Flow", id: 1423210932
 mas "GoodNotes", id: 1444383602
 mas "LINE", id: 539883307
 mas "Magnet", id: 441258766
