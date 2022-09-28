@@ -9,12 +9,11 @@ NOCOLOR="\033[0m"
 # Path to oh-my-zsh installation
 export ZSH="$HOME/.oh-my-zsh"
 
-# ! Deprecated (now using starship)
-# ZSH_THEME="spaceship"
+# ZSH_THEME="spaceship" # now using starship in Rust
 
 # Update oh-my-zsh
-zstyle ':omz:update' mode auto # update omz every 30 days
-zstyle ':omz:update' frequency 30
+zstyle ':omz:update' mode auto
+zstyle ':omz:update' frequency 30 # update omz every 30 days
 export UPDATE_ZSH_DAYS=30 # update plugins and themes using autoupdate plugin every 30 days
 
 # Display red dots whilst waiting for completion
@@ -35,6 +34,7 @@ zsh-syntax-highlighting
 )
 
 # zsh-completions config
+# adding it as a regular omz plugin will not work properly
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 source $ZSH/oh-my-zsh.sh
@@ -72,7 +72,7 @@ add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
 # pnpm config
-export PNPM_HOME="/Users/kevin/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 [[ ":$PATH:" == *":$PNPM_HOME:"* ]] || export PATH="$PNPM_HOME:$PATH"
 
 # bat config
@@ -95,6 +95,9 @@ export HOMEBREW_CASK_OPTS="--no-quarantine"
 
 # Default NULLCMD is cat, use bat when commands like `<<EOF` are used
 export NULLCMD=bat
+
+# zoxide config
+eval "$(zoxide init zsh --cmd cd)" # override cd
 
 # Aliases
 alias exa='exa -laFh --git --icons' # Display a table of files with header, showing each file's metadata, Git status, and icons
