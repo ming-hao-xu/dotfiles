@@ -21,14 +21,14 @@ brew "mas"
 brew "nano"
 # Manage multiple Node.js versions
 brew "nvm"
-# Development kit for the Java programming language
-brew "openjdk"
 # Python version management
 brew "pyenv"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Internet file retriever
+brew "wget"
 # Stand alone ad blocker
 cask "adguard"
 # VPN for privacy and security
@@ -45,8 +45,6 @@ cask "baidunetdisk"
 cask "deepl"
 # Voice and text chat software
 cask "discord"
-# App to build and share containerized applications and microservices
-cask "docker"
 # Reimagine your terminal
 cask "fig"
 # Git client focusing on productivity
@@ -71,6 +69,8 @@ cask "pdf-expert"
 cask "slack"
 # Configurable document editor that supports Markdown
 cask "typora"
+# PKG software package uninstall tool
+cask "uninstallpkg"
 # Open-source code editor
 cask "visual-studio-code"
 # Free messaging and calling application
@@ -81,6 +81,7 @@ cask "youdaodict"
 cask "zoom"
 mas "Amphetamine", id: 937984704
 mas "Encrypto", id: 935235287
+mas "Flow", id: 1423210932
 mas "GoodNotes", id: 1444383602
 mas "LINE", id: 539883307
 mas "Magnet", id: 441258766
