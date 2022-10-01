@@ -29,6 +29,8 @@ brew "starship"
 brew "tree"
 # Internet file retriever
 brew "wget"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
 # Stand alone ad blocker
 cask "adguard"
 # VPN for privacy and security
@@ -39,8 +41,6 @@ cask "alfred"
 cask "alt-tab"
 # Electronics prototyping platform
 cask "arduino-ide"
-# Cloud storage service
-cask "baidunetdisk"
 # Trains AIs to understand and translate texts
 cask "deepl"
 # Voice and text chat software
@@ -59,12 +59,16 @@ cask "iina"
 cask "iterm2"
 # Software for Logitech devices
 cask "logi-options-plus"
+# Full TeX Live distribution without GUI applications
+cask "mactex-no-gui"
 # All system and utility switches in one place
 cask "one-switch"
 # Desktop virtualization software
 cask "parallels"
 # PDF reader, editor and annotator
 cask "pdf-expert"
+# Flexible software sketchbook and a language for learning how to code
+cask "processing"
 # Team communication and collaboration software
 cask "slack"
 # Configurable document editor that supports Markdown
@@ -73,8 +77,6 @@ cask "typora"
 cask "uninstallpkg"
 # Open-source code editor
 cask "visual-studio-code"
-# Free messaging and calling application
-cask "wechat"
 # Youdao Dictionary
 cask "youdaodict"
 # Video communication and virtual meeting platform
