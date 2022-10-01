@@ -119,13 +119,15 @@ function update_packages(){
   echo "⬆️  ${RED}Updating pip packages...${NOCOLOR}"
   pipupgrade --self && pipupgrade --yes 2>/dev/null
 
-  echo "⬆️  ${RED}Updating npm & pnpm packages...${NOCOLOR}"
-  npm update -g
-  pnpm update -g
-}
+  # echo "⬆️  ${RED}Updating npm and pnpm packages...${NOCOLOR}"
+  # npm update -g
+  # pnpm update -g
 
-function update_zsh(){
-  upgrade_oh_my_zsh_all # * this function comes from autoupdate plugin, update all plugins and themes
+  # echo "⬆️  ${RED}Updating omz...${NOCOLOR}"
+  # upgrade_oh_my_zsh_all # * this function comes from autoupdate plugin, update all plugins and themes
+
+  echo "📦  ${RED}Dumping packages to Brewfile...${NOCOLOR}"
+  brew bundle dump --force --describe --file="$HOME/.dotfiles/Brewfile"
 }
 
 function new_md(){
