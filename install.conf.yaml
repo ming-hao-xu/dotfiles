@@ -1,6 +1,6 @@
 - defaults:
     link:
-      relink: true
+      create: true
       force: true
     shell:
       quiet: true
@@ -11,17 +11,16 @@
 - clean: ["~"]
 
 - shell:
-  -
-    command: ~/.dotfiles/setup_brew.zsh
-    description: Installing Homebrew 🍺...
-  -
-    command: ~/.dotfiles/setup_ohmyzsh.zsh
-    description: Installing oh-my-zsh 🐚...
+    - command: ~/.dotfiles/setup_brew.zsh
+      description: Installing Homebrew 🍺...
+    - command: ~/.dotfiles/setup_ohmyzsh.zsh
+      description: Installing oh-my-zsh 🐚...
 
 - link:
     ~/.zshenv:
     ~/.zprofile:
     ~/.zshrc:
-    ~/.gitconfig:
-    ~/bat.conf:
     ~/.fzf.zsh:
+    ~/.gitconfig: config/gitconfig
+    ~/bat.conf: config/bat.conf
+    ~/Library/Preferences/glow/glow.yml: config/glow.yml
