@@ -13,6 +13,8 @@ brew "fd"
 brew "fzf"
 # Distributed revision control system
 brew "git"
+# Render markdown on the CLI
+brew "glow"
 # Pager program similar to more
 brew "less"
 # Mac App Store command-line interface
