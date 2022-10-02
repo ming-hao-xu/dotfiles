@@ -73,7 +73,8 @@ load-nvmrc
 
 # pnpm config
 export PNPM_HOME="$HOME/Library/pnpm"
-[[ ":$PATH:" == *":$PNPM_HOME:"* ]] || export PATH="$PNPM_HOME:$PATH"
+[[ ":$PATH:" == *":$PNPM_HOME:"* ]] || export PATH="$PNPM_HOME:$PATH" # corepack
+# command -v pnpm >/dev/null || export PATH="$PNPM_HOME:$PATH" # normal
 
 # bat config
 export BAT_CONFIG_PATH="$HOME/bat.conf"
@@ -82,7 +83,7 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'" # Set syntax-highlighting for 
 # fzf config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
-export FZF_DEFAULT_OPTS='--exact --cycle --border'
+export FZF_DEFAULT_OPTS='--exact --cycle'
 
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="--height 100% --preview-window wrap --preview 'bat --force-colorization --style="plain" --line-range :100 {}'"
@@ -96,7 +97,7 @@ export HOMEBREW_CASK_OPTS="--no-quarantine"
 # Default NULLCMD is cat, use bat when commands like `<<EOF` are used
 export NULLCMD=bat
 
-# zoxide config
+# zoxide initalization
 eval "$(zoxide init zsh --cmd cd)" # override cd
 
 # Aliases
@@ -119,9 +120,9 @@ function update_packages(){
   echo "⬆️  ${RED}Updating pip packages...${NOCOLOR}"
   pipupgrade --self && pipupgrade --yes 2>/dev/null
 
-  # echo "⬆️  ${RED}Updating npm and pnpm packages...${NOCOLOR}"
-  # npm update -g
-  # pnpm update -g
+  echo "⬆️  ${RED}Updating npm and pnpm packages...${NOCOLOR}"
+  npm update -g
+  pnpm update -g
 
   # echo "⬆️  ${RED}Updating omz...${NOCOLOR}"
   # upgrade_oh_my_zsh_all # * this function comes from autoupdate plugin, update all plugins and themes
