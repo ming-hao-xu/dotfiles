@@ -13,7 +13,7 @@
    ```
 
 3. Run `dotbot`.  
-   *Remove `Xcode` and `mactex-no-gui` from `Brewfile` if in hurry.*
+   _Remove `Xcode` and `mactex-no-gui` from `Brewfile` if in hurry._
 
    ```shell
    git clone https://github.com/xu-minghao317/dotfiles.git ~/.dotfiles --recursive --depth=1
@@ -36,7 +36,7 @@
 
    ```shell
    sudo chmod +w /etc/pam.d/sudo
-   sudo nano /etc/pam.d/sudo
+   sudo nvim /etc/pam.d/sudo
    ```
 
    Change it to ↓
