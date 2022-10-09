@@ -13,14 +13,16 @@ brew "fd"
 brew "fzf"
 # Distributed revision control system
 brew "git"
+# Syntax-highlighting pager for git and diff output
+brew "git-delta"
 # Render markdown on the CLI
 brew "glow"
 # Pager program similar to more
 brew "less"
 # Mac App Store command-line interface
 brew "mas"
-# Free (GNU) replacement for the Pico text editor
-brew "nano"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
 # Manage multiple Node.js versions
 brew "nvm"
 # Python version management
@@ -41,8 +43,8 @@ cask "adguard-vpn"
 cask "alfred"
 # Enable Windows-like alt-tab
 cask "alt-tab"
-# Electronics prototyping platform
-cask "arduino-ide"
+# Cloud storage service
+cask "baidunetdisk"
 # Trains AIs to understand and translate texts
 cask "deepl"
 # Voice and text chat software
@@ -73,6 +75,8 @@ cask "pdf-expert"
 cask "processing"
 # Team communication and collaboration software
 cask "slack"
+# Music streaming service
+cask "spotify"
 # Configurable document editor that supports Markdown
 cask "typora"
 # PKG software package uninstall tool
@@ -83,14 +87,13 @@ cask "visual-studio-code"
 cask "youdaodict"
 # Video communication and virtual meeting platform
 cask "zoom"
-mas "Amphetamine", id: 937984704
 mas "Encrypto", id: 935235287
 mas "Flow", id: 1423210932
 mas "GoodNotes", id: 1444383602
-mas "LINE", id: 539883307
 mas "Magnet", id: 441258766
 mas "Noir", id: 1592917505
 mas "Refined GitHub", id: 1519867270
 mas "Spark", id: 1176895641
 mas "The Unarchiver", id: 425424353
+mas "Vimari", id: 1480933944
 mas "Xcode", id: 497799835
