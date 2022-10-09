@@ -10,11 +10,22 @@
 	defaultBranch = main
 [core]
 	editor = code --wait
+	pager = delta
+[interactive]
+    diffFilter = delta --color-only
+[add.interactive]
+    useBuiltin = false # required for git 2.37.0
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+	syntax-theme = Dracula
 [merge]
 	tool = code
+	conflictstyle = diff3
 [mergetool "code"]
 	cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
 [diff]
 	tool = code
+	colorMoved = default
 [difftool "code"]
 	cmd = code --wait --diff $LOCAL $REMOTE
