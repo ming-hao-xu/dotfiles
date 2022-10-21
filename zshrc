@@ -1,15 +1,13 @@
 ### Fig pre block. Keep at the top of this file ###
 [[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 
-# Define some colors
-RED="\033[1;31m"
-NOCOLOR="\033[0m"
+autoload U colors && colors # make colors available
 
 ### oh-my-zsh config ###
 # Path to oh-my-zsh installation
 export ZSH="$HOME/.oh-my-zsh"
 
-# ZSH_THEME="spaceship" # now using starship in Rust
+# ZSH_THEME="" # now using starship
 
 # Update oh-my-zsh
 zstyle ':omz:update' mode auto
@@ -37,7 +35,7 @@ zsh-syntax-highlighting
 # adding it as a regular omz plugin will not work properly
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
-source $ZSH/oh-my-zsh.sh
+source $ZSH/oh-my-zsh.sh # compinit is called here
 
 ### normal config ###
 # pyenv config
@@ -49,7 +47,7 @@ eval "$(pyenv init -)"
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-# Call nvm use automatically whenever entering a directory that contains an .nvmrc file with a string telling nvm which node to use
+# call nvm use automatically whenever entering a directory that contains an .nvmrc file with a string telling nvm which node to use
 autoload -U add-zsh-hook
 load-nvmrc() {
   local node_version="$(nvm version)"
@@ -74,11 +72,11 @@ load-nvmrc
 # pnpm config
 export PNPM_HOME="$HOME/Library/pnpm"
 [[ ":$PATH:" == *":$PNPM_HOME:"* ]] || export PATH="$PNPM_HOME:$PATH" # corepack
-# command -v pnpm >/dev/null || export PATH="$PNPM_HOME:$PATH" # normal
+# command -v pnpm >/dev/null || export PATH="$PNPM_HOME:$PATH" # standalone
 
 # bat config
 export BAT_CONFIG_PATH="$HOME/bat.conf"
-export MANPAGER="sh -c 'col -bx | bat -l man -p'" # Set syntax-highlighting for man using bat
+export MANPAGER="sh -c 'col -bx | bat -l man -p'" # set syntax-highlighting for man using bat
 
 # fzf config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -101,37 +99,43 @@ export NULLCMD=bat
 eval "$(zoxide init zsh --cmd cd)" # override cd
 
 # Aliases
-alias exa='exa -laFh --git --icons' # Display a table of files with header, showing each file's metadata, Git status, and icons
+alias exa='exa -laFh --git --icons' # display a table of files with header, showing each file's metadata, Git status, and icons
+alias ls='exa'
 
 alias cat='bat'
-alias rm='echo "Use ${RED}trash-cli${NOCOLOR} instead"; false' # trash-cli is quite different from rm (e.g. no -r), better not to override it
 
-alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew' # Fix brew doctor's warning ""config" scripts exist outside your system or Homebrew directories"
-alias path='<<<${(F)path}' # Print path in a column using bat (NULLCMD)
+alias rm='echo "Use $fg_bold[red]trash-cli$reset_color instead"; false' # trash-cli is quite different from rm (e.g. no -r), better not to override it
+
+alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew' # fix brew doctor's warning ""config" scripts exist outside your system or Homebrew directories"
+alias path='<<<${(F)path}' # print path in a column using bat (NULLCMD)
+
+alias diff='echo "Use $fg_bold[red]delta$reset_color instead"; false'
+
+alias top='htop'
 
 # Functions
 function update_packages(){
-  echo "⬆️  ${RED}Updating brew...${NOCOLOR}"
+  echo "⬆️  $fg_bold[red]Updating brew...$reset_color"
   brew update && brew upgrade && brew upgrade --cask && brew autoremove
 
-  echo "⬆️  ${RED}Updating App Store Apps...${NOCOLOR}"
+  echo "⬆️  $fg_bold[red]Updating App Store Apps...$reset_color"
   mas upgrade
 
-  echo "⬆️  ${RED}Updating pip packages...${NOCOLOR}"
+  echo "⬆️  $fg_bold[red]Updating pip packages...$reset_color"
   pipupgrade --self && pipupgrade --yes 2>/dev/null
 
-  echo "⬆️  ${RED}Updating npm and pnpm packages...${NOCOLOR}"
+  echo "⬆️  $fg_bold[red]Updating npm and pnpm packages...$reset_color"
   npm update -g
   pnpm update -g
 
-  # echo "⬆️  ${RED}Updating omz...${NOCOLOR}"
+  # echo "⬆️  $fg[red]Updating omz...$reset_color"
   # upgrade_oh_my_zsh_all # * this function comes from autoupdate plugin, update all plugins and themes
 
-  echo "📦  ${RED}Dumping packages to Brewfile...${NOCOLOR}"
+  echo "📦  $fg[red]Dumping packages to Brewfile...$reset_color"
   brew bundle dump --force --describe --file="$HOME/.dotfiles/Brewfile"
 }
 
-function new_md(){
+function note(){
   # create and open a new markdown file
   if [[ -f "$1.md" ]]; then
     open "$1.md"
