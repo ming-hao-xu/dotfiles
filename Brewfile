@@ -17,6 +17,8 @@ brew "git"
 brew "git-delta"
 # Render markdown on the CLI
 brew "glow"
+# Improved top (interactive process viewer)
+brew "htop"
 # Pager program similar to more
 brew "less"
 # Mac App Store command-line interface
@@ -33,6 +35,8 @@ brew "starship"
 brew "tree"
 # Internet file retriever
 brew "wget"
+# General-purpose data compression with high compression ratio
+brew "xz"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # Stand alone ad blocker
@@ -43,8 +47,8 @@ cask "adguard-vpn"
 cask "alfred"
 # Enable Windows-like alt-tab
 cask "alt-tab"
-# Cloud storage service
-cask "baidunetdisk"
+# Tool to flash OS images to SD cards & USB drives
+cask "balenaetcher"
 # Trains AIs to understand and translate texts
 cask "deepl"
 # Voice and text chat software
@@ -65,8 +69,6 @@ cask "iterm2"
 cask "logi-options-plus"
 # Full TeX Live distribution without GUI applications
 cask "mactex-no-gui"
-# All system and utility switches in one place
-cask "one-switch"
 # Desktop virtualization software
 cask "parallels"
 # PDF reader, editor and annotator
@@ -95,5 +97,4 @@ mas "Noir", id: 1592917505
 mas "Refined GitHub", id: 1519867270
 mas "Spark", id: 1176895641
 mas "The Unarchiver", id: 425424353
-mas "Vimari", id: 1480933944
 mas "Xcode", id: 497799835
