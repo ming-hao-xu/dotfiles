@@ -79,7 +79,7 @@ export BAT_CONFIG_PATH="$HOME/bat.conf"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'" # set syntax-highlighting for man using bat
 
 # fzf config
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzf.zsh ] && builtin source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
 export FZF_DEFAULT_OPTS='--exact --cycle'
 
@@ -99,8 +99,7 @@ export NULLCMD=bat
 eval "$(zoxide init zsh --cmd cd)" # override cd
 
 # Aliases
-alias exa='exa -laFh --git --icons' # display a table of files with header, showing each file's metadata, Git status, and icons
-alias ls='exa'
+alias ls='exa -laFh --git --icons' # display a table of files with header, showing each file's metadata, Git status, and icons
 
 alias cat='bat'
 
@@ -114,25 +113,27 @@ alias diff='echo "Use $fg_bold[red]delta$reset_color instead"; false'
 alias top='htop'
 
 # Functions
-function update_packages(){
-  echo "⬆️  $fg_bold[red]Updating brew...$reset_color"
+function update(){
+  echo -e "🚀 $fg_bold[red]Updating brew...$reset_color\n️"
   brew update && brew upgrade && brew upgrade --cask && brew autoremove
 
-  echo "⬆️  $fg_bold[red]Updating App Store Apps...$reset_color"
+  echo -e "🚀 $fg_bold[red]Updating App Store Apps...$reset_color\n️"
   mas upgrade
 
-  echo "⬆️  $fg_bold[red]Updating pip packages...$reset_color"
+  echo -e "🚀  $fg_bold[red]Updating pip packages...$reset_color\n️"
   pipupgrade --self && pipupgrade --yes 2>/dev/null
 
-  echo "⬆️  $fg_bold[red]Updating npm and pnpm packages...$reset_color"
+  echo -e "🚀  $fg_bold[red]Updating npm and pnpm packages...$reset_color\n️"
   npm update -g
   pnpm update -g
 
-  # echo "⬆️  $fg[red]Updating omz...$reset_color"
+  # echo -e "🚀  $fg[red]Updating omz...$reset_color\n️"
   # upgrade_oh_my_zsh_all # * this function comes from autoupdate plugin, update all plugins and themes
 
-  echo "📦  $fg[red]Dumping packages to Brewfile...$reset_color"
+  echo -e "📦  $fg[red]Dumping packages to Brewfile...$reset_color\n️"
   brew bundle dump --force --describe --file="$HOME/.dotfiles/Brewfile"
+
+  echo "🍰  All done!"
 }
 
 function note(){
@@ -152,3 +153,4 @@ eval "$(starship init zsh)"
 
 ### Fig post block. Keep at the bottom of this file ###
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
+export PATH="/opt/homebrew/opt/qt@5/bin:$PATH"
