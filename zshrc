@@ -14,9 +14,6 @@ zstyle ':omz:update' mode auto
 zstyle ':omz:update' frequency 30 # update omz every 30 days
 export UPDATE_ZSH_DAYS=30 # update plugins and themes using autoupdate plugin every 30 days
 
-# Display red dots whilst waiting for completion
-COMPLETION_WAITING_DOTS="true"
-
 # Disable marking untracked files under VCS as dirty
 # This makes repository status check for large repositories much, much faster
 DISABLE_UNTRACKED_FILES_DIRTY="true"
@@ -99,7 +96,7 @@ export NULLCMD=bat
 eval "$(zoxide init zsh --cmd cd)" # override cd
 
 # Aliases
-alias ls='exa -laFh --git --icons' # display a table of files with header, showing each file's metadata, Git status, and icons
+alias ls='exa -aFh --git --icons' # display a table of files with header, showing each file's metadata, Git status, and icons
 
 alias cat='bat'
 
@@ -153,4 +150,3 @@ eval "$(starship init zsh)"
 
 ### Fig post block. Keep at the bottom of this file ###
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
-export PATH="/opt/homebrew/opt/qt@5/bin:$PATH"
