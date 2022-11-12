@@ -23,6 +23,8 @@ brew "htop"
 brew "less"
 # Mac App Store command-line interface
 brew "mas"
+# NCurses Disk Usage
+brew "ncdu"
 # Fast, highly customisable system info script
 brew "neofetch"
 # Ambitious Vim-fork focused on extensibility and agility
@@ -31,8 +33,6 @@ brew "neovim"
 brew "nvm"
 # Python version management
 brew "pyenv"
-# Python bindings for v5 of Qt
-brew "pyqt@5"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Display directories as trees (with optional color/HTML output)
@@ -49,6 +49,8 @@ cask "adguard-vpn"
 cask "alfred"
 # Enable Windows-like alt-tab
 cask "alt-tab"
+# Communications service
+cask "amazon-chime"
 # Cloud storage service
 cask "baidunetdisk"
 # Tool to flash OS images to SD cards & USB drives
@@ -73,10 +75,14 @@ cask "iterm2"
 cask "logi-options-plus"
 # Full TeX Live distribution without GUI applications
 cask "mactex-no-gui"
+# Remote desktop client
+cask "microsoft-remote-desktop"
 # Desktop virtualization software
 cask "parallels"
 # PDF reader, editor and annotator
 cask "pdf-expert"
+# Collaboration platform for API development
+cask "postman"
 # Team communication and collaboration software
 cask "slack"
 # Music streaming service
@@ -87,16 +93,21 @@ cask "typora"
 cask "uninstallpkg"
 # Open-source code editor
 cask "visual-studio-code"
+# Free messaging and calling application
+cask "wechat"
 # Youdao Dictionary
 cask "youdaodict"
 # Video communication and virtual meeting platform
 cask "zoom"
+mas "BIOHAZARD VILLAGE", id: 1640626745
+mas "CotEditor", id: 1024640650
 mas "Encrypto", id: 935235287
+mas "Flow", id: 1423210932
 mas "GoodNotes", id: 1444383602
 mas "Keynote", id: 409183694
 mas "LINE", id: 539883307
 mas "Magnet", id: 441258766
 mas "Noir", id: 1592917505
 mas "Refined GitHub", id: 1519867270
+mas "Spark", id: 1176895641
 mas "The Unarchiver", id: 425424353
-mas "Xcode", id: 497799835
