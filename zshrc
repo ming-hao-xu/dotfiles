@@ -7,7 +7,7 @@ autoload U colors && colors # make colors available
 # Path to oh-my-zsh installation
 export ZSH="$HOME/.oh-my-zsh"
 
-# ZSH_THEME="" # now using starship
+# ZSH_THEME="" # now using starship 🚀
 
 # Update oh-my-zsh
 zstyle ':omz:update' mode auto
@@ -96,7 +96,7 @@ export NULLCMD=bat
 eval "$(zoxide init zsh --cmd cd)" # override cd
 
 # Aliases
-alias ls='exa -aFh --git --icons' # display a table of files with header, showing each file's metadata, Git status, and icons
+alias ls='exa -aFh --icons' # display a table of files with header, showing each file's metadata, and icons
 
 alias cat='bat'
 
@@ -111,26 +111,26 @@ alias top='htop'
 
 # Functions
 function update(){
-  echo -e "🚀 $fg_bold[red]Updating brew...$reset_color\n️"
+  echo -e "🤖 $fg_bold[red]Updating brew...$reset_color\n️"
   brew update && brew upgrade && brew upgrade --cask && brew autoremove
 
-  echo -e "🚀 $fg_bold[red]Updating App Store Apps...$reset_color\n️"
+  echo -e "🤖 $fg_bold[red]Updating App Store Apps...$reset_color\n️"
   mas upgrade
 
-  echo -e "🚀  $fg_bold[red]Updating pip packages...$reset_color\n️"
+  echo -e "🤖  $fg_bold[red]Updating pip packages...$reset_color\n️"
   pipupgrade --self && pipupgrade --yes 2>/dev/null
 
-  echo -e "🚀  $fg_bold[red]Updating npm and pnpm packages...$reset_color\n️"
+  echo -e "🤖  $fg_bold[red]Updating npm and pnpm packages...$reset_color\n️"
   npm update -g
   pnpm update -g
 
-  # echo -e "🚀  $fg[red]Updating omz...$reset_color\n️"
+  # echo -e "🤖  $fg[red]Updating omz...$reset_color\n️"
   # upgrade_oh_my_zsh_all # * this function comes from autoupdate plugin, update all plugins and themes
 
   echo -e "📦  $fg[red]Dumping packages to Brewfile...$reset_color\n️"
   brew bundle dump --force --describe --file="$HOME/.dotfiles/Brewfile"
 
-  echo "🍰  All done!"
+  echo "🍰 ✨ All done!"
 }
 
 function note(){
