@@ -25,20 +25,30 @@ brew "less"
 brew "mas"
 # NCurses Disk Usage
 brew "ncdu"
-# Fast, highly customisable system info script
-brew "neofetch"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Manage multiple Node.js versions
 brew "nvm"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
+# Library for command-line editing
+brew "readline"
 # Python version management
 brew "pyenv"
+# Command-line interface for SQLite
+brew "sqlite"
 # Cross-shell prompt for astronauts
 brew "starship"
+# Tool Command Language
+brew "tcl-tk"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Internet file retriever
 brew "wget"
+# General-purpose data compression with high compression ratio
+brew "xz"
+# General-purpose lossless data-compression library
+brew "zlib"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # Stand alone ad blocker
@@ -75,8 +85,6 @@ cask "iterm2"
 cask "logi-options-plus"
 # Full TeX Live distribution without GUI applications
 cask "mactex-no-gui"
-# Remote desktop client
-cask "microsoft-remote-desktop"
 # Desktop virtualization software
 cask "parallels"
 # PDF reader, editor and annotator
@@ -100,7 +108,6 @@ cask "youdaodict"
 # Video communication and virtual meeting platform
 cask "zoom"
 mas "BIOHAZARD VILLAGE", id: 1640626745
-mas "CotEditor", id: 1024640650
 mas "Encrypto", id: 935235287
 mas "Flow", id: 1423210932
 mas "GoodNotes", id: 1444383602

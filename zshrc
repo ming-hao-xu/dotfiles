@@ -109,6 +109,9 @@ alias diff='echo "Use $fg_bold[red]delta$reset_color instead"; false'
 
 alias top='htop'
 
+alias vim='nvim'
+alias vi='nvim'
+
 # Functions
 function update(){
   echo -e "🤖 $fg_bold[red]Updating brew...$reset_color\n️"
@@ -122,13 +125,16 @@ function update(){
 
   echo -e "🤖  $fg_bold[red]Updating npm and pnpm packages...$reset_color\n️"
   npm update -g
-  pnpm update -g
+  # pnpm update -g
 
   # echo -e "🤖  $fg[red]Updating omz...$reset_color\n️"
   # upgrade_oh_my_zsh_all # * this function comes from autoupdate plugin, update all plugins and themes
 
-  echo -e "📦  $fg[red]Dumping packages to Brewfile...$reset_color\n️"
+  echo -e "📦  $fg[red]Document brew packages to Brewfile...$reset_color\n️"
   brew bundle dump --force --describe --file="$HOME/.dotfiles/Brewfile"
+
+  echo -e "📦  $fg[red]Document python global packages to requirements.txt...$reset_color\n️"
+  pip-chill --no-chill --no-version > $HOME/.dotfiles/config/requirements.txt
 
   echo "🍰 ✨ All done!"
 }

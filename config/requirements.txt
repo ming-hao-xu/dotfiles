@@ -1,0 +1,6 @@
+black
+ipython
+numpy
+pipupgrade
+tokenize-rt
+trash-cli

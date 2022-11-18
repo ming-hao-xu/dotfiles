@@ -20,7 +20,7 @@
     ~/.zshenv:
     ~/.zprofile:
     ~/.zshrc:
-    ~/.fzf.zsh:
     ~/.gitconfig: config/gitconfig
     ~/bat.conf: config/bat.conf
     ~/Library/Preferences/glow/glow.yml: config/glow.yml
+    ~/requirements.txt: config/requirements.txt
