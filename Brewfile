@@ -3,6 +3,14 @@ tap "homebrew/cask"
 tap "homebrew/cask-drivers"
 tap "homebrew/core"
 tap "homebrew/services"
+# Library for command-line editing
+brew "readline"
+# Command-line interface for SQLite
+brew "sqlite"
+# General-purpose data compression with high compression ratio
+brew "xz"
+# Official Amazon AWS command-line interface
+brew "awscli"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Modern replacement for 'ls'
@@ -31,12 +39,8 @@ brew "neovim"
 brew "nvm"
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@3"
-# Library for command-line editing
-brew "readline"
 # Python version management
 brew "pyenv"
-# Command-line interface for SQLite
-brew "sqlite"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Tool Command Language
@@ -45,8 +49,6 @@ brew "tcl-tk"
 brew "tree"
 # Internet file retriever
 brew "wget"
-# General-purpose data compression with high compression ratio
-brew "xz"
 # General-purpose lossless data-compression library
 brew "zlib"
 # Shell extension to navigate your filesystem faster
@@ -59,10 +61,6 @@ cask "adguard-vpn"
 cask "alfred"
 # Enable Windows-like alt-tab
 cask "alt-tab"
-# Communications service
-cask "amazon-chime"
-# Cloud storage service
-cask "baidunetdisk"
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher"
 # Trains AIs to understand and translate texts
@@ -109,7 +107,7 @@ cask "youdaodict"
 cask "zoom"
 mas "BIOHAZARD VILLAGE", id: 1640626745
 mas "Encrypto", id: 935235287
-mas "Flow", id: 1423210932
+mas "Endel", id: 1484348796
 mas "GoodNotes", id: 1444383602
 mas "Keynote", id: 409183694
 mas "LINE", id: 539883307
