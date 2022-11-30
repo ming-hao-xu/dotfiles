@@ -1,7 +1,7 @@
 ### Fig pre block. Keep at the top of this file ###
 [[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 
-autoload U colors && colors # make colors available
+autoload U colors && colors
 
 ### oh-my-zsh config ###
 # Path to oh-my-zsh installation
@@ -25,6 +25,10 @@ autoupdate
 you-should-use
 git
 zsh-autosuggestions
+sudo # press <ESC> twice to run the last command with sudo
+extract
+gpg-agent
+command-not-found
 zsh-syntax-highlighting
 )
 
@@ -32,7 +36,9 @@ zsh-syntax-highlighting
 # adding it as a regular omz plugin will not work properly
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
-source $ZSH/oh-my-zsh.sh # compinit is called here
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#808080"
+
+builtin source $ZSH/oh-my-zsh.sh # compinit is called here
 
 ### normal config ###
 # pyenv config
@@ -86,67 +92,20 @@ export FZF_CTRL_T_OPTS="--height 100% --preview-window wrap --preview 'bat --for
 export FZF_ALT_C_COMMAND='fd --type d --strip-cwd-prefix --hidden --follow --exclude .git'
 export FZF_ALT_C_OPTS="--height 100% --preview 'tree -C {} | head -50'"
 
-# Disable macOS's Gatekeeper for homebrew
-export HOMEBREW_CASK_OPTS="--no-quarantine"
-
-# Default NULLCMD is cat, use bat when commands like `<<EOF` are used
-export NULLCMD=bat
+# Homebrew config
+export HOMEBREW_CASK_OPTS="--no-quarantine" # disable macOS's Gatekeeper
+export HOMEBREW_AUTOREMOVE="true"
+export HOMEBREW_BAT="true"
+export HOMEBREW_NO_ENV_HINTS="true"
 
 # zoxide initalization
 eval "$(zoxide init zsh --cmd cd)" # override cd
 
-# Aliases
-alias ls='exa -aFh --icons' # display a table of files with header, showing each file's metadata, and icons
+### Aliases ###
+[[ -f "$HOME/.dotfiles/aliases.zsh" ]] && builtin source "$HOME/.dotfiles/aliases.zsh" 
 
-alias cat='bat'
-
-alias rm='echo "Use $fg_bold[red]trash-cli$reset_color instead"; false' # trash-cli is quite different from rm (e.g. no -r), better not to override it
-
-alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew' # fix brew doctor's warning ""config" scripts exist outside your system or Homebrew directories"
-alias path='<<<${(F)path}' # print path in a column using bat (NULLCMD)
-
-alias diff='echo "Use $fg_bold[red]delta$reset_color instead"; false'
-
-alias top='htop'
-
-alias vim='nvim'
-alias vi='nvim'
-
-# Functions
-function update(){
-  echo -e "🤖 $fg_bold[red]Updating brew...$reset_color\n️"
-  brew update && brew upgrade && brew upgrade --cask && brew autoremove
-
-  echo -e "🤖 $fg_bold[red]Updating App Store Apps...$reset_color\n️"
-  mas upgrade
-
-  echo -e "🤖  $fg_bold[red]Updating pip packages...$reset_color\n️"
-  pipupgrade --self && pipupgrade --yes 2>/dev/null
-
-  echo -e "🤖  $fg_bold[red]Updating npm and pnpm packages...$reset_color\n️"
-  npm update -g
-  # pnpm update -g
-
-  # echo -e "🤖  $fg[red]Updating omz...$reset_color\n️"
-  # upgrade_oh_my_zsh_all # * this function comes from autoupdate plugin, update all plugins and themes
-
-  echo -e "📦  $fg[red]Document brew packages to Brewfile...$reset_color\n️"
-  brew bundle dump --force --describe --file="$HOME/.dotfiles/Brewfile"
-
-  echo -e "📦  $fg[red]Document python global packages to requirements.txt...$reset_color\n️"
-  pip-chill --no-chill --no-version > $HOME/.dotfiles/config/requirements.txt
-
-  echo "🍰 ✨ All done!"
-}
-
-function note(){
-  # create and open a new markdown file
-  if [[ -f "$1.md" ]]; then
-    open "$1.md"
-  else
-    touch "$1.md" && open "$1.md"
-  fi
-}
+### Functions ###
+[[ -f "$HOME/.dotfiles/functions.zsh" ]] && builtin source "$HOME/.dotfiles/functions.zsh"
 
 # remove duplicates, preserves the ordering of paths, and doesn't add a colon at the end
 # PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
