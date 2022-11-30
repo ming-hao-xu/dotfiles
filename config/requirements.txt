@@ -2,5 +2,6 @@ black
 ipython
 numpy
 pipupgrade
+pynvim
 tokenize-rt
 trash-cli
