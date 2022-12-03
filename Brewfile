@@ -39,12 +39,12 @@ brew "neovim"
 brew "nvm"
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@3"
-# Python version management
-brew "pyenv"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Tool Command Language
 brew "tcl-tk"
+# Terminal multiplexer
+brew "tmux"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Internet file retriever
