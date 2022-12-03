@@ -1,31 +1,40 @@
 [user]
-	email = 85087583+xu-minghao317@users.noreply.github.com
-	signingKey = 4C980500
-	name = Minghao Xu
+    email = 85087583+xu-minghao317@users.noreply.github.com
+    signingKey = 4C980500
+    name = Minghao Xu
 [commit]
-	gpgsign = true
-[tag]
-	forceSignAnnotated = true
+    gpgsign = true
 [init]
-	defaultBranch = main
+    defaultBranch = main
 [core]
-	editor = code --wait
-	pager = delta
+    editor = code --wait
+    pager = delta
 [interactive]
     diffFilter = delta --color-only
-[add.interactive]
-    useBuiltin = false # required for git 2.37.0
 [delta]
     navigate = true    # use n and N to move between diff sections
     light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
-	syntax-theme = Dracula
+    features = side-by-side line-numbers decorations
+    syntax-theme = Dracula
+    plus-style = syntax "#003800"
+    minus-style = syntax "#3f0001"
+[delta "decorations"]
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
+    hunk-header-decoration-style = cyan box ul
+[delta "line-numbers"]
+    line-numbers-left-style = cyan
+    line-numbers-right-style = cyan
+    line-numbers-minus-style = 124
+    line-numbers-plus-style = 28
 [merge]
-	tool = code
-	conflictstyle = diff3
+    tool = code
+    conflictstyle = diff3
 [mergetool "code"]
-	cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
+    cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
 [diff]
-	tool = code
-	colorMoved = default
+    tool = code
+    colorMoved = default
 [difftool "code"]
-	cmd = code --wait --diff $LOCAL $REMOTE
+    cmd = code --wait --diff $LOCAL $REMOTE
