@@ -11,6 +11,3 @@ export NULLCMD=bat
 
 # Enable true color support
 export COLORTERM=truecolor
-
-# Disable conda auto base
-export CONDA_AUTO_ACTIVATE_BASE=false
