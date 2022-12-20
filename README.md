@@ -29,7 +29,8 @@
 1. Remove all `.DS_Store` files and set a default Finder view option by pressing <kbd>CMD</kbd>.
 
    ```shell
-   fd -H '^\.DS_Store$' -tf -X rm
+   kill finder
+   find . -name ".DS_Store" -type f -delete
    ```
 
 2. Turn on Touch ID for `sudo`.
