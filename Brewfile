@@ -3,11 +3,15 @@ tap "homebrew/cask"
 tap "homebrew/cask-drivers"
 tap "homebrew/core"
 tap "homebrew/services"
-tap "tgotwig/linux-dust"
+tap "lencx/chatgpt", "https://github.com/lencx/ChatGPT.git"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# New way to see and navigate directory trees
-brew "broot"
+# Get/set bluetooth power and discoverable state
+brew "blueutil"
+# General-purpose data compression with high compression ratio
+brew "xz"
+# Resource monitor. C++ version and continuation of bashtop and bpytop
+brew "btop"
 # Disk Usage/Free Utility - a better 'df' alternative
 brew "duf"
 # More intuitive version of du in rust
@@ -24,54 +28,62 @@ brew "git"
 brew "git-delta"
 # Render markdown on the CLI
 brew "glow"
-# Improved top (interactive process viewer)
-brew "htop"
+# Library for command-line editing
+brew "readline"
 # Pager program similar to more
 brew "less"
+# Provides library functionality for FIDO U2F & FIDO 2.0, including USB
+brew "libfido2"
 # Mac App Store command-line interface
 brew "mas"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Manage multiple Node.js versions
 brew "nvm"
+# OpenBSD freely-licensed SSH connectivity tools
+brew "openssh"
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@3"
-# Library for command-line editing
-brew "readline"
-# Command-line interface for SQLite
-brew "sqlite"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Tool Command Language
 brew "tcl-tk"
+# Simplified and community-driven man pages
+brew "tldr"
 # Terminal multiplexer
 brew "tmux"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Internet file retriever
 brew "wget"
-# General-purpose data compression with high compression ratio
-brew "xz"
+# Tool for managing your YubiKey configuration
+brew "ykman"
 # General-purpose lossless data-compression library
 brew "zlib"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # Stand alone ad blocker
 cask "adguard"
-# VPN for privacy and security
-cask "adguard-vpn"
+# Apple TV Aerial screensaver
+cask "aerial"
 # Application launcher and productivity software
 cask "alfred"
 # Enable Windows-like alt-tab
 cask "alt-tab"
+# Cloud storage service
+cask "baidunetdisk"
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher"
+# Desktop wrapper for OpenAI ChatGPT
+cask "chatgpt"
 # Rule-based custom proxy with GUI based on clash
 cask "clashx"
 # Trains AIs to understand and translate texts
 cask "deepl"
-# Voice and text chat software
-cask "discord"
+# Reclaim tens of gigabytes of your storage used for various Xcode caches
+cask "devcleaner"
+# Client for the Dropbox cloud storage service
+cask "dropbox"
 # Reimagine your terminal
 cask "fig"
 # Git client focusing on productivity
@@ -90,24 +102,22 @@ cask "logi-options-plus"
 cask "mactex-no-gui"
 # Remote desktop client
 cask "microsoft-remote-desktop"
+# Visualizer for neural network, deep learning, and machine learning models
+cask "netron"
 # PDF reader, editor and annotator
 cask "pdf-expert"
-# Collaboration platform for API development
-cask "postman"
 # Team communication and collaboration software
 cask "slack"
-# Messaging app with a focus on speed and security
-cask "telegram"
 # Configurable document editor that supports Markdown
 cask "typora"
-# PKG software package uninstall tool
-cask "uninstallpkg"
 # Open-source code editor
 cask "visual-studio-code"
 # Free messaging and calling application
 cask "wechat"
 # Youdao Dictionary
 cask "youdaodict"
+# Application for configuring any YubiKey
+cask "yubico-yubikey-manager"
 # Video communication and virtual meeting platform
 cask "zoom"
 mas "Encrypto", id: 935235287
@@ -119,5 +129,5 @@ mas "Magnet", id: 441258766
 mas "Noir", id: 1592917505
 mas "Refined GitHub", id: 1519867270
 mas "Spark", id: 1176895641
-mas "The Unarchiver", id: 425424353
 mas "TypingLand", id: 1568264476
+mas "Xcode", id: 497799835

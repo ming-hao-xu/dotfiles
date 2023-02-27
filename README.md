@@ -22,11 +22,11 @@
 
 4. Install [Fira Code Nerd Font](https://www.nerdfonts.com/font-downloads) for iTerm2.
 
-5. Migrate `GPG` and `SSH` keys safely.
+5. Migrate keys safely.
 
 ## Optional
 
-1. Remove all `.DS_Store` files and set a default Finder view option by pressing <kbd>CMD</kbd>.
+1. Remove all `.DS_Store` files and set a default Finder view option.
 
    ```shell
    kill finder

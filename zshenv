@@ -1,13 +1,8 @@
-# Locale
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-export LANGUAGE=en_US.UTF-8
-
-export PAGER='less -R'
+# Configure default pager and editor
+export PAGER='less --RAW-CONTROL-CHARS'
 export EDITOR="code --wait"
 
-# Default NULLCMD is cat, use bat when commands like `<<EOF` are used
-export NULLCMD=bat
-
-# Enable true color support
-export COLORTERM=truecolor
+# Configure proxy settings for mainland China (clashx)
+# export https_proxy=http://127.0.0.1:7890
+# export http_proxy=http://127.0.0.1:7890
+# export all_proxy=socks5://127.0.0.1:7890

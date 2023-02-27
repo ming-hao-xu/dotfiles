@@ -1,4 +1,4 @@
-### Fig pre block. Keep at the top of this file ###
+# Fig pre block. Keep at the top of this file.
 [[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 
 autoload U colors && colors
@@ -7,7 +7,7 @@ autoload U colors && colors
 # Path to oh-my-zsh installation
 export ZSH="$HOME/.oh-my-zsh"
 
-# ZSH_THEME="" # now using starship 🚀
+# ZSH_THEME=""
 
 # Update oh-my-zsh
 zstyle ':omz:update' mode auto
@@ -24,23 +24,24 @@ plugins=(
   you-should-use
   git
   zsh-autosuggestions
-  sudo # press <ESC> twice to run the last command with sudo
+  sudo
   extract
+  ssh-agent
   gpg-agent
   command-not-found
   zsh-syntax-highlighting
 )
 
 # zsh-completions config
-# adding it as a regular omz plugin will not work properly
+# Adding it as a regular omz plugin will not work properly
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#808080"
+# Avoid triggering autosuggestion for strings that are too long
+export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 
-# compinit is called here
-builtin source "$ZSH/oh-my-zsh.sh"
+builtin source "$ZSH/oh-my-zsh.sh" # compinit is called here
 
-### normal config ###
+### general config ###
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/Users/kevin/miniconda3/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
@@ -57,10 +58,9 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 # nvm config
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"                                       # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
-# call nvm use automatically whenever entering a directory that contains an .nvmrc file with a string telling nvm which node to use
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+# Call nvm use automatically whenever entering a directory that contains an .nvmrc file with a string telling nvm which node to use
 autoload -U add-zsh-hook
 load-nvmrc() {
   local nvmrc_path="$(nvm_find_nvmrc)"
@@ -83,13 +83,13 @@ load-nvmrc
 
 # pnpm config
 export PNPM_HOME="$HOME/Library/pnpm"
-[[ ":$PATH:" == *":$PNPM_HOME:"* ]] || export PATH="$PNPM_HOME:$PATH" # corepack
-# command -v pnpm >/dev/null || export PATH="$PNPM_HOME:$PATH" # standalone
+[[ ":$PATH:" == *":$PNPM_HOME:"* ]] || export PATH="$PNPM_HOME:$PATH"
 
 # bat config
 export BAT_CONFIG_PATH="$HOME/bat.conf"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'" # set syntax-highlighting for man
-alias bathelp='bat --plain --language=help'       # set syntax-highlighting for help
+export NULLCMD=bat                                # used in here documents
+alias bathelp='bat --plain --language=help'       # set syntax-highlighting for --help
 help() {
   "$@" --help 2>&1 | bathelp
 }
@@ -106,14 +106,7 @@ export FZF_CTRL_R_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_R_OPTS="--height 50% --reverse"
 
 export FZF_ALT_C_COMMAND='fd --type d --strip-cwd-prefix --hidden --follow --exclude .git'
-export FZF_ALT_C_OPTS="--height 100% --preview 'tree -C {} | head -50'"
-
-# Homebrew config
-export HOMEBREW_CASK_OPTS="--no-quarantine" # disable macOS's Gatekeeper
-export HOMEBREW_AUTOREMOVE="true"
-export HOMEBREW_BAT="true"
-export HOMEBREW_NO_ENV_HINTS="true"
-export HOMEBREW_NO_ANALYTICS="true"
+export FZF_ALT_C_OPTS="--no-height --preview 'tree -C {} | head -50'"
 
 # zoxide initalization
 eval "$(zoxide init zsh --cmd cd)" # override cd
@@ -124,11 +117,11 @@ eval "$(zoxide init zsh --cmd cd)" # override cd
 ### Functions ###
 [[ -f "$HOME/.dotfiles/functions.zsh" ]] && builtin source "$HOME/.dotfiles/functions.zsh"
 
-# remove duplicates, preserves the ordering of paths, and doesn't add a colon at the end
-# PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
-
-# Init startship prompt, keep at the bottom of this file
+# Init startship prompt
 eval "$(starship init zsh)"
 
-### Fig post block. Keep at the bottom of this file ###
+# Remove empty entries from $PATH
+PATH=$(echo $PATH | tr -s ':' | sed 's/^://; s/:$//')
+
+# Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"

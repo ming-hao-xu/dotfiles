@@ -1,25 +1,26 @@
-function update(){
-  echo -e "🤖 $fg_bold[red]Updating brew...$reset_color"
-  brew update && brew upgrade && brew upgrade --cask && brew cleanup # cleanup calls autoremove
+# Update all packages
+update() {
+  echo -e "$fg_bold[red]Updating brew...$reset_color"
+  brew update && brew upgrade && brew cleanup # cleanup calls autoremove
 
-  echo -e "🤖 $fg_bold[red]Updating App Store Apps...$reset_color"
+  echo -e "\n$fg_bold[red]Updating App Store Apps...$reset_color"
   mas upgrade
 
-  # echo -e "🤖 $fg_bold[red]Updating npm and pnpm packages...$reset_color"
+  # echo -e "\n$fg_bold[red]Updating npm & pnpm packages...$reset_color"
   # npm update -g
   # pnpm update -g
 
-  # echo -e "🤖  $fg[red]Updating omz...$reset_color"
-  # upgrade_oh_my_zsh_all # * this function comes from autoupdate plugin, update all plugins and themes
+  echo -e "\n$fg[red]Updating omz...$reset_color"
+  upgrade_oh_my_zsh_all # update all plugins and themes using autoupdate plugin
 
-  echo -e "📦 $fg[red]Document brew packages to Brewfile...$reset_color"
+  echo -e "\n$fg[red]Logging brew packages to Brewfile...$reset_color"
   brew bundle dump --force --describe --file="$HOME/.dotfiles/Brewfile"
 
-  echo "🍰 ✨ All done!"
+  echo "\n✨ All done!"
 }
 
-function note(){
-  # create and open a new markdown file
+# Create and open a markdown file
+note() {
   if [[ -f "$1.md" ]]; then
     open "$1.md"
   else
