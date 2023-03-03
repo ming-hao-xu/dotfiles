@@ -50,8 +50,6 @@ brew "starship"
 brew "tcl-tk"
 # Simplified and community-driven man pages
 brew "tldr"
-# Terminal multiplexer
-brew "tmux"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Internet file retriever
