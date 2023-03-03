@@ -1,5 +1,5 @@
 # Enable Hardcore mode to enforce the use of aliases
-export YSU_HARDCORE=1
+# export YSU_HARDCORE=1
 
 # Display a list of all files and directories, including hidden ones, with icons and Git status
 alias l='exa --all --classify --git --icons --group-directories-first'
