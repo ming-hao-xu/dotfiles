@@ -100,13 +100,13 @@ export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --e
 export FZF_DEFAULT_OPTS='--exact --cycle'
 
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_CTRL_T_OPTS="--no-height --preview-window wrap --preview 'bat --color=always --style="plain" --line-range :100 {}'"
+export FZF_CTRL_T_OPTS="--no-height --preview-window=right:60% --preview 'bat --color=always --style="plain" --line-range :100 {}'"
 
 export FZF_CTRL_R_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_R_OPTS="--height 50% --reverse"
 
 export FZF_ALT_C_COMMAND='fd --type d --strip-cwd-prefix --hidden --follow --exclude .git'
-export FZF_ALT_C_OPTS="--no-height --preview 'tree -C {} | head -50'"
+export FZF_ALT_C_OPTS="--no-height --preview-window=right:60% --preview 'tree -C {} | head -100'"
 
 # zoxide initalization
 eval "$(zoxide init zsh --cmd cd)" # override cd
