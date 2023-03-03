@@ -20,7 +20,9 @@
     ~/.zshenv:
     ~/.zprofile:
     ~/.zshrc:
-    ~/.gitconfig: config/gitconfig
-    ~/bat.conf: config/bat.conf
-    ~/Library/Preferences/glow/glow.yml: config/glow.yml
-    ~/.config/starship.toml: config/starship.toml
+    ~/.gitconfig: config/git
+    ~/bat.conf: config/bat
+    ~/Library/Preferences/glow/glow.yml: config/glow
+    ~/.config/starship.toml: config/starship
+    ~/.condarc: config/condarc
+    ~/.hushlogin: config/hushlogin
