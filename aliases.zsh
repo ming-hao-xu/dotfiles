@@ -23,3 +23,6 @@ alias du='dust --reverse'
 
 # Show disk usage and free space at the root directory
 alias df='duf /'
+
+# Too lazy to type 'clear'
+alias c='clear'
