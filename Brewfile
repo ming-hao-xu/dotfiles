@@ -44,6 +44,8 @@ brew "nvm"
 brew "openssh"
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@3"
+# Autoformat shell script source code
+brew "shfmt"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Tool Command Language
@@ -100,8 +102,6 @@ cask "logi-options-plus"
 cask "mactex-no-gui"
 # Remote desktop client
 cask "microsoft-remote-desktop"
-# Visualizer for neural network, deep learning, and machine learning models
-cask "netron"
 # PDF reader, editor and annotator
 cask "pdf-expert"
 # Team communication and collaboration software
