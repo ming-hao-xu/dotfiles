@@ -3,24 +3,33 @@
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
 [![Issues](https://img.shields.io/github/issues/xu-minghao317/dotfiles-macOS)](https://github.com/xu-minghao317/dotfiles-macOS/issues)
 
+<div style="text-align:center;">
+  <img src="src/macOS-hamster.png" alt="a hamster wearing an apple-shaped hat" style="width:50%;"/>
+</div>
+
 ## Workflow
 
-1. Upgrade macOS.
+1. Upgrade macOS
+
+   ```shell
+   softwareupdate -i -a
+   ```
+
 2. Install `Command Line Tools`.
 
    ```shell
    xcode-select --install
    ```
 
-3. Run `dotbot`.  
-   _Remove `Xcode` and `mactex-no-gui` from `Brewfile` if in hurry._
+3. Bootstrapping dotfiles.  
+   **Remove `Xcode` and `mactex-no-gui` from `Brewfile` if in hurry.**
 
    ```shell
    git clone https://github.com/xu-minghao317/dotfiles.git ~/.dotfiles --recursive --depth=1
    cd ~/.dotfiles && ./install
    ```
 
-4. Install [Fira Code Nerd Font](https://www.nerdfonts.com/font-downloads) for iTerm2.
+4. Install [Fira Code Nerd Font](https://www.nerdfonts.com/font-downloads).
 
 5. Migrate keys safely.
 
@@ -29,8 +38,7 @@
 1. Remove all `.DS_Store` files and set a default Finder view option.
 
    ```shell
-   kill finder
-   find . -name ".DS_Store" -type f -delete
+   kill finder && find . -name ".DS_Store" -type f -delete
    ```
 
 2. Turn on Touch ID for `sudo`.
