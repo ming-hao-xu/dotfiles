@@ -7,6 +7,7 @@ update() {
   echo -e "\n$fg_bold[red]Updating App Store Apps...$reset_color"
   mas upgrade
 
+  echo "\n"
   upgrade_oh_my_zsh_all # update all plugins and themes using autoupdate plugin
 
   echo -e "\n$fg[red]Logging brew packages to Brewfile...$reset_color"
