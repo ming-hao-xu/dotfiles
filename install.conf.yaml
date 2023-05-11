@@ -1,0 +1,21 @@
+- defaults:
+      link:
+          create: true
+          force: true
+      shell:
+          quiet: true
+          stdin: true
+          stdout: true
+          stderr: true
+
+- clean: ["~"]
+
+- link:
+      ~/.zshenv:
+      ~/.zprofile:
+      ~/.zshrc:
+      ~/.gitconfig: config/git
+      ~/bat.conf: config/bat
+      ~/.config/starship.toml: config/starship
+      ~/.condarc: config/condarc
+      ~/.hushlogin: config/hushlogin

@@ -1,0 +1,6 @@
+{
+    "markdownlint.ignore": ["LICENSE"],
+    "files.associations": {
+        "**/config/*": "properties"
+    }
+}
