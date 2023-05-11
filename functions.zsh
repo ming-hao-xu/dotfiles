@@ -33,7 +33,7 @@ mdnote() {
     open -a Typora.app $filename
 }
 
-function swap_git_gpg_key() {
+swap_git_gpg_key() {
     # Swap git signing key based on YubiKey serial number
     # Currently, there is no built-in way to do this in git
 
@@ -47,7 +47,7 @@ function swap_git_gpg_key() {
     fi
 }
 
-function pdfs_light() {
+pdfs_light() {
     # Reduce pdf size using PDF Squeezer with a light compression profile
 
     pdfs "$1" --profile "$HOME/.config/pdfs_light.pdfscp" --verbose --replace
