@@ -39,7 +39,7 @@ swap_git_gpg_key() {
 
     serial=$(gpg --card-status | grep "^Serial number" | cut -d ":" -f 2 | tr -d ' ')
     if [ "$serial" = "16812796" ]; then
-        git config --global user.signingKey 7330C2A308E26864
+        git config --global user.signingKey 7330C1A308E26864
     elif [ "$serial" = "18686886" ]; then
         git config --global user.signingKey CE3E58885D9C10AF
     else
