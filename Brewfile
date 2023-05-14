@@ -44,6 +44,8 @@ brew "openssh"
 brew "openssl@3"
 # 7-Zip (high compression file archiver) implementation
 brew "p7zip"
+# Passphrase entry dialog utilizing the Assuan protocol
+brew "pinentry"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Autoformat shell script source code
