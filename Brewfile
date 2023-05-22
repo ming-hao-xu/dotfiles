@@ -129,6 +129,7 @@ mas "Magnet", id: 441258766
 mas "Minimal Twitter", id: 1668204600
 mas "Noir", id: 1592917505
 mas "Refined GitHub", id: 1519867270
+mas "Save to Reader", id: 1640236961
 mas "Things", id: 904280696
 mas "TypingLand", id: 1568264476
 mas "Xcode", id: 497799835
