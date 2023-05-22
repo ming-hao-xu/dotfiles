@@ -14,7 +14,6 @@
       ~/.zshenv:
       ~/.zprofile:
       ~/.zshrc:
-      ~/.gitconfig: config/git
       ~/bat.conf: config/bat
       ~/.config/starship.toml: config/starship
       ~/.condarc: config/condarc
