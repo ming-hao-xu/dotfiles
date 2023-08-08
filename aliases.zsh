@@ -17,6 +17,7 @@ alias top='btop'
 
 # Substitute 'vim' or 'vi' with 'neovim'
 alias v='nvim'
+alias vi='nvim'
 
 # Show directory usage and free space, reverse sorted
 alias du='dust -r'
