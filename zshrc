@@ -160,5 +160,8 @@ export _ZO_FZF_OPTS="
 # Initialize starship prompt
 eval "$(starship init zsh)"
 
+# Remove duplicate entries from PATH and sort
+export PATH=$(echo "$PATH" | tr ':' '\n' | sort -u | tr '\n' ':')
+
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
