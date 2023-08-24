@@ -1,10 +1,9 @@
 - defaults:
       link:
           create: true
-          force: true
+          relink: true
       shell:
           quiet: true
-          stdin: true
           stdout: true
           stderr: true
 
@@ -19,3 +18,6 @@
       ~/.condarc: config/condarc
       ~/.hushlogin: config/hushlogin
       ~/.tmux.conf: config/tmux
+
+- shell:
+      - [git submodule update --init --recursive, Installing submodules]
