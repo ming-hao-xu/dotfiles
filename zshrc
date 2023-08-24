@@ -32,6 +32,9 @@ plugins=(
 # Add zsh-completions source to fpath; regular omz plugin addition doesn't work correctly
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
+# homebrew completions
+FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
 # Limit autosuggestion triggering for long strings
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 
