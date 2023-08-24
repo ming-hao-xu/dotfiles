@@ -28,6 +28,9 @@ plugins=(
     zsh-syntax-highlighting # Must be the last plugin
 )
 
+# Change cursor style in different vi modes
+VI_MODE_SET_CURSOR=true
+
 # zsh-completions config
 # Add zsh-completions source to fpath; regular omz plugin addition doesn't work correctly
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
