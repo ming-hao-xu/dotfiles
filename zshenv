@@ -15,3 +15,8 @@ export DISPLAY=:0
 
 # Load Rust environment
 source "$HOME/.cargo/env"
+
+# Set language and character encoding to US English
+export LC_ALL='en_US.UTF-8'
+export LANG='en_US.UTF-8'
+export LANGUAGE='en_US.UTF-8'
