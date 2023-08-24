@@ -25,7 +25,7 @@ plugins=(
     ssh-agent
     gpg-agent
     vi-mode
-    zsh-syntax-highlighting
+    zsh-syntax-highlighting # Must be the last plugin
 )
 
 # zsh-completions config
