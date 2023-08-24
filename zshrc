@@ -145,6 +145,9 @@ export _ZO_FZF_OPTS="
     --preview-window=down:50%
     --preview='exa --all --classify --icons --group-directories-first {2..}'"
 
+# Add completion for ssh, ignoring github.com
+[ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(rg "^Host" ~/.ssh/config | rg -v "[?*]" | rg -v "github.com" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh rsync
+
 ### Aliases ###
 [[ -f "$HOME/.dotfiles/aliases.zsh" ]] && builtin source "$HOME/.dotfiles/aliases.zsh"
 
