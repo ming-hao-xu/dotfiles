@@ -1,0 +1,14 @@
+set -g default-terminal xterm-256color
+
+# Use CTRl-a as prefix
+set-option -g prefix C-a
+
+# Use CTRL-r to reload config
+bind-key r source-file ~/.tmux.conf \; display-message "tmux.conf reloaded"
+
+# Enable mouse support
+set -g mouse on
+
+# Use CTRL-h and CTRL-v to split panes
+bind-key v split-window -h
+bind-key h split-window -v

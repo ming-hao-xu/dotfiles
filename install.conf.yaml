@@ -18,3 +18,4 @@
       ~/.config/starship.toml: config/starship
       ~/.condarc: config/condarc
       ~/.hushlogin: config/hushlogin
+      ~/.tmux.conf: config/tmux
