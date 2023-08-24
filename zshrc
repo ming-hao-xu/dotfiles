@@ -21,10 +21,10 @@ plugins=(
     you-should-use # Suggest aliases for entered commands
     git
     zsh-autosuggestions
-    sudo
     extract
     ssh-agent
     gpg-agent
+    vi-mode
     zsh-syntax-highlighting
 )
 
