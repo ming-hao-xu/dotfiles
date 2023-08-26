@@ -1,23 +1,20 @@
-# Initialize color support
+# Init color support
 autoload U colors && colors
 
-### oh-my-zsh configuration ###
-# Define path to oh-my-zsh installation
+### oh-my-zsh config ###
 export ZSH="$HOME/.oh-my-zsh"
-
-# Enable automatic updates for oh-my-zsh
 zstyle ':omz:update' mode auto
 zstyle ':omz:update' frequency 30 # Update oh-my-zsh every 30 days
 
-# Set the same frequency for plugin and theme updates using the autoupdate plugin
+# Enable auto updates for plugins and themes using the autoupdate plugin
 export UPDATE_ZSH_DAYS=30
 
-# Speed up repository status checks for large repositories by ignoring untracked files
+# Speed up status checks for large repos by ignoring untracked files
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # List plugins to be loaded
 plugins=(
-    autoupdate     # Auto-update oh-my-zsh, plugins, and themes
+    autoupdate
     you-should-use # Suggest aliases for entered commands
     git
     zsh-autosuggestions
@@ -31,36 +28,38 @@ plugins=(
 # Change cursor style in different vi modes
 VI_MODE_SET_CURSOR=true
 
-# zsh-completions config
-# Add zsh-completions source to fpath; regular omz plugin addition doesn't work correctly
+# Add zsh-completions
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
-# homebrew completions
+# Add Homebrew completions
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
-# Limit autosuggestion triggering for long strings
-export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+# Limit zsh-autosuggestion triggering for long strings
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 
 # Load oh-my-zsh; compinit is called within this
-builtin source "$ZSH/oh-my-zsh.sh"
+source "$ZSH/oh-my-zsh.sh"
+
+# Add ssh completions manually, ignoring github.com
+[ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(rg "^Host" ~/.ssh/config | rg -v "[?*]" | rg -v "github.com" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh rsync
 
 ### general config ###
-# conda configuration
+# conda
 __conda_setup="$(/opt/homebrew/Caskroom/miniconda/base/bin/conda shell.zsh hook 2>/dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 elif [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
-    builtin source "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+    source "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
 else
     export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
 fi
 unset __conda_setup
 
-# nvm configuration
+# nvm
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # Load nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-# Load nvm version specified in .nvmrc, if present
+# Load nvm version specified in .nvmrc automatically, if present
 autoload -U add-zsh-hook
 load-nvmrc() {
     local nvmrc_path="$(nvm_find_nvmrc)"
@@ -81,25 +80,26 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
-# pnpm configuration
+# pnpm
 export PNPM_HOME="$HOME/Library/pnpm"
 [[ ":$PATH:" != *":$PNPM_HOME:"* ]] && export PATH="$PNPM_HOME:$PATH"
 
-# bat config
+# bat
 export BAT_CONFIG_PATH="$HOME/bat.conf"
 export BAT_PAGER="less -RF"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'" # Set syntax-highlighting for man pages
 export NULLCMD=bat
+
 # Overwrite help command to provide syntax-highlighting for --help
 alias bathelp='bat --plain --language=help'
 help() {
     "$@" --help 2>&1 | bathelp
 }
 
-# fzf configuration
-[ -f "$HOME/.fzf.zsh" ] && builtin source "$HOME/.fzf.zsh"
+# fzf
+[ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
 
-# Set default fzf command and options
+# Config default fzf command and options
 export FZF_DEFAULT_COMMAND="fd --type file --color=always --strip-cwd-prefix --hidden --follow --exclude .git"
 export FZF_DEFAULT_OPTS="
     --exact
@@ -107,7 +107,7 @@ export FZF_DEFAULT_OPTS="
     --ansi
     --color=header:#6ef2f1:italic"
 
-# Set fzf configuration for CTRL-T and CTRL-R
+# Config fzf for CTRL-T and CTRL-R
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="
     --height=100%
@@ -142,7 +142,7 @@ export FZF_ALT_C_OPTS="
     --bind='start:unbind(ctrl-r)'
     --prompt='1. ripgrep> '"
 
-# Initialize zoxide
+# Init zoxide
 eval "$(zoxide init zsh --cmd cd)" # Overwrite cd
 # cdi to enter a directory interactively using fzf
 export _ZO_FZF_OPTS="
@@ -151,20 +151,17 @@ export _ZO_FZF_OPTS="
     --preview-window=down:50%
     --preview='exa --all --classify --icons --group-directories-first {2..}'"
 
-# Add completion for ssh, ignoring github.com
-[ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(rg "^Host" ~/.ssh/config | rg -v "[?*]" | rg -v "github.com" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh rsync
-
 ### Aliases ###
-[[ -f "$HOME/.dotfiles/aliases.zsh" ]] && builtin source "$HOME/.dotfiles/aliases.zsh"
+[[ -f "$HOME/.dotfiles/aliases.zsh" ]] && source "$HOME/.dotfiles/aliases.zsh"
 
 ### Functions ###
-[[ -f "$HOME/.dotfiles/functions.zsh" ]] && builtin source "$HOME/.dotfiles/functions.zsh"
+[[ -f "$HOME/.dotfiles/functions.zsh" ]] && source "$HOME/.dotfiles/functions.zsh"
 
 # Init iterm2 shell integration
-[[ -f "$HOME/.iterm2_shell_integration.zsh" ]] && builtin source "$HOME/.iterm2_shell_integration.zsh"
-
-# Initialize starship prompt
-eval "$(starship init zsh)"
+[[ -f "$HOME/.iterm2_shell_integration.zsh" ]] && source "$HOME/.iterm2_shell_integration.zsh"
 
 # Remove duplicate entries from PATH and sort
 export PATH=$(echo "$PATH" | tr ':' '\n' | sort -u | tr '\n' ':')
+
+# Init starship prompt
+eval "$(starship init zsh)"
