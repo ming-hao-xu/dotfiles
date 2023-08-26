@@ -16,16 +16,6 @@ update() {
     echo "\nAll done! 🫧"
 }
 
-mdnote() {
-    # Create a markdown file if it doesn't exist, and open with Typora
-
-    local filename="$1.md"
-    if [[ ! -f $filename ]]; then
-        touch $filename
-    fi
-    open -a Typora.app $filename
-}
-
 swap_git_gpg_key() {
     # Swap git signing key based on YubiKey serial number
     # Currently, there is no built-in way to do this in git
