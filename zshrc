@@ -22,6 +22,7 @@ plugins=(
     ssh-agent
     gpg-agent
     vi-mode
+    tmux
     zsh-syntax-highlighting # Must be the last plugin
 )
 
