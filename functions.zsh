@@ -1,26 +1,19 @@
 update() {
     # Update everything, and log brew packages to Brewfile
 
-    echo -e "$fg_bold[red]Updating brew...$reset_color"
-    # cleanup calls autoremove
-    brew update && brew upgrade && brew cleanup
-
-    # Disabling App Store updates temporarily due to a bug with 'flow' app
-    # echo -e "\n${fg_bold_red}Updating App Store Apps...${reset_color}"
-    # mas upgrade
+    echo -e "$fg_bold[red]Updating brew packages...$reset_color"
+    brew update && brew upgrade && brew cleanup # cleanup calls autoremove
 
     echo -e "\n$fg_bold[red]Updating pnpm global packages...$reset_color"
     pnpm update -g
 
     echo "\n"
-    # Update oh-my-zsh, its plugins and themes
-    upgrade_oh_my_zsh_all
+    upgrade_oh_my_zsh_all # Update oh-my-zsh, its plugins and themes
 
     echo -e "\n$fg[red]Logging brew packages to Brewfile...$reset_color"
     brew bundle dump -f --describe --file="$HOME/.dotfiles/Brewfile"
 
-    echo "\nAll done!"
-    $HOME/.iterm2/it2attention fireworks
+    echo "\nAll done! 🫧"
 }
 
 mdnote() {
