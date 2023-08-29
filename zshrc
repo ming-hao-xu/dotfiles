@@ -26,9 +26,6 @@ plugins=(
     zsh-syntax-highlighting # Must be the last plugin
 )
 
-# Change cursor style in different vi modes
-VI_MODE_SET_CURSOR=true
-
 # Add zsh-completions
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
@@ -43,6 +40,12 @@ source "$ZSH/oh-my-zsh.sh"
 
 # Add ssh completions manually, ignoring github.com
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(rg "^Host" ~/.ssh/config | rg -v "[?*]" | rg -v "github.com" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh rsync
+
+# Change cursor style in different vi modes (looks like this need to be after compinit)
+VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+VI_MODE_SET_CURSOR=true
+VI_MODE_CURSOR_VISUAL=5 # blinking line
+VI_MODE_CURSOR_INSERT=5 # blinking line
 
 ### general config ###
 # conda
