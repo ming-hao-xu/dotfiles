@@ -21,9 +21,9 @@ swap_git_gpg_key() {
     # Currently, there is no built-in way to do this in git
 
     serial=$(gpg --card-status | rg -F "Serial number" -m 1 | cut -d ":" -f 2 | tr -d ' ')
-    if [ "$serial" = "16812796" ]; then
+    if [ "$serial" = "16812796" ]; then # at-home key
         git config --global user.signingKey 7330C1A308E26864
-    elif [ "$serial" = "18686886" ]; then
+    elif [ "$serial" = "18686886" ]; then # carry-on key
         git config --global user.signingKey CE3E58885D9C10AF
     else
         echo "No known YubiKey inserted"
