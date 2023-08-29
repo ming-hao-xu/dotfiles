@@ -10,9 +10,9 @@
 - clean: ["~"]
 
 - link:
-      ~/.zshenv:
-      ~/.zprofile:
-      ~/.zshrc:
+      ~/.zshenv: zshenv.zsh
+      ~/.zprofile: zprofile.zsh
+      ~/.zshrc: zshrc.zsh
       ~/bat.conf: config/bat
       ~/.config/starship.toml: config/starship
       ~/.condarc: config/condarc

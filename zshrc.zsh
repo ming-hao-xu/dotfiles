@@ -106,45 +106,44 @@ help() {
 # Config default fzf command and options
 export FZF_DEFAULT_COMMAND="fd --type file --color=always --strip-cwd-prefix --hidden --follow --exclude .git"
 export FZF_DEFAULT_OPTS="
-    --exact
     --cycle
-    --ansi
-    --color=header:#6ef2f1:italic"
+    --color=dark
+    --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
+    --color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7"
 
-# Config fzf for CTRL-T and CTRL-R
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_CTRL_T_OPTS="
-    --height=100%
-    --preview='bat --color=always --line-range :200 {}'
-    --preview-window=right:60%
-    --bind='enter:become(nvim {} > /dev/tty)+abort'
-    --bind='ctrl-e:execute(code {})+abort'
-    --header='Press CTRL-E to open in VSCode instead'"
+# Config fzf for CTRL-R (Command history)
 export FZF_CTRL_R_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_R_OPTS="
+    --ansi
     --height=30%
     --layout=reverse
     --bind='ctrl-e:execute-silent(echo -n {2..} | pbcopy)+abort'
     --header='Press CTRL-E to copy command into clipboard'"
 
-# Switch between Ripgrep launcher mode (CTRL-R) and fzf filtering mode (CTRL-F)
-rm -f /tmp/rg-fzf-{r,f} # clear previous query
+# Config fzf for CTRL-T (Ripgrep)
 RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
 INITIAL_QUERY="${*:-}"
-export FZF_ALT_C_COMMAND="$RG_PREFIX$(printf %q "$INITIAL_QUERY")"
-export FZF_ALT_C_OPTS="
+export FZF_CTRL_T_OPTS="
+    --ansi
     --height=100%
-    --preview='bat --color=always {1} --highlight-line {2}'
-    --preview-window='right,60%,+{2}+3/3,~3'
+    --preview='bat --color=always {1} --highlight-line {2} --style=auto'
+    --preview-window='right,65%,+{2}+3/3,~3'
     --disabled --query \"$INITIAL_QUERY\"
+    --bind='start:reload:$RG_PREFIX {q}'
     --bind='change:reload:sleep 0.1; $RG_PREFIX {q} || true'
     --delimiter :
-    --bind='enter:become(nvim {1} > /dev/tty)+abort'
-    --header 'CTRL-R (ripgrep mode) | CTRL-F (fzf mode)'
-    --bind='ctrl-f:unbind(change,ctrl-f)+change-prompt(2. fzf> )+enable-search+rebind(ctrl-r)+transform-query(echo {q} > /tmp/rg-fzf-r; cat /tmp/rg-fzf-f)'
-    --bind='ctrl-r:unbind(ctrl-r)+change-prompt(1. ripgrep> )+disable-search+reload($RG_PREFIX {q} || true)+rebind(change,ctrl-f)+transform-query(echo {q} > /tmp/rg-fzf-f; cat /tmp/rg-fzf-r)'
-    --bind='start:unbind(ctrl-r)'
-    --prompt='1. ripgrep> '"
+    --bind='enter:become(nvim +{2} {1} > /dev/tty)+abort'"
+
+# Config fzf for ALT-C (View file)
+export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_OPTS="
+    --ansi
+    --height=100%
+    --preview='bat --color=always --line-range :200 {} --style=changes'
+    --preview-window=right:65%
+    --bind='enter:become(nvim {} > /dev/tty)+abort'
+    --bind='ctrl-e:execute(code {})+abort'
+    --header='Press CTRL-E to open in VSCode instead'"
 
 # Init zoxide
 eval "$(zoxide init zsh --cmd cd)" # Overwrite cd
