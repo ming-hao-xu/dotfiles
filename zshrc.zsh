@@ -44,8 +44,6 @@ source "$ZSH/oh-my-zsh.sh"
 # Change cursor style in different vi modes (looks like this need to be after compinit)
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 VI_MODE_SET_CURSOR=true
-VI_MODE_CURSOR_VISUAL=5 # blinking line
-VI_MODE_CURSOR_INSERT=5 # blinking line
 
 ### general config ###
 # conda
@@ -121,7 +119,7 @@ export FZF_CTRL_R_OPTS="
     --header='Press CTRL-E to copy command into clipboard'"
 
 # Config fzf for CTRL-T (Ripgrep)
-RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
+RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case"
 INITIAL_QUERY="${*:-}"
 export FZF_CTRL_T_OPTS="
     --ansi
