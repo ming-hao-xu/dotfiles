@@ -23,7 +23,7 @@ alias vi='nvim'
 alias du='dust -r'
 
 # Show disk usage and free space
-alias df='duf / /Volumes/TimeMachine'
+alias df='duf / /Volumes/TimeMachine\ *'
 
 # Clear screen shortcut
 alias cl='clear'
