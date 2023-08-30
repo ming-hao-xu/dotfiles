@@ -139,8 +139,8 @@ export FZF_ALT_C_OPTS="
     --height=100%
     --preview='bat --color=always --line-range :200 {} --style=changes'
     --preview-window=right:65%
-    --bind='enter:become(nvim {} > /dev/tty)+abort'
-    --bind='ctrl-e:execute(code {})+abort'
+    --bind='enter:become(nvim "{}" > /dev/tty)+abort'
+    --bind='ctrl-e:execute(code "{}")+abort'
     --header='Press CTRL-E to open in VSCode instead'"
 
 # Init zoxide
