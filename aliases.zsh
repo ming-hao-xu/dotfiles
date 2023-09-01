@@ -15,9 +15,9 @@ alias path='<<<${(F)path}'
 # Use 'btop' instead of 'top'
 alias top='btop'
 
-# Substitute 'vim' or 'vi' with 'neovim'
-alias v='nvim'
+# Substitute 'vi' or 'vim' with 'neovim'
 alias vi='nvim'
+alias vim='nvim'
 
 # Show directory usage and free space, reverse sorted
 alias du='dust -r'
