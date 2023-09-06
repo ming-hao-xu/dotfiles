@@ -7,11 +7,11 @@
 # Set 'less' with raw control characters as default pager
 export PAGER='less -R'
 
-# Set 'code' with wait option as default editor
-export EDITOR='code --wait'
+# Set 'nvim' as default editor
+export EDITOR='nvim'
 
 # Set for X11 forwarding
-export DISPLAY=:0
+# export DISPLAY=:0
 
 # Load Rust environment
 source "$HOME/.cargo/env"
