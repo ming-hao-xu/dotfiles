@@ -33,7 +33,7 @@ alias gpg='gpg2'
 
 # Use 'reload' for sourcing ~/.zshrc
 # Refer: https://github.com/ohmyzsh/ohmyzsh/wiki/FAQ#how-do-i-reload-the-zshrc-file
-alias rl='omz reload'
+alias r='omz reload'
 
 # Allow aliases to be sudo'ed
 alias sudo='sudo '
