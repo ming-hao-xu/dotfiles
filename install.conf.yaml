@@ -18,6 +18,7 @@
       ~/.condarc: config/condarc
       ~/.hushlogin: config/hushlogin
       ~/.tmux.conf: config/tmux
+      ~/.config/git/config: config/git
 
 - shell:
       - [git submodule update --init --recursive, Installing submodules]
