@@ -1,6 +1,11 @@
 # Determine the platform
 export OS_TYPE=$(uname -s)
 
+# Include $HOME/.local/bin if it exists
+if [ -d "$HOME/.local/bin" ]; then
+    path=("$HOME/.local/bin" $path)
+fi
+
 if [[ "$OS_TYPE" == "Darwin" ]]; then
     # Init Homebrew
     eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -37,11 +42,6 @@ elif [[ "$OS_TYPE" == "Linux" ]]; then
         path=("$HOME/miniconda3/bin" $path)
     fi
     unset __conda_setup
-fi
-
-# Include $HOME/.local/bin if it exists
-if [ -d "$HOME/.local/bin" ]; then
-    path=("$HOME/.local/bin" $path)
 fi
 
 # Set neovim as default editor
