@@ -1,0 +1,33 @@
+- defaults:
+      link:
+          create: true
+          relink: true
+      shell:
+          stdout: true
+          stderr: true
+
+- clean:
+      ~/:
+      ~/.config:
+          recursive: true
+
+- link:
+      ~/.zshenv: zshenv.zsh
+      ~/.zprofile: zprofile.zsh
+      ~/.zshrc: zshrc.zsh
+      ~/.config/bat/bat.conf: config/bat
+      ~/.config/starship/starship.toml: config/starship
+      ~/.config/conda/condarc: config/condarc
+      ~/.hushlogin: config/hushlogin
+      ~/.config/tmux/tmux.conf: config/tmux
+      ~/.config/git/config: config/git
+      ~/.config/fd/ignore:
+          path: config/fd-darwin
+          if: '[ `uname -s` = "Darwin" ]'
+      ~/.config/btop/btop.conf:
+          path: config/btop-darwin
+          if: '[ `uname -s` = "Darwin" ]'
+      ~/.config/gh/config.yml: config/gh
+
+- shell:
+      - [git submodule update --init --recursive, Installing submodules]
