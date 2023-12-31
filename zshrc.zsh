@@ -45,10 +45,6 @@ ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 # Use completion engine as a fallback
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
-# Catppuccin mocha theme for zsh-syntax-highlighting
-# refer: https://github.com/catppuccin/zsh-syntax-highlighting
-[[ -f "$ZSH_CUSTOM/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh" ]] && source "$ZSH_CUSTOM/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh"
-
 # Slient ssh-agent
 zstyle :omz:plugins:ssh-agent quiet yes
 
