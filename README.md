@@ -3,9 +3,11 @@
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
 [![Issues](https://img.shields.io/github/issues/xu-minghao317/dotfiles-macOS)](https://github.com/xu-minghao317/dotfiles-macOS/issues)
 
-🚨 Caution: This repository is for personal use only. Do not use it directly without understanding what it does.
+> [!CAUTION]  
+> This repository is for personal use only. Do not use it directly without understanding what it does.
 
-🤗 Feel free to fork it and modify it to suit your needs or open issues/PRs to discuss.
+> [!NOTE]  
+> Feel free to fork it and modify it to suit your needs or open issues/PRs to discuss 🤗.
 
 ## Workflow for macOS (Apple Silicon)
 
