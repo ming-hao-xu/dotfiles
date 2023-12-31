@@ -68,6 +68,9 @@ source "$ZSH/oh-my-zsh.sh"
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 VI_MODE_SET_CURSOR=true
 
+# Generate themed LS_COLORS
+export LS_COLORS="$(vivid generate catppuccin-mocha)"
+
 # Overwrite colors set in colored-man-pages
 # bold & blinking mode
 less_termcap[mb]="${fg_bold[green]}"
