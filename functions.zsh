@@ -6,7 +6,7 @@ swap_git_gpg_key() {
     # swap_git_gpg_key
 
     local serial
-    serial=$(gpg --card-status | rg --fixed-strings --max-count=1 "Serial number"  | cut -d ":" -f 2 | tr -d ' ' >/dev/null 2>&1)
+    serial=$(gpg --card-status | rg --fixed-strings --max-count=1 "Serial number"  | cut -d ":" -f 2 | tr -d ' ')
 
     if [ "$serial" = "16812796" ]; then # at-home key
         git config --global user.signingKey 7330C1A308E26864
