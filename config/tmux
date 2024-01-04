@@ -20,12 +20,30 @@ bind h split-window -v -c "#{pane_current_path}"
 # Automatically renumber windows
 set -g renumber-windows on
 
+# Put satus bar to top
+set -g status-position top
+
+# Window index start at 1
+set -g base-index 1
+set -g pane-base-index 1
+
 # List of plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 
+# catppuccin itself
 set -g @plugin 'catppuccin/tmux'
-set -g @plugin 'tmux-plugins/tpm'
+
+# catppuccin config
+set -g @catppuccin_status_left_separator " █"
+set -g @catppuccin_window_right_separator "█ "
+
+set -g @catppuccin_window_default_text "#W"
+set -g @catppuccin_window_current_text "#W"
+
+set -g @catppuccin_status_modules_right "directory session host"
+set -g @catppuccin_status_connect_separator "no"
+set -g @catppuccin_host_text "local"
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'
