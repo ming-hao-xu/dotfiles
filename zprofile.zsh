@@ -19,17 +19,6 @@ if [[ "$OS_TYPE" == "Darwin" ]]; then
     export HOMEBREW_NO_ENV_HINTS=true
     # Opt-out analytics
     export HOMEBREW_NO_ANALYTICS=true
-
-    # miniconda
-    __conda_setup="$(/opt/homebrew/Caskroom/miniconda/base/bin/conda shell.zsh hook 2>/dev/null)"
-    if [ $? -eq 0 ]; then
-        eval "$__conda_setup"
-    elif [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
-        source "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
-    else
-        path=("/opt/homebrew/Caskroom/miniconda/base/bin" $path)
-    fi
-    unset __conda_setup
 fi
 
 # Set neovim as default editor

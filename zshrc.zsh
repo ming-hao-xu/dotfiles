@@ -82,6 +82,34 @@ less_termcap[ue]="${reset_color}"
 export MANPAGER='less --squeeze-blank-lines --long-prompt +Gg'
 
 ### general config ###
+# miniconda
+if [[ "$OS_TYPE" == "Darwin" ]]; then
+    __conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+            . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+        else
+            export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+
+elif [[ "$OS_TYPE" == "Linux" ]]; then
+    __conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+            . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+        else
+            export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+fi
+
 # bat
 export BAT_CONFIG_PATH="$HOME/.config/bat/bat.conf"
 export BAT_PAGER='less --RAW-CONTROL-CHARS --quit-if-one-screen'
@@ -150,19 +178,6 @@ export _ZO_FZF_OPTS="
     $FZF_DEFAULT_OPTS
     --height=10%
     --layout=reverse"
-
-if [[ "$OS_TYPE" == "Linux" ]]; then
-    # miniconda
-    __conda_setup="$("$HOME/miniconda3/bin/conda" 'shell.zsh' 'hook' 2>/dev/null)"
-    if [ $? -eq 0 ]; then
-        eval "$__conda_setup"
-    elif [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
-        source "$HOME/miniconda3/etc/profile.d/conda.sh"
-    else
-        path=("$HOME/miniconda3/bin" $path)
-    fi
-    unset __conda_setup
-fi
 
 ### Aliases ###
 [[ -f "$HOME/.dotfiles/aliases.zsh" ]] && source "$HOME/.dotfiles/aliases.zsh"
