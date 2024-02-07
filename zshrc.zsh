@@ -12,6 +12,9 @@ export ZSH_CUSTOM_AUTOUPDATE_NUM_WORKERS=8
 # Speed up status checks for large repos by ignoring untracked files
 DISABLE_UNTRACKED_FILES_DIRTY=true
 
+# Disable omz logic to set LS_COLORS since vivid is used
+DISABLE_LS_COLORS=true
+
 # omz plugins to be loaded
 plugins=(
     # custom plugins from here...
