@@ -1,11 +1,12 @@
-# Init
-set -g default-terminal xterm-256color
+# tmux $TERM ensures more consistency with xterm-256color
+# this overwrites tmux-sensible
+set -g default-terminal "tmux-256color"
 
 # Use CTRl-a as prefix key
 unbind C-b
 set -g prefix C-a
 
-# Use prefix + r to reload config
+# Use prefix-r to reload config
 bind r source-file ~/.config/tmux/tmux.conf \; display-message "tmux.conf reloaded"
 
 # Enable mouse support
@@ -23,27 +24,29 @@ set -g renumber-windows on
 # Put satus bar to top
 set -g status-position top
 
-# Window index start at 1
+# Index starts at 1
 set -g base-index 1
 set -g pane-base-index 1
+
+# vi copy mode
+bind -T copy-mode-vi v send -X begin-selection
+bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "pbcopy"
+bind P paste-buffer
+bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "pbcopy"
 
 # List of plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
-
-# catppuccin itself
 set -g @plugin 'catppuccin/tmux'
 
 # catppuccin config
 set -g @catppuccin_status_left_separator " █"
 set -g @catppuccin_window_right_separator "█ "
-
 set -g @catppuccin_window_default_text "#W"
 set -g @catppuccin_window_current_text "#W"
-
-set -g @catppuccin_status_modules_right "directory session host"
+set -g @catppuccin_status_modules_right "session host"
 set -g @catppuccin_status_connect_separator "no"
-set -g @catppuccin_host_text "local"
+set -g @catppuccin_host_text "MacBook"
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'
