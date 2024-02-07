@@ -1,6 +1,6 @@
 [user]
 email = 85087583+xu-minghao317@users.noreply.github.com
-signingKey = 7330C1A308E26864
+	signingKey = 7330C1A308E26864
 name = xu-minghao317
 
 [commit]
@@ -30,7 +30,7 @@ file-added-label = [+]
 file-copied-label = [==]
 file-modified-label = [*]
 file-removed-label = [-]
-file-renamed-label = [->]
+file-renamed-label = [- >]
 hunk-header-style = omit
 line-numbers-left-format = " {nm:>3} │"
 line-numbers-left-style = red
@@ -57,12 +57,13 @@ merge-conflict-theirs-diff-header-style = "#F1FA8C" bold
 merge-conflict-theirs-diff-header-decoration-style = "#434C5E" box
 
 [delta]
+features = catppuccin-mocha
+syntax-theme = Catppuccin-mocha
+side-by-side = true
 navigate = true # use n and N to move between diff sections
 hyperlinks = true
 hyperlinks-file-link-format = "vscode://file/{path}:{line}"
-syntax-theme = Catppuccin-mocha
-side-by-side = true
- features = chameleon
+features = chameleon
 
 [merge]
 conflictstyle = diff3
