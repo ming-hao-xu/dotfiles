@@ -3,10 +3,10 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # Self-upgrade
 zstyle ':omz:update' mode auto
-zstyle ':omz:update' frequency 30
+zstyle ':omz:update' frequency 14
 
 # autoupgrade plugin upgrades omz plugins and themes
-export UPDATE_ZSH_DAYS=30
+export UPDATE_ZSH_DAYS=14
 export ZSH_CUSTOM_AUTOUPDATE_NUM_WORKERS=8
 
 # Speed up status checks for large repos by ignoring untracked files
