@@ -58,8 +58,10 @@ zstyle ':omz:plugins:extract' lazy yes
 zstyle ':omz:plugins:tmux' lazy yes
 # You may want to turn this off if using any npm global packages
 if [[ "$OS_TYPE" == "Darwin" ]]; then
-    # This need nvm plugin to properly work
     zstyle ':omz:plugins:nvm' lazy yes
+    # autoload (load node version described in .nvmrc)
+    # will start working only after nvm has been lazy-loaded
+    zstyle ':omz:plugins:nvm' autoload yes
 fi
 
 # Init omz (compinit is called within this)
