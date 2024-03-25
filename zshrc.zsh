@@ -1,36 +1,38 @@
 ### omz config ###
 export ZSH="$HOME/.oh-my-zsh"
 
-# Self-upgrade
+# omz self-upgrade
 zstyle ':omz:update' mode auto
 zstyle ':omz:update' frequency 14
 
-# autoupgrade plugin upgrades omz plugins and themes
+# omz plugins and themes upgrade by autoupgrade plugin
 export UPDATE_ZSH_DAYS=14
 export ZSH_CUSTOM_AUTOUPDATE_NUM_WORKERS=8
 
 # Speed up status checks for large repos by ignoring untracked files
 DISABLE_UNTRACKED_FILES_DIRTY=true
 
-# Disable omz logic to set LS_COLORS since vivid is used
+# Disable omz logic to set LS_COLORS since vivid is being used
 DISABLE_LS_COLORS=true
 
 # omz plugins to be loaded
 plugins=(
-    # custom plugins from here...
-    autoupdate     # autoupgrade omz plugins and themes
-    you-should-use # So you don't forget aliases
-    conda-zsh-completion
-    zsh-autosuggestions # Fish-like autosuggestions
-    # plugins from omz from here...
-    extract   # Extract archives easily
-    ssh-agent # Autostart ssh-agent
-    gpg-agent # Autostart gpg-agent, and fix tty issue
-    git       # Git aliases
-    vi-mode
-    tmux
-    colored-man-pages
-    nvm                     # Add autocompletions, and source nvm
+    # third-party plugins start here...
+    autoupdate           # autoupgrade omz plugins and themes
+    you-should-use       # So you don't forget aliases
+    conda-zsh-completion # conda completions
+    zsh-autosuggestions  # Fish-like autosuggestions
+    #
+    # bundled plugins start here...
+    extract           # Extract archives easily
+    ssh-agent         # Autostart ssh-agent
+    gpg-agent         # Autostart gpg-agent, and fix tty issue
+    git               # Git aliases and functions
+    vi-mode           # Basic vim-like editing
+    tmux              # Tmux aliases
+    colored-man-pages # This and vivid provide catppuccin-mocha flavor man pages
+    nvm               # nvm completions, and source nvm
+    #
     zsh-syntax-highlighting # Must be the last plugin!
 )
 
@@ -38,8 +40,8 @@ plugins=(
 # this provides addtional zsh completions
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
+# Add Homebrew formula completions, remember to call `brew completions link`
 if [[ "$OS_TYPE" == "Darwin" ]]; then
-    # Add Homebrew formula completions, remember to call `brew completions link`
     fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 fi
 
@@ -54,7 +56,7 @@ zstyle :omz:plugins:ssh-agent quiet yes
 # Lazy load some plugins to boost shell startup speed
 zstyle ':omz:plugins:extract' lazy yes
 zstyle ':omz:plugins:tmux' lazy yes
-
+# You may want to turn this off if using any npm global packages
 if [[ "$OS_TYPE" == "Darwin" ]]; then
     # This need nvm plugin to properly work
     zstyle ':omz:plugins:nvm' lazy yes
@@ -81,7 +83,7 @@ less_termcap[se]="${reset_color}"
 # underlining
 less_termcap[us]="${fg_bold[magenta]}"
 less_termcap[ue]="${reset_color}"
-# then add a progress bar by hacking less
+# then add a progress bar to man pages by hacking less
 export MANPAGER='less --squeeze-blank-lines --long-prompt +Gg'
 
 ### general config ###
