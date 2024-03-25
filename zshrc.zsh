@@ -76,14 +76,14 @@ export LS_COLORS="$(vivid generate catppuccin-mocha)"
 
 # Overwrite colors set in colored-man-pages
 # bold & blinking mode
-less_termcap[mb]="${fg_bold[green]}"
-less_termcap[md]="${fg_bold[green]}"
+less_termcap[mb]="${fg[green]}"
+less_termcap[md]="${fg[green]}"
 less_termcap[me]="${reset_color}"
 # standout mode
 less_termcap[so]="${fg_bold[black]}${bg[blue]}"
 less_termcap[se]="${reset_color}"
 # underlining
-less_termcap[us]="${fg_bold[magenta]}"
+less_termcap[us]="${fg[magenta]}"
 less_termcap[ue]="${reset_color}"
 # then add a progress bar to man pages by hacking less
 export MANPAGER='less --squeeze-blank-lines --long-prompt +Gg'
