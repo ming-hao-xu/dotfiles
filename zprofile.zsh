@@ -1,9 +1,9 @@
 # Determine the platform
 export OS_TYPE=$(uname -s)
 
-# Include $HOME/.local/bin if it exists
-if [ -d "$HOME/.local/bin" ]; then
-    path=("$HOME/.local/bin" $path)
+# Include $HOME/.local/bin if it exists and is not empty
+if [[ -d "$HOME/.local/bin" ]] && [[ -n $(echo $HOME/.local/bin/*(N)) ]]; then
+    path=("$HOME/.local/bin" $path[@])
 fi
 
 if [[ "$OS_TYPE" == "Darwin" ]]; then
