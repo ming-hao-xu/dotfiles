@@ -19,6 +19,8 @@ if [[ "$OS_TYPE" == "Darwin" ]]; then
     export HOMEBREW_NO_ENV_HINTS=true
     # Opt-out analytics
     export HOMEBREW_NO_ANALYTICS=true
+    # Speed up repeated brew calls
+    export HOMEBREW_BOOTSNAP=true
 fi
 
 # Set neovim as default editor
