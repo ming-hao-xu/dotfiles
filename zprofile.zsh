@@ -25,4 +25,4 @@ fi
 
 # Set neovim as default editor
 export EDITOR='nvim'
-export VISUAL=$EDITOR
+export VISUAL="$EDITOR"
