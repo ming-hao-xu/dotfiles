@@ -1,5 +1,5 @@
 # Ensure important arrays have unique entries
-typeset -U path PATH fpath FPATH manpath MANPATH
+typeset -U path PATH fpath FPATH manpath MANPATH INFOPATH
 
 # Configure proxy settings
 # export https_proxy=''
