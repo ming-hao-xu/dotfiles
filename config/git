@@ -1,0 +1,25 @@
+[user]
+email = 85087583+ming-hao-xu@users.noreply.github.com
+signingKey = A59F54B8ED0C57D7
+name = Ming-Hao Xu
+
+[commit]
+gpgSign = true
+
+[tag]
+gpgSign = true
+
+[init]
+defaultBranch = main
+
+[core]
+editor = nvim
+
+[merge]
+conflictstyle = diff3
+
+[diff]
+colorMoved = default
+
+[gpg]
+program = gpg2
