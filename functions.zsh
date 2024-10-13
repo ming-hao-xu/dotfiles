@@ -11,7 +11,7 @@ swap_git_gpg_key() {
     if [ "$serial" = "16812796" ]; then # at-home key
         git config --global user.signingKey A59F54B8ED0C57D7
     elif [ "$serial" = "18686886" ]; then # carry-on key
-        git config --global user.signingKey CE3E58885D9C10AF
+        git config --global user.signingKey 09D60BDAEA3B8634
     else
         print "No known YubiKey inserted"
         return 1
