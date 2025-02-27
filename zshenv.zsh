@@ -1,7 +1,7 @@
 # Configure proxy settings
-# export https_proxy=''
-# export http_proxy=''
-# export all_proxy=''
+# export https_proxy=http://127.0.0.1:6152
+# export http_proxy=http://127.0.0.1:6152
+# export all_proxy=socks5://127.0.0.1:6153
 
 # Set LOCALE
 export LANG=en_US.UTF-8
