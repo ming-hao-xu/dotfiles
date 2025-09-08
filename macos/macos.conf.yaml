@@ -36,5 +36,4 @@
       ~/.config/tmux/tmux.conf: config/tmux
       ~/.config/git/config: config/git
       ~/.config/fd/ignore: macos/config/fd
-      ~/.config/btop/btop.conf: macos/config/btop
       ~/.config/gh/config.yml: config/gh
