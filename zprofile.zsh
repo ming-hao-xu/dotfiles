@@ -8,14 +8,8 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 
     ### Homebrew config ###
-    # Avoid Gatekeeper checks on macOS
-    export HOMEBREW_CASK_OPTS='--no-quarantine'
-    # Suppress environment hints, providing a cleaner terminal output
-    export HOMEBREW_NO_ENV_HINTS=true
     # Opt-out analytics
     export HOMEBREW_NO_ANALYTICS=true
-    # Speed up repeated brew calls
-    export HOMEBREW_BOOTSNAP=true
 fi
 
 # Set neovim as default editor
