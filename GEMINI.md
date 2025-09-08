@@ -5,4 +5,6 @@ As the Gemini CLI, you are an agent acting on behalf of the user. You MUST follo
 ## Commit Messages
 
 - **Style:** You MUST use the [Conventional Commits specification](https://www.conventionalcommits.org/en/v1.0.0/) for all commit messages.
+- **Types:** Use one of the following types: `feat`, `fix`, `refactor`, `perf`, `style`, `test`, `docs`, `build`, `ci`, `chore`, `revert`.
+- **Format:** The commit message MUST follow the format `type: description`. Do NOT include a scope in parentheses (e.g., `type(scope): description`).
 - **Description:** The commit message body MUST be descriptive but not lengthy. It should explain the "what" and "why" of the changes. DO NOT write a commit message without a descriptive body.
