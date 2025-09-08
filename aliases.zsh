@@ -34,9 +34,6 @@ alias du='eza_base --all --classify --long --header --blocksize --total-size --s
 # Clear screen
 alias cl=clear
 
-# Use the latest version of `gpg`
-alias gpg=gpg2
-
 # Use `r` for sourcing 'zshrc'
 # Do not use `source ~/.zshrc`!
 # Refer: https://github.com/ohmyzsh/ohmyzsh/wiki/FAQ#how-do-i-reload-the-zshrc-file
@@ -48,9 +45,6 @@ alias sudo='sudo '
 # Overwrite `--help` to provide syntax-highlighting usig `bat`
 # In some cases, `-h` may not be a shorthand of `--help` (for example with ls), so we do not set `-h` here
 alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
-
-# Quickly edit ssh config
-alias sshconfig='vim ~/.ssh/config'
 
 # Show Nvidia GPU usage with a 2s update frequency
 if command -v nvidia-smi &>/dev/null; then
