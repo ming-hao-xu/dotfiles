@@ -1,11 +1,6 @@
 # Ensure important arrays have unique entries
 typeset -U PATH path FPATH fpath
 
-# Configure proxy settings
-# export https_proxy=http://127.0.0.1:6152
-# export http_proxy=http://127.0.0.1:6152
-# export all_proxy=socks5://127.0.0.1:6153
-
 # Set LOCALE
 export LANG=en_US.UTF-8
 # Generally, setting LANG is sufficient. If you need to enforce it for all locale categories, uncomment the following line:
