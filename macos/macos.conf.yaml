@@ -38,7 +38,3 @@
       ~/.config/fd/ignore: macos/config/fd
       ~/.config/btop/btop.conf: macos/config/btop
       ~/.config/gh/config.yml: config/gh
-      ~/.config/nvim/lua/plugins/:
-        glob: true
-        path: config/nvim/*.lua
-        exclude: [config/nvim/example.lua]
