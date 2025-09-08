@@ -12,7 +12,7 @@ export FZF_DEFAULT_OPTS='
 # ctrl-r (command history)
 export FZF_CTRL_R_COMMAND="$FZF_DEFAULT_COMMAND"
 
-if [[ "$OS_TYPE" == "Darwin" ]]; then
+if [[ "$OSTYPE" == "darwin"* ]]; then
     clipboard_cmd="pbcopy"
 else
     clipboard_cmd="xclip -selection clipboard"

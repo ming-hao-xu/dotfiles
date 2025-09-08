@@ -39,7 +39,7 @@ plugins=(
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 # Add Homebrew formula completions, remember to call `brew completions link`
-if [[ "$OS_TYPE" == "Darwin" ]]; then
+if [[ "$OSTYPE" == "darwin"* ]]; then
     fpath=("$(brew --prefix)/share/zsh/site-functions" "${fpath[@]}")
 fi
 
@@ -120,7 +120,7 @@ export _ZO_FZF_OPTS="
 [[ -f "$HOME/.dotfiles/keybindings.zsh" ]] && source "$HOME/.dotfiles/keybindings.zsh"
 
 # Init iterm2 shell integration
-if [[ "$OS_TYPE" == "Darwin" ]]; then
+if [[ "$OSTYPE" == "darwin"* ]]; then
     [[ -f "$HOME/.iterm2_shell_integration.zsh" ]] && source "$HOME/.iterm2_shell_integration.zsh"
 fi
 

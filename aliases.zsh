@@ -3,9 +3,9 @@
 # export YSU_HARDCORE=1
 
 # Substitute `ls` with `eza`
-if [[ "$OS_TYPE" == "Darwin" ]]; then
+if [[ "$OSTYPE" == "darwin"* ]]; then
     alias eza_base='eza --icons --group-directories-first --ignore-glob=".DS_Store|.localized" --no-quotes --hyperlink'
-elif [[ "$OS_TYPE" == "Linux" ]]; then
+elif [[ "$OSTYPE" == "linux"* ]]; then
     alias eza_base='eza --icons --group-directories-first --no-quotes --hyperlink'
 fi
 alias l='eza_base --classify --all'
@@ -56,7 +56,7 @@ alias rebuild_completion='rm -v ~/.zcompdump* && exec zsh'
 
 # Remove `.DS_Store` files so `npm` can finally chill and install global packages on macOS
 # Currently, npm guys think it's our fault, so let's clean up their mess
-if [[ "$OS_TYPE" == "Darwin" ]]; then
+if [[ "$OSTYPE" == "darwin"* ]]; then
     alias fix_npm="fd -H '^\.DS_Store$' $(npm list -g | head -1) -tf -X rm -f"
 fi
 
