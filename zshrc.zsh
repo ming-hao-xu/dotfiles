@@ -84,12 +84,9 @@ less_termcap[ue]="${reset_color}"
 export MANPAGER='less --squeeze-blank-lines --long-prompt +Gg'
 
 ### general config ###
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && path=($PYENV_ROOT/bin "${path[@]}")
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)" # pyenv-virtualenv plugin
-export PYENV_VIRTUALENV_DISABLE_PROMPT=true
+# uv
+eval "$(uv generate-shell-completion zsh)"
+eval "$(uvx --generate-shell-completion zsh)"
 
 # bat
 export BAT_CONFIG_PATH="$XDG_CONFIG_HOME/bat/bat.conf"
