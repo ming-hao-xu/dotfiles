@@ -1,6 +1,3 @@
-# Ensure important arrays have unique entries
-typeset -U path fpath
-
 ### omz config ###
 export ZSH="$HOME/.oh-my-zsh"
 

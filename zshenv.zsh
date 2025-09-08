@@ -1,3 +1,6 @@
+# Ensure important arrays have unique entries
+typeset -U PATH path FPATH fpath
+
 # Configure proxy settings
 # export https_proxy=http://127.0.0.1:6152
 # export http_proxy=http://127.0.0.1:6152
