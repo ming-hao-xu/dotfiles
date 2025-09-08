@@ -109,6 +109,10 @@ export _ZO_FZF_OPTS="
     --height=10%
     --layout=reverse"
 
+### Secrets ###
+# This file is not committed to git
+[[ -f "$HOME/.dotfiles/secrets.zsh" ]] && source "$HOME/.dotfiles/secrets.zsh"
+
 ### Aliases ###
 [[ -f "$HOME/.dotfiles/aliases.zsh" ]] && source "$HOME/.dotfiles/aliases.zsh"
 
