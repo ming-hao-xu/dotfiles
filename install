@@ -2,35 +2,21 @@
 
 set -e
 
+CONFIG="install.conf.yaml"
 DOTBOT_DIR="dotbot"
+
 DOTBOT_BIN="bin/dotbot"
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-MACOS_DIR="${BASEDIR}/macos"
-LINUX_DIR="${BASEDIR}/linux"
 
 cd "${BASEDIR}"
-# Synchronize submodule configurations
-git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
-# Initialize and update submodules
+if [ "$1" = "macos" ]; then
+    CONFIG="macos/macos.conf.yaml"
+    shift
+elif [ "$1" = "manjaro" ]; then
+    CONFIG="linux/manjaro.conf.yaml"
+    shift
+fi
+
 git submodule update --init --recursive "${DOTBOT_DIR}"
-# Pull and rebase updates in submodules
-git submodule foreach 'git pull --rebase origin master'
 
-if [ -z "$1" ]; then
-    echo "Error: No platform specified. Please provide a platform. Available platforms are macos or listed under linux/."
-    exit 1
-fi
-
-PLATFORM="$1"
-if [ "$PLATFORM" == "macos" ]; then
-    CONFIG_PATH="${MACOS_DIR}/macos.conf.yaml"
-else
-    CONFIG_PATH="${LINUX_DIR}/${PLATFORM}.conf.yaml"
-fi
-
-if [ ! -f "${CONFIG_PATH}" ]; then
-    echo "Error: Configuration file '${CONFIG_PATH}' not found."
-    exit 1
-fi
-
-"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG_PATH}"
+"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
