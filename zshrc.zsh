@@ -103,6 +103,13 @@ export _ZO_FZF_OPTS="
     --height=10%
     --layout=reverse"
 
+# [freee] AWS
+if [[ "$SHORT_HOST" == "D394J047WT" ]]; then
+    export AWS_REGION=ap-northeast-1
+    export AWS_PROFILE=freee
+    export ONELOGIN_MFA_IP_ADDRESS=$(curl -SsL http://checkip.amazonaws.com/)
+fi
+
 ### Secrets ###
 # This file is not committed to git
 [[ -f "$HOME/.dotfiles/secrets.zsh" ]] && source "$HOME/.dotfiles/secrets.zsh"
