@@ -3,8 +3,8 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
     ### Homebrew config ###
-    # Opt-out analytics
     export HOMEBREW_NO_ANALYTICS=true
+    export HOMEBREW_NO_ENV_HINTS=true
 fi
 
 ### omz config ###

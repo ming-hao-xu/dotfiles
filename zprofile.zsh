@@ -8,8 +8,8 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 
     ### Homebrew config ###
-    # Opt-out analytics
     export HOMEBREW_NO_ANALYTICS=true
+    export HOMEBREW_NO_ENV_HINTS=true
 fi
 
 # Set neovim as default editor
