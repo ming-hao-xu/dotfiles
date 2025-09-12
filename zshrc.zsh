@@ -1,3 +1,12 @@
+### Homebrew for Linux ###
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+    ### Homebrew config ###
+    # Opt-out analytics
+    export HOMEBREW_NO_ANALYTICS=true
+fi
+
 ### omz config ###
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -109,6 +118,8 @@ if [[ "$SHORT_HOST" == "D394J047WT" ]]; then
     export AWS_PROFILE=freee
     export ONELOGIN_MFA_IP_ADDRESS=$(curl -SsL http://checkip.amazonaws.com/)
 fi
+
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 ### Secrets ###
 # This file is not committed to git
