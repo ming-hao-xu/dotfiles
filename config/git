@@ -1,22 +1,22 @@
 [user]
-email = 85087583+ming-hao-xu@users.noreply.github.com
-signingKey = A59F54B8ED0C57D7
-name = Ming-Hao Xu
+	email = 85087583+ming-hao-xu@users.noreply.github.com
+	signingKey = A59F54B8ED0C57D7
+	name = Ming-Hao Xu
 
 [commit]
-gpgSign = true
+	gpgSign = true
 
 [tag]
-gpgSign = true
+	gpgSign = true
 
 [init]
-defaultBranch = main
+	defaultBranch = main
 
 [core]
-editor = nvim
+	editor = nvim
 
 [merge]
-conflictstyle = diff3
+	conflictstyle = diff3
 
 [diff]
-colorMoved = default
+	colorMoved = default
