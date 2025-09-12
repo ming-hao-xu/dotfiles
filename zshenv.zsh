@@ -2,9 +2,9 @@
 typeset -U PATH path FPATH fpath
 
 # Set LOCALE
-export LANG=en_US.UTF-8
+export LANG='en_US.UTF-8'
 # Generally, setting LANG is sufficient. If you need to enforce it for all locale categories, uncomment the following line:
-# export LC_ALL=en_US.UTF-8
+# export LC_ALL='en_US.UTF-8'
 
 # XDG Base Directory Specification
 export XDG_CONFIG_HOME="$HOME/.config"
