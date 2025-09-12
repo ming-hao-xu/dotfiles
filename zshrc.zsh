@@ -1,9 +1,9 @@
-### Homebrew for Linux ###
+### Homebrew on Linux ###
 if [[ "$OSTYPE" == linux-gnu* ]]; then
     if [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+        # Init
         eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-        ### Homebrew config ###
+        # config
         export HOMEBREW_NO_ANALYTICS=true
         export HOMEBREW_NO_ENV_HINTS=true
     fi

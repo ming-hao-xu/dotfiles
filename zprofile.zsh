@@ -3,11 +3,11 @@ if [[ -d "$HOME/.local/bin" ]]; then
     path=("$HOME/.local/bin" $path)
 fi
 
+### Homebrew ###
 if [[ "$OSTYPE" == darwin* ]]; then
-    # Init Homebrew
+    # Init
     eval "$(/opt/homebrew/bin/brew shellenv)"
-
-    ### Homebrew config ###
+    # config
     export HOMEBREW_NO_ANALYTICS=true
     export HOMEBREW_NO_ENV_HINTS=true
 fi
