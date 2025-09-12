@@ -1,10 +1,12 @@
 ### Homebrew for Linux ###
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    if [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+        eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-    ### Homebrew config ###
-    export HOMEBREW_NO_ANALYTICS=true
-    export HOMEBREW_NO_ENV_HINTS=true
+        ### Homebrew config ###
+        export HOMEBREW_NO_ANALYTICS=true
+        export HOMEBREW_NO_ENV_HINTS=true
+    fi
 fi
 
 ### omz config ###
