@@ -115,6 +115,7 @@ export _ZO_FZF_OPTS="
     --layout=reverse"
 
 ### freee ###
+# MacBookPro M4 max
 if [[ "$SHORT_HOST" == 'D394J047WT' ]]; then
     # AWS
     export AWS_REGION='ap-northeast-1'
@@ -122,6 +123,9 @@ if [[ "$SHORT_HOST" == 'D394J047WT' ]]; then
     export ONELOGIN_MFA_IP_ADDRESS="$(curl -SsL http://checkip.amazonaws.com/)"
     # asdf
     path=("$HOME/.asdf/shims" $path)
+    # Android
+    export JAVA_HOME='/Applications/Android Studio.app/Contents/jbr/Contents/Home'
+    path=("$HOME/Library/Android/sdk/platform-tools" $path)
 fi
 
 ### Secrets ###
