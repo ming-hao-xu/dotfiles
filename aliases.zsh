@@ -62,3 +62,8 @@ fi
 
 # Quickly open `lazygit`
 alias lg=lazygit
+
+# Show removable apps on macOS
+if [[ "$OSTYPE" == darwin* ]]; then
+    alias removable-app='fd -t d -e app . /Applications "$HOME/Applications" -E "*.app/*" --format "{/.}" | sort -fu'
+fi
