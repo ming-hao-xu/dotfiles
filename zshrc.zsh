@@ -17,8 +17,7 @@ zstyle ':omz:update' mode auto
 zstyle ':omz:update' frequency 14
 
 # omz plugins and themes upgrade by autoupgrade plugin
-export UPDATE_ZSH_DAYS=14
-export ZSH_CUSTOM_AUTOUPDATE_NUM_WORKERS=8
+ZSH_CUSTOM_AUTOUPDATE_NUM_WORKERS=8
 
 # Speed up status checks for large repos by ignoring untracked files
 DISABLE_UNTRACKED_FILES_DIRTY=true
