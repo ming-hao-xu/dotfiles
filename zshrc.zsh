@@ -56,11 +56,6 @@ if [[ "$OSTYPE" == darwin* ]]; then
     fpath=("$(brew --prefix)/share/zsh/site-functions" "${fpath[@]}")
 fi
 
-# Limit zsh-autosuggestion triggering for long strings
-ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-# Use completion engine as a fallback
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-
 # Slient ssh-agent
 zstyle :omz:plugins:ssh-agent quiet yes
 
@@ -74,6 +69,14 @@ _comp_options+=(globdots)
 
 # Init omz (compinit is called within this)
 source "$ZSH/oh-my-zsh.sh"
+
+# Keep history order for zsh-autosuggestion's match_prev_cmd strategy
+unsetopt HIST_EXPIRE_DUPS_FIRST
+unsetopt HIST_IGNORE_ALL_DUPS
+# Limit zsh-autosuggestion triggering for long strings
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+# Better suggestion strategies
+ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd history completion)
 
 # Change cursor style in different vi modes
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
