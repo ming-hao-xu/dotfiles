@@ -36,7 +36,6 @@ plugins=(
     zsh-autosuggestions     # Fish-like autosuggestions
     # bundled plugins start here ↓
     extract                 # Extract archives easily
-    ssh-agent               # Autostart ssh-agent
     gpg-agent               # Autostart gpg-agent, and fix tty issue
     git                     # Git aliases and functions
     vi-mode                 # Basic vim-like editing
@@ -55,9 +54,6 @@ fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 if [[ "$OSTYPE" == darwin* ]]; then
     fpath=("$(brew --prefix)/share/zsh/site-functions" "${fpath[@]}")
 fi
-
-# Slient ssh-agent
-zstyle :omz:plugins:ssh-agent quiet yes
 
 # Lazy load some plugins to boost shell startup speed
 zstyle ':omz:plugins:extract' lazy yes
