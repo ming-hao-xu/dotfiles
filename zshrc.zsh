@@ -26,6 +26,9 @@ DISABLE_UNTRACKED_FILES_DIRTY=true
 # Disable omz logic to set LS_COLORS since vivid is being used
 DISABLE_LS_COLORS=true
 
+# History has 2-digit year, minute precision
+HIST_STAMPS='%y/%m/%d %H:%M'
+
 # omz plugins to be loaded
 plugins=(
     # third-party plugins start here ↓
