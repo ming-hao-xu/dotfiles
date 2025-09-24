@@ -19,9 +19,6 @@ zstyle ':omz:update' frequency 14
 # omz plugins and themes upgrade by autoupgrade plugin
 ZSH_CUSTOM_AUTOUPDATE_NUM_WORKERS=8
 
-# Speed up status checks for large repos by ignoring untracked files
-DISABLE_UNTRACKED_FILES_DIRTY=true
-
 # Disable omz logic for setting LS_COLORS to allow the eza theme to work
 DISABLE_LS_COLORS=true
 # Set eza config path explicitly; this fixes an issue where eza does not pick up the config on macOS
