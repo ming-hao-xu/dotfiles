@@ -67,3 +67,8 @@ alias lg=lazygit
 if [[ "$OSTYPE" == darwin* ]]; then
     alias removable-app='fd -t d -e app . /Applications "$HOME/Applications" -E "*.app/*" --format "{/.}" | sort -fu'
 fi
+
+# Quickly start developing graduation research project
+if [[ "$OSTYPE" == darwin* ]]; then
+    alias ligencam2='code --folder-uri "vscode-remote://ssh-remote+manjaro/mnt/ssd/code/ligencam2"'
+fi
