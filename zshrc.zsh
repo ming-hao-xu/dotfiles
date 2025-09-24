@@ -59,7 +59,6 @@ if [[ "$OSTYPE" == darwin* ]]; then
 fi
 
 # Lazy load some plugins to boost shell startup speed
-zstyle ':omz:plugins:extract' lazy yes
 # autoload (load node version described in .nvmrc)
 zstyle ':omz:plugins:nvm' autoload yes
 
