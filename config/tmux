@@ -47,6 +47,7 @@ set -g @catppuccin_window_current_text "#W"
 set -g @catppuccin_status_modules_right "session host"
 set -g @catppuccin_status_connect_separator "no"
 set -g @catppuccin_host_text "MacBook"
+set -g @catppuccin_flavor 'frappe'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'

@@ -22,8 +22,11 @@ ZSH_CUSTOM_AUTOUPDATE_NUM_WORKERS=8
 # Speed up status checks for large repos by ignoring untracked files
 DISABLE_UNTRACKED_FILES_DIRTY=true
 
-# Disable omz logic to set LS_COLORS since vivid is being used
+# Disable omz logic for setting LS_COLORS to allow the eza theme to work
 DISABLE_LS_COLORS=true
+# Set eza config path explicitly; this fixes an issue where eza does not pick up the config on macOS
+# https://github.com/eza-community/eza/issues/1224
+export EZA_CONFIG_DIR="$XDG_CONFIG_HOME/eza"
 
 # History has 2-digit year, minute precision
 HIST_STAMPS='%y/%m/%d %H:%M'
@@ -40,7 +43,7 @@ plugins=(
     git                     # Git aliases and functions
     vi-mode                 # Basic vim-like editing
     tmux                    # Tmux aliases
-    colored-man-pages       # This and vivid provide catppuccin-mocha flavor man pages
+    colored-man-pages       # Use colored man pages
     nvm                     # nvm completions, and source nvm
     #
     zsh-syntax-highlighting # Must be the last plugin!
@@ -77,9 +80,6 @@ ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd history completion)
 # Change cursor style in different vi modes
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 VI_MODE_SET_CURSOR=true
-
-# Generate themed LS_COLORS
-export LS_COLORS="$(vivid generate catppuccin-mocha)"
 
 # Overwrite colors set in colored-man-pages
 # bold & blinking mode

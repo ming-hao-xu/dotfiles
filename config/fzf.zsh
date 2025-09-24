@@ -5,9 +5,11 @@ source <(fzf --zsh)
 export FZF_DEFAULT_COMMAND='fd --type file --strip-cwd-prefix --hidden --follow --exclude .git'
 export FZF_DEFAULT_OPTS='
     --cycle
-    --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8
-    --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc
-    --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8'
+    --color=bg+:#414559,bg:#303446,spinner:#F2D5CF,hl:#E78284
+    --color=fg:#C6D0F5,header:#E78284,info:#CA9EE6,pointer:#F2D5CF
+    --color=marker:#BABBF1,fg+:#C6D0F5,prompt:#CA9EE6,hl+:#E78284
+    --color=selected-bg:#51576D
+    --color=border:#737994,label:#C6D0F5'
 
 # ctrl-r (command history)
 export FZF_CTRL_R_COMMAND="$FZF_DEFAULT_COMMAND"
