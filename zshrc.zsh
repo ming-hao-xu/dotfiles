@@ -59,6 +59,14 @@ fi
 # Enable tab completion for hidden files
 _comp_options+=(globdots)
 
+# asdf
+case "${HOST%%.*}" in
+  D394J047WT|ip-172-29-32-153)
+    path=("$HOME/.asdf/shims" $path)
+    fpath=("$HOME/.asdf/completions" $fpath)
+    ;;
+esac
+
 # Init omz (compinit is called within this)
 source "$ZSH/oh-my-zsh.sh"
 
@@ -115,8 +123,6 @@ if [[ "$SHORT_HOST" == 'D394J047WT' ]]; then
     export AWS_REGION='ap-northeast-1'
     export AWS_PROFILE='freee'
     export ONELOGIN_MFA_IP_ADDRESS="$(curl -SsL http://checkip.amazonaws.com/)"
-    # asdf
-    path=("$HOME/.asdf/shims" $path)
     # Android
     export JAVA_HOME='/Applications/Android Studio.app/Contents/jbr/Contents/Home'
     path=("$HOME/Library/Android/sdk/platform-tools" $path)
