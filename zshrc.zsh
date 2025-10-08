@@ -41,7 +41,6 @@ plugins=(
     vi-mode                 # Basic vim-like editing
     tmux                    # Tmux aliases
     colored-man-pages       # Use colored man pages
-    nvm                     # nvm completions, and source nvm
     #
     zsh-syntax-highlighting # Must be the last plugin!
 )
@@ -56,8 +55,6 @@ if [[ "$OSTYPE" == darwin* ]]; then
 fi
 
 # Lazy load some plugins to boost shell startup speed
-# autoload (load node version described in .nvmrc)
-zstyle ':omz:plugins:nvm' autoload yes
 
 # Enable tab completion for hidden files
 _comp_options+=(globdots)
