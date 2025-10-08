@@ -138,11 +138,6 @@ fi
 ### Key bindings ###
 [[ -f "$HOME/.dotfiles/keybindings.zsh" ]] && source "$HOME/.dotfiles/keybindings.zsh"
 
-# Init iterm2 shell integration
-if [[ "$OSTYPE" == darwin* ]]; then
-    [[ -f "$HOME/.iterm2_shell_integration.zsh" ]] && source "$HOME/.iterm2_shell_integration.zsh"
-fi
-
 # Init starship prompt
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 eval "$(starship init zsh)"

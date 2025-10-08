@@ -36,11 +36,8 @@ Personal .dotfiles for macOS (Apple Silicon) and Manjaro (amd64) running zsh
     ./install macos
     ```
 
-1. Install Nerd Fonts and themes
-
-    Download and install [Nerd Fonts](https://www.nerdfonts.com/font-downloads). Use these fonts in your preferred terminal emulator. Note that JetBrains Mono is included in the Brewfile. Install missing [Catppuccin themes](https://github.com/catppuccin/catppuccin).
-
-1. Restart your terminal, and you should be good to go! 🎉 
+1. Restart your terminal, and you should be good to go! 🎉  
+   (Ghostty comes pre-installed with JetBrains Mono Nerd Font and Catppuccin theme. For other terminals, manually install a Nerd Font and apply a Catppuccin theme.)
 
 ### Optional Steps for macOS
 
@@ -77,8 +74,5 @@ Personal .dotfiles for macOS (Apple Silicon) and Manjaro (amd64) running zsh
     ./install manjaro
     ```
 
-1. Install Nerd Fonts and themes
-
-    Download and install [Nerd Fonts](https://www.nerdfonts.com/font-downloads). Use these fonts in your preferred terminal emulator. Install missing [Catppuccin themes](https://github.com/catppuccin/catppuccin).
-
-1. Restart your terminal, and you should be good to go! 🎉 
+1. Restart your terminal, and you should be good to go! 🎉  
+   (Ghostty comes pre-installed with JetBrains Mono Nerd Font and Catppuccin theme. For other terminals, manually install a Nerd Font and apply a Catppuccin theme.)
