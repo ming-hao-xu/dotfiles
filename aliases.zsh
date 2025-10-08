@@ -54,12 +54,6 @@ fi
 # Rebuild completion cache
 alias rebuild_completion='rm -v ~/.zcompdump* && exec zsh'
 
-# Remove `.DS_Store` files so `npm` can finally chill and install global packages on macOS
-# Currently, npm guys think it's our fault, so let's clean up their mess
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    alias fix_npm="fd -H '^\.DS_Store$' $(npm list -g | head -1) -tf -X rm -f"
-fi
-
 # Quickly open `lazygit`
 alias lg=lazygit
 
