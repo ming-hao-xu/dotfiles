@@ -112,16 +112,24 @@ export _ZO_FZF_OPTS="
     --height=10%
     --layout=reverse"
 
+# Android
+if [[ "$OSTYPE" == darwin* ]]; then
+    if [[ -d "$HOME/Library/Android/sdk" ]]; then
+        export ANDROID_HOME="$HOME/Library/Android/sdk"
+        path=("$ANDROID_HOME/platform-tools" $path)
+    fi
+
+    if [[ -d "/Applications/Android Studio.app/Contents/jbr/Contents/Home" ]]; then
+        export JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
+    fi
+fi
+
 ### freee ###
 # MacBookPro M4 max
 if [[ "$SHORT_HOST" == 'D394J047WT' ]]; then
     # AWS
-    export AWS_REGION='ap-northeast-1'
     export AWS_PROFILE='freee'
-    export ONELOGIN_MFA_IP_ADDRESS="$(curl -SsL http://checkip.amazonaws.com/)"
-    # Android
-    export JAVA_HOME='/Applications/Android Studio.app/Contents/jbr/Contents/Home'
-    path=("$HOME/Library/Android/sdk/platform-tools" $path)
+    export ONELOGIN_MFA_IP_ADDRESS="$(curl -fsS --max-time 2 https://checkip.amazonaws.com)"
 fi
 
 ### Secrets ###
