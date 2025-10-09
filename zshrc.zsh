@@ -45,11 +45,6 @@ plugins=(
 # this provides addtional zsh completions
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
-# Add Homebrew formula completions, remember to call `brew completions link`
-if [[ "$OSTYPE" == darwin* ]]; then
-    fpath=("$(brew --prefix)/share/zsh/site-functions" "${fpath[@]}")
-fi
-
 # Lazy load some plugins to boost shell startup speed
 
 # Enable tab completion for hidden files
