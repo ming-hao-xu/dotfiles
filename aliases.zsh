@@ -17,7 +17,6 @@ alias cat=bat
 # Print path variables
 alias path='print_path_var path'
 alias fpath='print_path_var fpath'
-alias manpath='print_path_var manpath'
 
 # Substitute `top` with `btop`
 alias top=btop
@@ -51,16 +50,8 @@ if command -v nvidia-smi &>/dev/null; then
     alias gpustat='watch -n 2 nvidia-smi'
 fi
 
-# Rebuild completion cache
-alias rebuild_completion='rm -v ~/.zcompdump* && exec zsh'
-
 # Quickly open `lazygit`
 alias lg=lazygit
-
-# Show removable apps on macOS
-if [[ "$OSTYPE" == darwin* ]]; then
-    alias removable-app='fd -t d -e app . /Applications "$HOME/Applications" -E "*.app/*" --format "{/.}" | sort -fu'
-fi
 
 # Quickly start developing graduation research project
 if [[ "$OSTYPE" == darwin* ]]; then
