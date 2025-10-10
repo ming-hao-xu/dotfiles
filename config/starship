@@ -1,6 +1,7 @@
 palette = "catppuccin_frappe"
 
 [aws]
+disabled = true
 format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
 
 [bun]
