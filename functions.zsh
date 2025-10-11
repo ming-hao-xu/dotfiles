@@ -24,24 +24,21 @@ swap_git_gpg_key() {
 
 pdfs_light() {
     # Reduce pdf size using PDF Squeezer with a light compression profile
-
+    #
     # Usage:
-    # pdfs_light /path/to/file.pdf
+    #   pdfs_light <file1.pdf> [file2.pdf] ...
 
-    if ! command -v pdfs >/dev/null 2>&1; then
-        print "The 'pdfs' command is required"
+    if (( ! $+commands[pdfs] )); then
+        print "The 'pdfs' command is required" >&2
         return 1
     fi
 
-    if [[ -z "$1" ]]; then
-        print "No PDF file provided"
-        return 1
-    elif [[ ! -f "$1" ]]; then
-        print "The provided file does not exist"
+    if (( $# == 0 )); then
+        print "Usage: pdfs_light <file1.pdf> [file2.pdf] ..." >&2
         return 1
     fi
 
-    pdfs "$1" --profile "$HOME/.config/pdfs_light.pdfscp" --replace
+    pdfs "$@" --profile "$XDG_CONFIG_HOME/pdfs_light.pdfscp" --replace
 }
 
 print_path_var() {
