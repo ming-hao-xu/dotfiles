@@ -41,14 +41,14 @@ pdfs_light() {
 }
 
 print_path_var() {
-    # Print the contents of a given path variable in a column
-
+    # Print the contents of 'path' or 'fpath' (lowercase only) in a column
+    #
     # Usage:
-    # print_path_var PATH
-    # print_path_var MANPATH
+    #   print_path_var path
+    #   print_path_var fpath
 
     if [[ -n $1 ]]; then
-        print -rl ${(P)1} | bat --language=zsh --style=numbers
+        print -rl -- ${(P)1} | bat --language=zsh --style=numbers
     else
         print "No variable provided"
         return 1
