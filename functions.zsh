@@ -1,21 +1,25 @@
 swap_git_gpg_key() {
     # Swap git signing key based on YubiKey serial number
     # Currently, there is no built-in way to do this
-
+    #
     # Usage:
-    # swap_git_gpg_key
+    #   swap_git_gpg_key
 
     local serial
-    serial=$(gpg --card-status | rg --fixed-strings --max-count=1 "Serial number"  | cut -d ":" -f 2 | tr -d ' ')
+    serial=$(gpg --card-status --with-colons | awk -F: '/^serial:/{print $2; exit}')
 
-    if [ "$serial" = "16812796" ]; then # at-home key
-        git config --global user.signingKey A59F54B8ED0C57D7
-    elif [ "$serial" = "18686886" ]; then # carry-on key
-        git config --global user.signingKey 09D60BDAEA3B8634
-    else
-        print "No known YubiKey inserted"
-        return 1
-    fi
+    case "$serial" in
+        "16812796") # at-home key
+            git config --global user.signingKey A59F54B8ED0C57D7
+            ;;
+        "18686886") # carry-on key
+            git config --global user.signingKey 09D60BDAEA3B8634
+            ;;
+        *)
+            print "No known YubiKey inserted"
+            return 1
+            ;;
+    esac
 }
 
 pdfs_light() {
