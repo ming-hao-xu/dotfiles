@@ -1,6 +1,7 @@
-# tmux $TERM ensures more consistency with xterm-256color
-# this overwrites tmux-sensible
+# Use tmux's own terminfo entry and enable truecolor early
 set -g default-terminal "tmux-256color"
+set -as terminal-features ",*:RGB"
+set -ga update-environment "COLORTERM"
 
 # Use CTRl-a as prefix key
 unbind C-b
