@@ -1,0 +1,31 @@
+name: Auto-merge Dependabot submodules
+
+on:
+    pull_request:
+        types: [opened, reopened, synchronize]
+
+concurrency:
+    group: dependabot-automerge-${{ github.event.pull_request.number }}
+    cancel-in-progress: true
+
+jobs:
+    auto-merge:
+        if: >
+            github.event.pull_request.user.login == 'dependabot[bot]' &&
+            github.base_ref == github.event.repository.default_branch
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+            pull-requests: write
+        steps:
+            - name: Fetch Dependabot metadata
+              id: meta
+              uses: dependabot/fetch-metadata@v2
+
+            - name: Enable auto-merge for submodule updates
+              if: steps.meta.outputs.package-ecosystem == 'submodules' ||
+                  startsWith(github.event.pull_request.head.ref, 'dependabot/submodules/')
+              run: gh pr merge --auto --squash "$PR_URL"
+              env:
+                  PR_URL: ${{ github.event.pull_request.html_url }}
+                  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
