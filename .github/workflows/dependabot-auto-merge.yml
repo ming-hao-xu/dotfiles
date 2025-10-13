@@ -24,7 +24,6 @@ jobs:
 
             - name: Enable auto-merge for submodule updates
               if: steps.meta.outputs.package-ecosystem == 'submodules' ||
-                  steps.meta.outputs.package-ecosystem == 'gitsubmodule' ||
                   startsWith(github.event.pull_request.head.ref, 'dependabot/submodules/')
               run: gh pr merge --auto --squash "$PR_URL"
               env:
