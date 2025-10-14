@@ -19,7 +19,6 @@ clipboard-paste-protection = true
 window-padding-x = 8
 window-padding-y = 5
 window-padding-balance = true
-window-padding-color = extend
 
 # Quick Terminal
 keybind = global:f5=toggle_quick_terminal
