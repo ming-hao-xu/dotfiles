@@ -1,7 +1,7 @@
 [user]
 	email = 85087583+ming-hao-xu@users.noreply.github.com
 	signingKey = A59F54B8ED0C57D7
-	name = Ming-Hao Xu
+	name = Minghao Xu
 
 [commit]
 	gpgSign = true
@@ -16,7 +16,10 @@
 	editor = nvim
 
 [merge]
-	conflictstyle = diff3
+	conflictstyle = zdiff3
 
 [diff]
-	colorMoved = default
+	colorMoved = dimmed-zebra
+
+[submodule]
+	recurse = true
