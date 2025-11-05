@@ -11,9 +11,6 @@ export FZF_DEFAULT_OPTS='
     --color=selected-bg:#51576D
     --color=border:#737994,label:#C6D0F5'
 
-# ctrl-r (command history)
-export FZF_CTRL_R_COMMAND="$FZF_DEFAULT_COMMAND"
-
 if [[ "$OSTYPE" == "darwin"* ]]; then
     clipboard_cmd="pbcopy"
 else
