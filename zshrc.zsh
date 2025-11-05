@@ -92,9 +92,6 @@ export MANPAGER='less --squeeze-blank-lines --long-prompt +Gg'
 eval "$(uv generate-shell-completion zsh)"
 eval "$(uvx --generate-shell-completion zsh)"
 
-# bat
-export BAT_CONFIG_PATH="$XDG_CONFIG_HOME/bat/bat.conf"
-
 # fzf
 [[ -f "$HOME/.dotfiles/config/fzf.zsh" ]] && source "$HOME/.dotfiles/config/fzf.zsh"
 
