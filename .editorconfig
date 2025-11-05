@@ -13,3 +13,6 @@ insert_final_newline = true
 
 [*.md]
 trim_trailing_whitespace = false
+
+[*.{yml,yaml,toml,sh,bash,json,jsonc}]
+indent_size = 2

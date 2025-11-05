@@ -1,41 +1,41 @@
 - defaults:
-      link:
-          create: true
-          force: true
-      shell:
-          stdin: true
-          stdout: true
-          stderr: true
+    link:
+      create: true
+      force: true
+    shell:
+      stdin: true
+      stdout: true
+      stderr: true
 
 - shell:
-      - /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-      - eval "$(/opt/homebrew/bin/brew shellenv)"; brew bundle install --file=macos/Brewfile; brew completions link
-      - sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-      - git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins ~/.oh-my-zsh/custom/plugins/autoupdate
-      - git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ~/.oh-my-zsh/custom/plugins/you-should-use
-      - git clone https://github.com/conda-incubator/conda-zsh-completion ~/.oh-my-zsh/custom/plugins/conda-zsh-completion
-      - git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-      - git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-      - git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions
+    - /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    - eval "$(/opt/homebrew/bin/brew shellenv)"; brew bundle install --file=macos/Brewfile; brew completions link
+    - sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    - git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins ~/.oh-my-zsh/custom/plugins/autoupdate
+    - git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ~/.oh-my-zsh/custom/plugins/you-should-use
+    - git clone https://github.com/conda-incubator/conda-zsh-completion ~/.oh-my-zsh/custom/plugins/conda-zsh-completion
+    - git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+    - git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+    - git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions
 
 - create:
     - ~/.ssh
 
 - clean:
-      ~/:
-      ~/.config:
-          recursive: true
+    ~/:
+    ~/.config:
+      recursive: true
 
 - link:
-      ~/.zshenv: zshenv.zsh
-      ~/.zprofile: zprofile.zsh
-      ~/.zshrc: zshrc.zsh
-      ~/.config/bat/config: config/bat
-      ~/.config/starship/starship.toml: config/starship
-      ~/.config/ghostty/config: config/ghostty
-      ~/.hushlogin: config/hushlogin
-      ~/.config/tmux/tmux.conf: config/tmux
-      ~/.config/git/config: config/git
-      ~/.config/fd/ignore: macos/config/fd
-      ~/.config/gh/config.yml: config/gh
-      ~/.config/homebrew/brew.env: config/brew.env
+    ~/.zshenv: zshenv.zsh
+    ~/.zprofile: zprofile.zsh
+    ~/.zshrc: zshrc.zsh
+    ~/.config/bat/config: config/bat
+    ~/.config/starship/starship.toml: config/starship
+    ~/.config/ghostty/config: config/ghostty
+    ~/.hushlogin: config/hushlogin
+    ~/.config/tmux/tmux.conf: config/tmux
+    ~/.config/git/config: config/git
+    ~/.config/fd/ignore: macos/config/fd
+    ~/.config/gh/config.yml: config/gh
+    ~/.config/homebrew/brew.env: config/brew.env
