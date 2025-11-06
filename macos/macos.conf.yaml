@@ -31,11 +31,11 @@
     ~/.zprofile: zprofile.zsh
     ~/.zshrc: zshrc.zsh
     ~/.config/bat/config: config/bat
-    ~/.config/starship/starship.toml: config/starship
+    ~/.config/starship/starship.toml: config/starship.toml
     ~/.config/ghostty/config: config/ghostty
     ~/.hushlogin: config/hushlogin
-    ~/.config/tmux/tmux.conf: config/tmux
+    ~/.config/tmux/tmux.conf: config/tmux.conf
     ~/.config/git/config: config/git
     ~/.config/fd/ignore: macos/config/fd
-    ~/.config/gh/config.yml: config/gh
+    ~/.config/gh/config.yml: config/gh.yaml
     ~/.config/homebrew/brew.env: config/brew.env
