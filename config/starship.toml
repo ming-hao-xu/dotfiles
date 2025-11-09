@@ -2,6 +2,7 @@
 palette = "catppuccin_frappe"
 
 [aws]
+symbol = "☁️ "                                          # ? Got a trailing space without an explicit declaration here
 format = '\[[$symbol($profile)(\($region\))]($style)\]'
 
 [azure]

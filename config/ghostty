@@ -1,6 +1,6 @@
 # Appearance
 theme = Catppuccin Frappe
-font-size = 22
+font-size = 21
 
 # Cursor & Mouse
 cursor-style-blink = false
