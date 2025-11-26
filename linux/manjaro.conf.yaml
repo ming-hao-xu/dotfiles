@@ -26,9 +26,9 @@
       recursive: true
 
 - link:
-    ~/.zshenv: zshenv.zsh
-    ~/.zprofile: zprofile.zsh
-    ~/.zshrc: zshrc.zsh
+    ~/.zshenv: config/zsh/zshenv.zsh
+    ~/.zprofile: config/zsh/zprofile.zsh
+    ~/.zshrc: config/zsh/zshrc.zsh
     ~/.config/bat/config: config/bat
     ~/.config/starship/starship.toml: config/starship.toml
     ~/.config/ghostty/config: config/ghostty

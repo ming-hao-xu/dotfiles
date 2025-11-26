@@ -126,16 +126,16 @@ fi
 
 ### Secrets ###
 # This file is not committed to git
-[[ -f "$HOME/.dotfiles/secrets.zsh" ]] && source "$HOME/.dotfiles/secrets.zsh"
+[[ -f "$HOME/.dotfiles/config/zsh/secrets.zsh" ]] && source "$HOME/.dotfiles/config/zsh/secrets.zsh"
 
 ### Aliases ###
-[[ -f "$HOME/.dotfiles/aliases.zsh" ]] && source "$HOME/.dotfiles/aliases.zsh"
+[[ -f "$HOME/.dotfiles/config/zsh/aliases.zsh" ]] && source "$HOME/.dotfiles/config/zsh/aliases.zsh"
 
 ### Functions ###
-[[ -f "$HOME/.dotfiles/functions.zsh" ]] && source "$HOME/.dotfiles/functions.zsh"
+[[ -f "$HOME/.dotfiles/config/zsh/functions.zsh" ]] && source "$HOME/.dotfiles/config/zsh/functions.zsh"
 
 ### Key bindings ###
-[[ -f "$HOME/.dotfiles/keybindings.zsh" ]] && source "$HOME/.dotfiles/keybindings.zsh"
+[[ -f "$HOME/.dotfiles/config/zsh/keybindings.zsh" ]] && source "$HOME/.dotfiles/config/zsh/keybindings.zsh"
 
 # Init starship prompt
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
