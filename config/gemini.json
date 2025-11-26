@@ -1,0 +1,15 @@
+{
+  "general": {
+    "preferredEditor": "vscode"
+  },
+  "security": {
+    "auth": {
+      "selectedType": "oauth-personal"
+    }
+  },
+  "tools": {
+    "useRipgrep": true,
+    "autoAccept": true
+  },
+  "contextFileName": ["AGENTS.md", "GEMINI.md"]
+}
