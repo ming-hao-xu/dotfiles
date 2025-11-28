@@ -4,12 +4,12 @@
 
 # Substitute `ls` with `eza`
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    alias eza_base='eza --icons --group-directories-first --ignore-glob=".DS_Store|.localized" --no-quotes --hyperlink'
+    alias eza_base='eza --icons --group-directories-first --no-quotes --hyperlink --classify --ignore-glob=".DS_Store|.localized"'
 elif [[ "$OSTYPE" == "linux"* ]]; then
-    alias eza_base='eza --icons --group-directories-first --no-quotes --hyperlink'
+    alias eza_base='eza --icons --group-directories-first --no-quotes --hyperlink --classify'
 fi
-alias l='eza_base --classify --all'
-alias ll='eza_base --classify --all --long --git --time-style=+"%y/%m/%d, %H:%M"'
+alias l='eza_base --all'
+alias ll='eza_base --all --long --time-style=+"%y/%m/%d, %H:%M" --git'
 
 # Substitute `cat` with `bat`
 alias cat=bat
@@ -25,10 +25,9 @@ alias top=btop
 alias vim=nvim
 alias vi=nvim
 
-# Show apparent and block sizes of files, sorted in reverse by size
-# Block sizes are actual disk usage; 0 when iCloud files not downloaded
+# Show apparent sizes of files, sorted in reverse by size
 # Use `-L` or `--level=` to adjust tree depth
-alias du='eza_base --all --classify --long --header --blocksize --total-size --sort=size --no-user --no-time --no-permissions --reverse --tree --level=1'
+alias du='eza_base --all --long --total-size --sort=size --no-user --no-time --no-permissions --reverse --tree --level=1'
 
 # Clear screen
 alias cl=clear
@@ -41,19 +40,19 @@ alias r='exec zsh'
 # Allow aliases to be sudo'ed
 alias sudo='sudo '
 
-# Overwrite `--help` to provide syntax-highlighting usig `bat`
+# Overwrite `--help` to provide syntax-highlighting using `bat`
 # In some cases, `-h` may not be a shorthand of `--help` (for example with ls), so we do not set `-h` here
 alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 
 # Show Nvidia GPU usage with a 2s update frequency
-if command -v nvidia-smi &>/dev/null; then
-    alias gpustat='watch -n 2 nvidia-smi'
+if (( $+commands[nvidia-smi] )); then
+    alias gpustat='watch -n 2 -t -- nvidia-smi'
 fi
 
 # Quickly open `lazygit`
 alias lg=lazygit
 
 # Quickly start developing graduation research project
-if [[ "$OSTYPE" == darwin* ]]; then
-    alias ligencam2='code --folder-uri "vscode-remote://ssh-remote+manjaro/mnt/ssd/code/ligencam2"'
+if [[ "$SHORT_HOST" == 'Minghaos-MacBook-Air' ]]; then
+    alias lgc2='code --remote ssh-remote+manjaro /mnt/ssd/code/ligencam2'
 fi
