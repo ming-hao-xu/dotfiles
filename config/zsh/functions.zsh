@@ -88,3 +88,22 @@ print_path_var() {
         return 1
     fi
 }
+
+gemini() {
+    # Run Gemini CLI with the appropriate git signing key for the current YubiKey
+    # Calls `swap_git_gpg_key` before delegating to the real `gemini` command
+    #
+    # Usage:
+    #   gemini [args...]
+
+    local reply
+
+    if ! swap_git_gpg_key >/dev/null 2>&1; then
+        print "swap_git_gpg_key failed (no known YubiKey or gpg error?)" >&2
+        printf "Continue without switching git signing key? [y/N] "
+        read -k 1 reply
+        [[ "$reply" == [yY] ]] || return 1
+    fi
+
+    command gemini "$@"
+}
