@@ -81,12 +81,12 @@ print_path_var() {
     #   print_path_var path
     #   print_path_var fpath
 
-    if [[ -n $1 ]]; then
-        print -rl -- ${(P)1} | bat --language=zsh --style=numbers
-    else
-        print "No variable provided"
+    if [[ "$1" != path && "$1" != fpath ]]; then
+        print "Usage: print_path_var path|fpath"
         return 1
     fi
+
+    print -rl -- ${(P)1} | bat --language=zsh --style=numbers
 }
 
 gemini() {
