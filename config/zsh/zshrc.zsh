@@ -51,12 +51,12 @@ fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 _comp_options+=(globdots)
 
 # asdf
-case "${HOST%%.*}" in
-  D394J047WT|ip-172-29-32-153)
-    path=("$HOME/.asdf/shims" $path)
-    fpath=("$HOME/.asdf/completions" $fpath)
-    ;;
-esac
+# case "${HOST%%.*}" in
+#   D394J047WT|ip-172-29-32-153)
+#     path=("$HOME/.asdf/shims" $path)
+#     fpath=("$HOME/.asdf/completions" $fpath)
+#     ;;
+# esac
 
 # Init omz (compinit is called within this)
 source "$ZSH/oh-my-zsh.sh"
@@ -117,12 +117,11 @@ if [[ "$OSTYPE" == darwin* ]]; then
 fi
 
 ### freee ###
-# MacBookPro M4 max
-if [[ "$SHORT_HOST" == 'D394J047WT' ]]; then
-    # AWS
-    export AWS_PROFILE='freee'
-    export ONELOGIN_MFA_IP_ADDRESS="$(curl -fsS --max-time 2 https://checkip.amazonaws.com)"
-fi
+# if [[ "$SHORT_HOST" == 'D394J047WT' ]]; then
+#     # AWS
+#     export AWS_PROFILE='freee-dev'
+#     export ONELOGIN_MFA_IP_ADDRESS="$(curl -fsS --max-time 2 https://checkip.amazonaws.com)"
+# fi
 
 ### Secrets ###
 # This file is not committed to git
