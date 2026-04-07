@@ -116,12 +116,14 @@ if [[ "$OSTYPE" == darwin* ]]; then
     fi
 fi
 
-### freee ###
-# if [[ "$SHORT_HOST" == 'D394J047WT' ]]; then
-#     # AWS
-#     export AWS_PROFILE='freee-dev'
-#     export ONELOGIN_MFA_IP_ADDRESS="$(curl -fsS --max-time 2 https://checkip.amazonaws.com)"
-# fi
+## freee ###
+if [[ "$SHORT_HOST" == 'M4R5H295L2' ]]; then
+    # AWS
+    export AWS_PROFILE='freee-dev'
+    export ONELOGIN_MFA_IP_ADDRESS="$(curl -fsS https://checkip.amazonaws.com)"
+    # GitHub
+    export BUNDLE_RUBYGEMS__PKG__GITHUB__COM="$GITHUB_TOKEN_FOR_GITHUB_PACKAGES"
+fi
 
 ### Secrets ###
 # This file is not committed to git
