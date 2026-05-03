@@ -1,6 +1,9 @@
 # Appearance
-theme = Catppuccin Frappe
-font-size = 21
+theme = Catppuccin Mocha
+font-size = 18
+window-padding-x = 10
+window-padding-y = 8
+window-padding-balance = true
 
 # Cursor & Mouse
 cursor-style-blink = false
@@ -11,14 +14,6 @@ macos-option-as-alt = left
 
 # Shell Integration
 shell-integration-features = ssh-terminfo,ssh-env,sudo,no-cursor
-
-# Safety
-clipboard-paste-protection = true
-
-# Window Padding
-window-padding-x = 8
-window-padding-y = 5
-window-padding-balance = true
 
 # Quick Terminal
 keybind = global:f5=toggle_quick_terminal
