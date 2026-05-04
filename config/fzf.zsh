@@ -5,11 +5,11 @@ source <(fzf --zsh)
 export FZF_DEFAULT_COMMAND='fd --type file --strip-cwd-prefix --hidden --follow --exclude .git'
 export FZF_DEFAULT_OPTS='
     --cycle
-    --color=bg+:#414559,bg:#303446,spinner:#F2D5CF,hl:#E78284
-    --color=fg:#C6D0F5,header:#E78284,info:#CA9EE6,pointer:#F2D5CF
-    --color=marker:#BABBF1,fg+:#C6D0F5,prompt:#CA9EE6,hl+:#E78284
-    --color=selected-bg:#51576D
-    --color=border:#737994,label:#C6D0F5'
+    --color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8
+    --color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC
+    --color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8
+    --color=selected-bg:#45475A
+    --color=border:#6C7086,label:#CDD6F4'
 
 clipboard_cmd="pbcopy"
 

@@ -37,7 +37,7 @@ Personal .dotfiles for macOS (Apple Silicon) running zsh
     ```
 
 1. Restart your terminal, and you should be good to go! 🎉  
-   (Ghostty comes pre-installed with JetBrains Mono Nerd Font and Catppuccin theme. For other terminals, manually install a Nerd Font and apply a Catppuccin theme.)
+   (Ghostty comes pre-installed with JetBrains Mono Nerd Font and Catppuccin Mocha theme. For other terminals, manually install a Nerd Font and apply a Catppuccin Mocha theme.)
 
 ### Optional Steps for macOS
 
