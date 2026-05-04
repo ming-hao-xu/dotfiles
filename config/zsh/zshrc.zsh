@@ -29,7 +29,6 @@ plugins=(
     git                     # Git aliases and functions
     vi-mode                 # Basic vim-like editing
     tmux                    # Tmux aliases
-    colored-man-pages       # Use colored man pages
     #
     zsh-syntax-highlighting # Must be the last plugin!
 )
@@ -38,7 +37,36 @@ plugins=(
 # this provides addtional zsh completions
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
-# Lazy load some plugins to boost shell startup speed
+# Cache generated completion files and let compinit autoload them on demand.
+_cache_completion() {
+    local completion_name="$1"
+    local command_name="$2"
+    shift 2
+
+    local command_path="${commands[$command_name]}"
+    [[ -n "$command_path" ]] || return 0
+
+    local cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/completions"
+    local cache_file="$cache_dir/$completion_name"
+    local tmp_file="$cache_file.$$"
+
+    if [[ ! -r "$cache_file" || "$command_path" -nt "$cache_file" ]]; then
+        mkdir -p "$cache_dir" 2>/dev/null || return 0
+
+        if "$@" >| "$tmp_file" 2>/dev/null; then
+            mv "$tmp_file" "$cache_file"
+        else
+            rm -f "$tmp_file"
+            return 0
+        fi
+    fi
+
+    fpath=("$cache_dir" $fpath)
+}
+
+_cache_completion _uv uv uv generate-shell-completion zsh
+_cache_completion _uvx uvx uvx --generate-shell-completion zsh
+unfunction _cache_completion
 
 # Enable tab completion for hidden files
 _comp_options+=(globdots)
@@ -58,25 +86,23 @@ ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd history completion)
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 VI_MODE_SET_CURSOR=true
 
-# Overwrite colors set in colored-man-pages
+# Set colored man pages without loading the full colored-man-pages plugin.
+autoload -Uz colors && colors
 # bold & blinking mode
-less_termcap[mb]="${fg[green]}"
-less_termcap[md]="${fg[green]}"
-less_termcap[me]="${reset_color}"
+export LESS_TERMCAP_mb="${fg[green]}"
+export LESS_TERMCAP_md="${fg[green]}"
+export LESS_TERMCAP_me="${reset_color}"
 # standout mode
-less_termcap[so]="${fg_bold[black]}${bg[blue]}"
-less_termcap[se]="${reset_color}"
+export LESS_TERMCAP_so="${fg_bold[black]}${bg[blue]}"
+export LESS_TERMCAP_se="${reset_color}"
 # underlining
-less_termcap[us]="${fg[magenta]}"
-less_termcap[ue]="${reset_color}"
+export LESS_TERMCAP_us="${fg[magenta]}"
+export LESS_TERMCAP_ue="${reset_color}"
 # then add a progress bar to man pages by hacking less
+export GROFF_NO_SGR=1
 export MANPAGER='less --squeeze-blank-lines --long-prompt +Gg'
 
 ### general config ###
-# uv
-eval "$(uv generate-shell-completion zsh)"
-eval "$(uvx --generate-shell-completion zsh)"
-
 # fzf
 [[ -f "$HOME/.dotfiles/config/fzf.zsh" ]] && source "$HOME/.dotfiles/config/fzf.zsh"
 
