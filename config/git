@@ -13,8 +13,11 @@
 [core]
 	editor = nvim
 
+[user]
+	useConfigOnly = true
+
 [merge]
-	conflictstyle = zdiff3
+	conflictStyle = zdiff3
 
 [diff]
 	colorMoved = dimmed-zebra
