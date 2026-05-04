@@ -37,4 +37,3 @@
     ~/.config/git/config: config/git
     ~/.config/gh/config.yml: config/gh.yaml
     ~/.config/homebrew/brew.env: config/brew.env
-    ~/.gemini/settings.json: config/gemini.json
