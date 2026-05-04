@@ -1,21 +1,30 @@
 #!/usr/bin/env bash
 
-set -e
+set -euo pipefail
 
-CONFIG="install.conf.yaml"
 DOTBOT_DIR="dotbot"
-
 DOTBOT_BIN="bin/dotbot"
-BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+BASEDIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
 
 cd "${BASEDIR}"
-if [ "$1" = "macos" ]; then
-    CONFIG="macos/macos.conf.yaml"
-    shift
-elif [ "$1" = "manjaro" ]; then
-    CONFIG="linux/manjaro.conf.yaml"
+
+PROFILE="macos"
+
+if (( $# > 0 )) && [[ "$1" != -* ]]; then
+    PROFILE="$1"
     shift
 fi
+
+case "${PROFILE}" in
+    "macos")
+        CONFIG="macos/install.conf.yaml"
+        ;;
+    *)
+        printf 'Unknown install profile: %s\n' "${PROFILE}" >&2
+        printf 'Usage: ./install [macos] [dotbot-options...]\n' >&2
+        exit 1
+        ;;
+esac
 
 git submodule update --init --recursive "${DOTBOT_DIR}"
 

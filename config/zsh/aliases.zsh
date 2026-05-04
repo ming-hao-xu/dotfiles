@@ -3,11 +3,7 @@
 # export YSU_HARDCORE=1
 
 # Substitute `ls` with `eza`
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    alias eza_base='eza --icons --group-directories-first --no-quotes --hyperlink --classify --ignore-glob=".DS_Store|.localized"'
-elif [[ "$OSTYPE" == "linux"* ]]; then
-    alias eza_base='eza --icons --group-directories-first --no-quotes --hyperlink --classify'
-fi
+alias eza_base='eza --icons --group-directories-first --no-quotes --hyperlink --classify --ignore-glob=".DS_Store|.localized"'
 alias l='eza_base --all'
 alias ll='eza_base --all --long --time-style=+"%y/%m/%d, %H:%M" --git'
 
@@ -44,15 +40,6 @@ alias sudo='sudo '
 # In some cases, `-h` may not be a shorthand of `--help` (for example with ls), so we do not set `-h` here
 alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 
-# Show Nvidia GPU usage with a 2s update frequency
-if (( $+commands[nvidia-smi] )); then
-    alias gpustat='watch -n 2 -t -- nvidia-smi'
-fi
 
 # Quickly open `lazygit`
 alias lg=lazygit
-
-# Quickly start developing graduation research project
-if [[ "$SHORT_HOST" == 'Minghaos-MacBook-Air' ]]; then
-    alias lgc2='code --remote ssh-remote+manjaro /mnt/ssd/code/ligencam2'
-fi

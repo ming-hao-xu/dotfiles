@@ -11,11 +11,7 @@ export FZF_DEFAULT_OPTS='
     --color=selected-bg:#51576D
     --color=border:#737994,label:#C6D0F5'
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    clipboard_cmd="pbcopy"
-else
-    clipboard_cmd="xclip -selection clipboard"
-fi
+clipboard_cmd="pbcopy"
 
 export FZF_CTRL_R_OPTS="
     --height=25%

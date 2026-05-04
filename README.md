@@ -3,7 +3,7 @@
 ![GitHub License](https://img.shields.io/github/license/xu-minghao317/dotfiles)
 [![Issues](https://img.shields.io/github/issues/xu-minghao317/dotfiles)](https://github.com/xu-minghao317/dotfiles/issues)
 
-Personal .dotfiles for macOS (Apple Silicon) and Manjaro (amd64) running zsh
+Personal .dotfiles for macOS (Apple Silicon) running zsh
 
 > [!WARNING]  
 > This repository is intended for personal use and should be run on a new machine. Do not use it directly without understanding its operations. Running `./install` will *overwrite* existing dotfiles!
@@ -55,24 +55,3 @@ Personal .dotfiles for macOS (Apple Silicon) and Manjaro (amd64) running zsh
     - #auth       sufficient     pam_tid.so
     +  auth       sufficient     pam_tid.so
     ```
-
-## Workflow for Manjaro (amd64)
-
-1. Update system
-
-    ```shell
-    sudo pacman -Syu
-    ```
-
-1. Install dotfiles
-
-    **All packages listed in [`linux/pacman-packages.txt`](https://github.com/xu-minghao317/dotfiles/blob/main/linux/pacman-packages.txt) will be installed.**
-
-    ```shell
-    git clone https://github.com/xu-minghao317/dotfiles.git ~/.dotfiles --recursive
-    cd ~/.dotfiles
-    ./install manjaro
-    ```
-
-1. Restart your terminal, and you should be good to go! 🎉  
-   (Ghostty comes pre-installed with JetBrains Mono Nerd Font and Catppuccin theme. For other terminals, manually install a Nerd Font and apply a Catppuccin theme.)

@@ -1,10 +1,3 @@
-### Homebrew on Linux ###
-if [[ "$OSTYPE" == linux-gnu* ]]; then
-    if [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
-        eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-    fi
-fi
-
 ### omz config ###
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -49,14 +42,6 @@ fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 # Enable tab completion for hidden files
 _comp_options+=(globdots)
-
-# asdf
-# case "${HOST%%.*}" in
-#   D394J047WT|ip-172-29-32-153)
-#     path=("$HOME/.asdf/shims" $path)
-#     fpath=("$HOME/.asdf/completions" $fpath)
-#     ;;
-# esac
 
 # Init omz (compinit is called within this)
 source "$ZSH/oh-my-zsh.sh"
