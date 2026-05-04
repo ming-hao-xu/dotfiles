@@ -144,7 +144,35 @@ fi
 if [[ "$SHORT_HOST" == 'M4R5H295L2' ]]; then
     # AWS
     export AWS_PROFILE='freee-dev'
-    export ONELOGIN_MFA_IP_ADDRESS="$(curl -fsS https://checkip.amazonaws.com)"
+    _set_onelogin_mfa_ip_address() {
+        local cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+        local cache_file="$cache_dir/onelogin_mfa_ip_address"
+        local ip
+        local -a expired=("$cache_file"(Nmh+1))
+
+        if [[ -r "$cache_file" ]]; then
+            export ONELOGIN_MFA_IP_ADDRESS="$(<"$cache_file")"
+        fi
+
+        if [[ ! -r "$cache_file" ]]; then
+            if ip="$(curl -fsS --max-time 2 https://checkip.amazonaws.com 2>/dev/null)"; then
+                ip="${ip//$'\n'/}"
+                if [[ -n "$ip" ]]; then
+                    export ONELOGIN_MFA_IP_ADDRESS="$ip"
+                    mkdir -p "$cache_dir" 2>/dev/null && print -r -- "$ip" >| "$cache_file"
+                fi
+            fi
+        elif (( ${#expired} > 0 )); then
+            (
+                if ip="$(curl -fsS --max-time 2 https://checkip.amazonaws.com 2>/dev/null)"; then
+                    ip="${ip//$'\n'/}"
+                    [[ -n "$ip" ]] && mkdir -p "$cache_dir" 2>/dev/null && print -r -- "$ip" >| "$cache_file"
+                fi
+            ) &!
+        fi
+    }
+    _set_onelogin_mfa_ip_address
+    unfunction _set_onelogin_mfa_ip_address
     # GitHub
     export BUNDLE_RUBYGEMS__PKG__GITHUB__COM="$GITHUB_TOKEN_FOR_GITHUB_PACKAGES"
     export GITHUB_USERNAME="ming-hao-xu"
@@ -157,7 +185,15 @@ if [[ "$SHORT_HOST" == 'M4R5H295L2' ]]; then
     export NODE_EXTRA_CA_CERTS="$HOMEBREW_PREFIX/etc/openssl@3/certs/palo-root.pem"
     export SSL_CERT_PATH="${HOMEBREW_PREFIX}/etc/openssl@3/certs"
 
-    alias claude="fdev secrets --enable-encryption exec claude-code-flugel-custom-header -- $(which claude)"
+    claude() {
+        local claude_bin="${commands[claude]}"
+        [[ -n "$claude_bin" ]] || {
+            print "claude: command not found" >&2
+            return 127
+        }
+
+        fdev secrets --enable-encryption exec claude-code-flugel-custom-header -- "$claude_bin" "$@"
+    }
 fi
 
 # Init starship prompt
