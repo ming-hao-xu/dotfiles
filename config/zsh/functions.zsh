@@ -1,34 +1,3 @@
-switch_git_gpg_sign_key() {
-    # Switch git signing key based on YubiKey serial number
-    # Currently, there is no built-in way to do this
-    #
-    # Usage:
-    #   switch_git_gpg_sign_key
-
-    local serial
-    serial=$(gpg --card-status --with-colons 2>/dev/null | awk -F: '/^serial:/{print $2; exit}')
-
-    if [[ -z "$serial" ]]; then
-        print "No YubiKey serial found (is a card inserted?)" >&2
-        return 1
-    fi
-
-    case "$serial" in
-        "16812796") # at-home key
-            git config --global user.signingKey A59F54B8ED0C57D7
-            print "Switched to at-home key"
-            ;;
-        "18686886") # carry-on key
-            git config --global user.signingKey 09D60BDAEA3B8634
-            print "Switched to carry-on key"
-            ;;
-        *)
-            print "No known YubiKey inserted" >&2
-            return 1
-            ;;
-    esac
-}
-
 pdfs_light() {
     # Reduce pdf size using PDF Squeezer with a light compression profile
     # Skips files already processed.
@@ -94,23 +63,4 @@ print_path_var() {
     fi
 
     print -rl -- ${(P)1} | bat --language=zsh --style=numbers
-}
-
-gemini() {
-    # Run Gemini CLI with the appropriate git signing key for the current YubiKey
-    # Calls `switch_git_gpg_sign_key` before delegating to the real `gemini` command
-    #
-    # Usage:
-    #   gemini [args...]
-
-    local reply
-
-    if ! switch_git_gpg_sign_key >/dev/null 2>&1; then
-        print "switch_git_gpg_sign_key failed (no known YubiKey or gpg error?)" >&2
-        printf "Continue without switching git signing key? [y/N] "
-        read -k 1 reply
-        [[ "$reply" == [yY] ]] || return 1
-    fi
-
-    command gemini "$@"
 }
