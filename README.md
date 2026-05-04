@@ -1,7 +1,7 @@
 # Dotfiles Repository
 
-![GitHub License](https://img.shields.io/github/license/xu-minghao317/dotfiles)
-[![Issues](https://img.shields.io/github/issues/xu-minghao317/dotfiles)](https://github.com/xu-minghao317/dotfiles/issues)
+![GitHub License](https://img.shields.io/github/license/ming-hao-xu/dotfiles)
+[![Issues](https://img.shields.io/github/issues/ming-hao-xu/dotfiles)](https://github.com/ming-hao-xu/dotfiles/issues)
 
 Personal .dotfiles for macOS (Apple Silicon) running zsh
 
@@ -28,12 +28,12 @@ Personal .dotfiles for macOS (Apple Silicon) running zsh
 
 1. Install dotfiles
 
-    **All packages listed in [`macos/Brewfile`](https://github.com/xu-minghao317/dotfiles/blob/main/macos/Brewfile) will be installed.**
+    **All packages listed in [`macos/Brewfile`](https://github.com/ming-hao-xu/dotfiles/blob/main/macos/Brewfile) will be installed.**
 
     ```shell
-    git clone https://github.com/xu-minghao317/dotfiles.git ~/.dotfiles --recursive
+    git clone https://github.com/ming-hao-xu/dotfiles.git ~/.dotfiles --recursive
     cd ~/.dotfiles
-    ./install macos
+    ./install
     ```
 
 1. Restart your terminal, and you should be good to go! 🎉  
