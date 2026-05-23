@@ -114,25 +114,9 @@ fi
 ### Key bindings ###
 [[ -f "$HOME/.dotfiles/config/zsh/keybindings.zsh" ]] && source "$HOME/.dotfiles/config/zsh/keybindings.zsh"
 
-### freee ###
-if [[ "$SHORT_HOST" == 'M4R5H295L2' ]]; then
-    # AWS
-    export AWS_PROFILE='freee-dev'
-    export ONELOGIN_MFA_IP_ADDRESS="$(curl -fsS https://checkip.amazonaws.com)"
-    # GitHub
-    export BUNDLE_RUBYGEMS__PKG__GITHUB__COM="$GITHUB_TOKEN_FOR_GITHUB_PACKAGES"
-    export GITHUB_USERNAME="ming-hao-xu"
-    # asdf
-    path=("$HOME/.asdf/shims" $path)
-    # mysql-client (for bundle install of mysql2 gem)
-    export LDFLAGS="-L/opt/homebrew/opt/mysql-client@8.0/lib"
-    export CPPFLAGS="-I/opt/homebrew/opt/mysql-client@8.0/include"
-    # VPN
-    export NODE_EXTRA_CA_CERTS="$HOMEBREW_PREFIX/etc/openssl@3/certs/palo-root.pem"
-    export SSL_CERT_PATH="${HOMEBREW_PREFIX}/etc/openssl@3/certs"
-
-    alias claude="fdev secrets --enable-encryption exec claude-code-flugel-custom-header -- $(which claude)"
-fi
+### Local config ###
+# This file is not committed to git
+[[ -f "$HOME/.dotfiles/config/zsh/local.zsh" ]] && source "$HOME/.dotfiles/config/zsh/local.zsh"
 
 # Init starship prompt
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
