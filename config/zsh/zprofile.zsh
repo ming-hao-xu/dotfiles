@@ -1,9 +1,9 @@
-### Homebrew ###
+# Homebrew
 if [[ "$OSTYPE" == darwin* ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# Include $HOME/.local/bin if it exists
+# Add user-local binaries
 if [[ -d "$HOME/.local/bin" ]]; then
     path=("$HOME/.local/bin" $path)
 fi

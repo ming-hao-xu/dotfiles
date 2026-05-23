@@ -1,12 +1,12 @@
-# Ensure important arrays have unique entries
+# Keep PATH and FPATH entries unique
 typeset -U PATH path FPATH fpath
 
-# Set LOCALE
+# Set default locale
 export LANG='en_US.UTF-8'
-# Generally, setting LANG is sufficient. If you need to enforce it for all locale categories, uncomment the following line:
+# Uncomment only if every locale category must be forced
 # export LC_ALL='en_US.UTF-8'
 
-# XDG Base Directory Specification
+# Set XDG base directories
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
