@@ -84,18 +84,6 @@ export _ZO_FZF_OPTS="
     --height=10%
     --layout=reverse"
 
-# Android
-if [[ "$OSTYPE" == darwin* ]]; then
-    if [[ -d "$HOME/Library/Android/sdk" ]]; then
-        export ANDROID_HOME="$HOME/Library/Android/sdk"
-        path=("$ANDROID_HOME/platform-tools" $path)
-    fi
-
-    if [[ -d "/Applications/Android Studio.app/Contents/jbr/Contents/Home" ]]; then
-        export JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
-    fi
-fi
-
 ### Secrets ###
 # Load ignored local secrets
 [[ -f "$HOME/.dotfiles/config/zsh/secrets.zsh" ]] && source "$HOME/.dotfiles/config/zsh/secrets.zsh"
