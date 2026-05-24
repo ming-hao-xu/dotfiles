@@ -10,7 +10,7 @@ ZSH_CUSTOM_AUTOUPDATE_NUM_WORKERS=8
 
 # Prevent OMZ from overriding eza theme colors
 DISABLE_LS_COLORS=true
-# Point eza at the XDG config directory on macOS
+# Work around eza's macOS config lookup with the XDG config directory
 export EZA_CONFIG_DIR="$XDG_CONFIG_HOME/eza"
 
 # Show timestamps in history output
