@@ -24,7 +24,6 @@ plugins=(
 
     # Bundled plugins
     extract                 # Extract many archive formats
-    gpg-agent               # Keep GPG agent tty in sync
     git                     # Git aliases and functions
     vi-mode                 # Vi keybindings for the shell
     tmux                    # Tmux aliases
