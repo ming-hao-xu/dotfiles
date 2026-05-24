@@ -70,10 +70,6 @@ less_termcap[ue]="${reset_color}"
 export MANPAGER='less --squeeze-blank-lines --long-prompt +Gg'
 
 ### general config ###
-# uv
-eval "$(uv generate-shell-completion zsh)"
-eval "$(uvx --generate-shell-completion zsh)"
-
 # fzf
 [[ -f "$HOME/.dotfiles/config/fzf.zsh" ]] && source "$HOME/.dotfiles/config/fzf.zsh"
 
