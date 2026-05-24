@@ -1,23 +1,19 @@
-# Enable Hardcore mode for enforcing alias usage
-# this comes from omz plugin 'you-should-use'
+# you-should-use can make aliases mandatory
 # export YSU_HARDCORE=1
 
-# Substitute `ls` with `eza`
+# Shared eza options for ls-style aliases
 alias eza_base='eza --icons --group-directories-first --no-quotes --hyperlink --classify --ignore-glob=".DS_Store|.localized"'
 alias l='eza_base --all'
 alias ll='eza_base --all --long --time-style=+"%y/%m/%d, %H:%M" --git'
 
-# Substitute `cat` with `bat`
 alias cat=bat
 
-# Print path variables
+# Inspect zsh path arrays
 alias path='print_path_var path'
 alias fpath='print_path_var fpath'
 
-# Substitute `top` with `btop`
 alias top=btop
 
-# Substitute `vim` `vi` with `nvim`
 alias vim=nvim
 alias vi=nvim
 
@@ -25,21 +21,16 @@ alias vi=nvim
 # Use `-L` or `--level=` to adjust tree depth
 alias du='eza_base --all --long --total-size --sort=size --no-user --no-time --no-permissions --reverse --tree --level=1'
 
-# Clear screen
 alias cl=clear
 
-# Use `r` for sourcing 'zshrc'
-# Do not use `source ~/.zshrc`!
+# Reload zsh through exec so OMZ reloads cleanly
 # Refer: https://github.com/ohmyzsh/ohmyzsh/wiki/FAQ#how-do-i-reload-the-zshrc-file
 alias r='exec zsh'
 
-# Allow aliases to be sudo'ed
+# Trailing space lets aliases expand after sudo
 alias sudo='sudo '
 
-# Overwrite `--help` to provide syntax-highlighting using `bat`
-# In some cases, `-h` may not be a shorthand of `--help` (for example with ls), so we do not set `-h` here
+# Keep `-h` untouched because it is not always shorthand for `--help`
 alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 
-
-# Quickly open `lazygit`
 alias lg=lazygit

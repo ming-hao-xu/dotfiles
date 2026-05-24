@@ -1,49 +1,44 @@
 ### omz config ###
 export ZSH="$HOME/.oh-my-zsh"
 
-# omz self-upgrade
+# Auto-update OMZ
 zstyle ':omz:update' mode auto
 zstyle ':omz:update' frequency 14
 
-# omz plugins and themes upgrade by autoupgrade plugin
+# Parallelize plugin and theme updates
 ZSH_CUSTOM_AUTOUPDATE_NUM_WORKERS=8
 
-# Disable omz logic for setting LS_COLORS to allow the eza theme to work
+# Prevent OMZ from overriding eza theme colors
 DISABLE_LS_COLORS=true
-# Set eza config path explicitly; this fixes an issue where eza does not pick up the config on macOS
-# https://github.com/eza-community/eza/issues/1224
+# Point eza at the XDG config directory on macOS
 export EZA_CONFIG_DIR="$XDG_CONFIG_HOME/eza"
 
-# History has 2-digit year, minute precision
+# Show timestamps in history output
 HIST_STAMPS='%y/%m/%d %H:%M'
 
-# omz plugins to be loaded
 plugins=(
-    # third-party plugins start here ↓
-    autoupdate              # autoupgrade omz plugins and themes
-    you-should-use          # So you don't forget aliases
+    # Third-party plugins
+    autoupdate              # Auto-update OMZ plugins and themes
+    you-should-use          # Remind when an alias exists
     zsh-autosuggestions     # Fish-like autosuggestions
-    # bundled plugins start here ↓
+
+    # Bundled plugins
     extract                 # Extract archives easily
-    gpg-agent               # Autostart gpg-agent, and fix tty issue
+    gpg-agent               # Start gpg-agent and fix tty issue
     git                     # Git aliases and functions
     vi-mode                 # Basic vim-like editing
     tmux                    # Tmux aliases
     colored-man-pages       # Use colored man pages
-    #
     zsh-syntax-highlighting # Must be the last plugin!
 )
 
-# zsh-completions plugin need to be add here rather than in the plugin array
-# this provides addtional zsh completions
+# zsh-completions must be in fpath before OMZ runs compinit
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
-
-# Lazy load some plugins to boost shell startup speed
 
 # Enable tab completion for hidden files
 _comp_options+=(globdots)
 
-# Init omz (compinit is called within this)
+# OMZ runs compinit during initialization
 source "$ZSH/oh-my-zsh.sh"
 
 # Keep history order for zsh-autosuggestion's match_prev_cmd strategy
@@ -51,25 +46,25 @@ unsetopt HIST_EXPIRE_DUPS_FIRST
 unsetopt HIST_IGNORE_ALL_DUPS
 # Limit zsh-autosuggestion triggering for long strings
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-# Better suggestion strategies
+# Prefer previous-command-aware suggestions first
 ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd history completion)
 
 # Change cursor style in different vi modes
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 VI_MODE_SET_CURSOR=true
 
-# Overwrite colors set in colored-man-pages
-# bold & blinking mode
+# Override colors set by colored-man-pages
+# Bold and blinking mode
 less_termcap[mb]="${fg[green]}"
 less_termcap[md]="${fg[green]}"
 less_termcap[me]="${reset_color}"
-# standout mode
+# Standout mode
 less_termcap[so]="${fg_bold[black]}${bg[blue]}"
 less_termcap[se]="${reset_color}"
-# underlining
+# Underlining
 less_termcap[us]="${fg[magenta]}"
 less_termcap[ue]="${reset_color}"
-# then add a progress bar to man pages by hacking less
+# Show less status information in man pages
 export MANPAGER='less --squeeze-blank-lines --long-prompt +Gg'
 
 ### general config ###
@@ -80,7 +75,7 @@ eval "$(uvx --generate-shell-completion zsh)"
 # fzf
 [[ -f "$HOME/.dotfiles/config/fzf.zsh" ]] && source "$HOME/.dotfiles/config/fzf.zsh"
 
-# Init zoxide and overwrite cd
+# Initialize zoxide as cd
 eval "$(zoxide init zsh --cmd cd)"
 
 # `cdi`: enter a directory interactively using fzf
@@ -102,7 +97,7 @@ if [[ "$OSTYPE" == darwin* ]]; then
 fi
 
 ### Secrets ###
-# This file is not committed to git
+# Load ignored local secrets
 [[ -f "$HOME/.dotfiles/config/zsh/secrets.zsh" ]] && source "$HOME/.dotfiles/config/zsh/secrets.zsh"
 
 ### Aliases ###
@@ -115,9 +110,9 @@ fi
 [[ -f "$HOME/.dotfiles/config/zsh/keybindings.zsh" ]] && source "$HOME/.dotfiles/config/zsh/keybindings.zsh"
 
 ### Local config ###
-# This file is not committed to git
+# Load ignored machine-local config
 [[ -f "$HOME/.dotfiles/config/zsh/local.zsh" ]] && source "$HOME/.dotfiles/config/zsh/local.zsh"
 
-# Init starship prompt
+# Starship prompt
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 eval "$(starship init zsh)"
