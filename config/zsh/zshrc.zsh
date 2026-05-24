@@ -1,11 +1,11 @@
-### omz config ###
+### OMZ config ###
 export ZSH="$HOME/.oh-my-zsh"
 
 # Auto-update OMZ
 zstyle ':omz:update' mode auto
 zstyle ':omz:update' frequency 14
 
-# Parallelize plugin and theme updates
+# Parallelize OMZ plugin and theme updates
 ZSH_CUSTOM_AUTOUPDATE_NUM_WORKERS=8
 
 # Prevent OMZ from overriding eza theme colors
