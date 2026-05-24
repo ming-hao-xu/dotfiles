@@ -5,7 +5,7 @@ export ZSH="$HOME/.oh-my-zsh"
 zstyle ':omz:update' mode auto
 zstyle ':omz:update' frequency 14
 
-# Parallelize OMZ plugin and theme updates
+# Parallelize custom plugin and theme updates
 ZSH_CUSTOM_AUTOUPDATE_NUM_WORKERS=8
 
 # Prevent OMZ from overriding eza theme colors
@@ -18,17 +18,19 @@ HIST_STAMPS='%y/%m/%d %H:%M'
 
 plugins=(
     # Third-party plugins
-    autoupdate              # Auto-update OMZ plugins and themes
+    autoupdate              # Auto-update custom OMZ plugins and themes
     you-should-use          # Remind when an alias exists
     zsh-autosuggestions     # Fish-like autosuggestions
 
     # Bundled plugins
-    extract                 # Extract archives easily
-    gpg-agent               # Start gpg-agent and fix tty issue
+    extract                 # Extract many archive formats
+    gpg-agent               # Keep GPG agent tty in sync
     git                     # Git aliases and functions
-    vi-mode                 # Basic vim-like editing
+    vi-mode                 # Vi keybindings for the shell
     tmux                    # Tmux aliases
     colored-man-pages       # Use colored man pages
+
+    # Third-party plugins loaded last
     zsh-syntax-highlighting # Must be the last plugin!
 )
 
