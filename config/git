@@ -12,6 +12,7 @@
 
 [core]
 	editor = nvim
+	quotePath = false
 
 [user]
 	useConfigOnly = true
@@ -21,9 +22,16 @@
 
 [diff]
 	colorMoved = dimmed-zebra
+	colorMovedWS = allow-indentation-change
 
-[submodule]
-	recurse = true
+[fetch]
+	prune = true
+
+[pull]
+	ff = only
+
+[push]
+	autoSetupRemote = true
 
 [include]
 	path = ~/.config/git/local
