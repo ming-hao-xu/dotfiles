@@ -1,5 +1,3 @@
-tap "homebrew/bundle"
-tap "homebrew/services"
 # Library of 2D and 3D vector, matrix, and math operations
 brew "imath"
 # General-purpose data compression with high compression ratio

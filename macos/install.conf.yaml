@@ -3,25 +3,45 @@
       create: true
       force: true
     shell:
-      stdin: true
       stdout: true
       stderr: true
+      quiet: true
 
 - shell:
-    - /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    - eval "$(/opt/homebrew/bin/brew shellenv)"; brew bundle install --file=macos/Brewfile; brew completions link
-    - sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    - git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins ~/.oh-my-zsh/custom/plugins/autoupdate
-    - git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ~/.oh-my-zsh/custom/plugins/you-should-use
-    - git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-    - git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-    - git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions
+    - command: |
+        set -e
+        if [ -x /opt/homebrew/bin/brew ]; then
+          brew_bin=/opt/homebrew/bin/brew
+        elif [ -x /usr/local/bin/brew ]; then
+          brew_bin=/usr/local/bin/brew
+        else
+          homebrew_install="$(mktemp)"
+          trap 'rm -f "$homebrew_install"' EXIT
+          curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh -o "$homebrew_install"
+          NONINTERACTIVE=1 /bin/bash "$homebrew_install"
+          if [ -x /opt/homebrew/bin/brew ]; then
+            brew_bin=/opt/homebrew/bin/brew
+          elif [ -x /usr/local/bin/brew ]; then
+            brew_bin=/usr/local/bin/brew
+          else
+            printf '%s\n' 'Homebrew install completed, but brew was not found.' >&2
+            exit 1
+          fi
+        fi
+
+        brew_shellenv="$("$brew_bin" shellenv)"
+        eval "$brew_shellenv"
+        brew bundle install --file="${DOTFILES_BREWFILE:-macos/Brewfile}"
+        brew completions link >/dev/null
+      description: Install Homebrew packages
 
 - create:
-    - ~/.ssh
-    - ~/.cache/zsh
-    - ~/.cache/oh-my-zsh
-    - ~/.local/state/zsh
+    ~/.ssh:
+      mode: 0700
+    ~/.cache/zsh:
+    ~/.cache/oh-my-zsh:
+    ~/.local/state/zsh:
+    ~/.local/share/tmux/plugins/catppuccin:
 
 - clean:
     ~/:
@@ -41,3 +61,29 @@
     ~/.config/gh/config.yml: config/gh/config.yml
     ~/.config/homebrew/brew.env: config/homebrew/brew.env
     ~/.config/fzf/fzf.zsh: config/fzf/fzf.zsh
+
+- shell:
+    - |
+      set -e
+
+      clone_repo() {
+        name=$1
+        url=$2
+        dest=$3
+        if [ ! -d "$dest" ]; then
+          printf 'Installing %s\n' "$name"
+          git clone --quiet --depth 1 "$url" "$dest"
+        fi
+      }
+
+      clone_repo "Oh My Zsh" https://github.com/ohmyzsh/ohmyzsh.git "$HOME/.oh-my-zsh"
+      clone_repo "autoupdate plugin" https://github.com/TamCore/autoupdate-oh-my-zsh-plugins "$HOME/.oh-my-zsh/custom/plugins/autoupdate"
+      clone_repo "you-should-use plugin" https://github.com/MichaelAquilina/zsh-you-should-use.git "$HOME/.oh-my-zsh/custom/plugins/you-should-use"
+      clone_repo "zsh-autosuggestions plugin" https://github.com/zsh-users/zsh-autosuggestions "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+      clone_repo "zsh-syntax-highlighting plugin" https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+      clone_repo "zsh-completions plugin" https://github.com/zsh-users/zsh-completions "$HOME/.oh-my-zsh/custom/plugins/zsh-completions"
+
+      if [ ! -d "$HOME/.local/share/tmux/plugins/catppuccin/tmux" ]; then
+        printf '%s\n' 'Installing Catppuccin tmux theme'
+        git -c advice.detachedHead=false clone --quiet --depth 1 --branch v2.3.0 https://github.com/catppuccin/tmux.git "$HOME/.local/share/tmux/plugins/catppuccin/tmux"
+      fi
