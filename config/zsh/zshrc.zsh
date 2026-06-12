@@ -70,7 +70,7 @@ export MANPAGER='less --squeeze-blank-lines --long-prompt +Gg'
 
 ### general config ###
 # fzf
-[[ -f "$HOME/.dotfiles/config/fzf.zsh" ]] && source "$HOME/.dotfiles/config/fzf.zsh"
+[[ -f "$XDG_CONFIG_HOME/fzf/fzf.zsh" ]] && source "$XDG_CONFIG_HOME/fzf/fzf.zsh"
 
 # Initialize zoxide as cd
 eval "$(zoxide init zsh --cmd cd)"
