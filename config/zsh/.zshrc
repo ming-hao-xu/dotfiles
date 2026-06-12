@@ -16,6 +16,11 @@ export EZA_CONFIG_DIR="$XDG_CONFIG_HOME/eza"
 # Show timestamps in history output
 HIST_STAMPS='%y/%m/%d %H:%M'
 
+# Keep zsh runtime files out of versioned config.
+ZSH_CACHE_DIR="$XDG_CACHE_HOME/oh-my-zsh"
+ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/zcompdump-${(%):-%m}-${ZSH_VERSION}"
+HISTFILE="$XDG_STATE_HOME/zsh/history"
+
 plugins=(
     # Third-party plugins
     autoupdate              # Auto-update custom OMZ plugins and themes
@@ -70,7 +75,7 @@ export MANPAGER='less --squeeze-blank-lines --long-prompt +Gg'
 
 ### general config ###
 # fzf
-[[ -f "$HOME/.dotfiles/config/fzf.zsh" ]] && source "$HOME/.dotfiles/config/fzf.zsh"
+[[ -f "$XDG_CONFIG_HOME/fzf/fzf.zsh" ]] && source "$XDG_CONFIG_HOME/fzf/fzf.zsh"
 
 # Initialize zoxide as cd
 eval "$(zoxide init zsh --cmd cd)"
@@ -83,20 +88,20 @@ export _ZO_FZF_OPTS="
 
 ### Secrets ###
 # Load ignored local secrets
-[[ -f "$HOME/.dotfiles/config/zsh/secrets.zsh" ]] && source "$HOME/.dotfiles/config/zsh/secrets.zsh"
+[[ -f "$ZDOTDIR/secrets.zsh" ]] && source "$ZDOTDIR/secrets.zsh"
 
 ### Aliases ###
-[[ -f "$HOME/.dotfiles/config/zsh/aliases.zsh" ]] && source "$HOME/.dotfiles/config/zsh/aliases.zsh"
+[[ -f "$ZDOTDIR/aliases.zsh" ]] && source "$ZDOTDIR/aliases.zsh"
 
 ### Functions ###
-[[ -f "$HOME/.dotfiles/config/zsh/functions.zsh" ]] && source "$HOME/.dotfiles/config/zsh/functions.zsh"
+[[ -f "$ZDOTDIR/functions.zsh" ]] && source "$ZDOTDIR/functions.zsh"
 
 ### Key bindings ###
-[[ -f "$HOME/.dotfiles/config/zsh/keybindings.zsh" ]] && source "$HOME/.dotfiles/config/zsh/keybindings.zsh"
+[[ -f "$ZDOTDIR/keybindings.zsh" ]] && source "$ZDOTDIR/keybindings.zsh"
 
 ### Local config ###
 # Load ignored machine-local config
-[[ -f "$HOME/.dotfiles/config/zsh/local.zsh" ]] && source "$HOME/.dotfiles/config/zsh/local.zsh"
+[[ -f "$ZDOTDIR/local.zsh" ]] && source "$ZDOTDIR/local.zsh"
 
 # Starship prompt
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
