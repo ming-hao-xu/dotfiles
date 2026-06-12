@@ -19,6 +19,9 @@
 
 - create:
     - ~/.ssh
+    - ~/.cache/zsh
+    - ~/.cache/oh-my-zsh
+    - ~/.local/state/zsh
 
 - clean:
     ~/:
