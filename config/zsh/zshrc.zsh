@@ -83,20 +83,20 @@ export _ZO_FZF_OPTS="
 
 ### Secrets ###
 # Load ignored local secrets
-[[ -f "$HOME/.dotfiles/config/zsh/secrets.zsh" ]] && source "$HOME/.dotfiles/config/zsh/secrets.zsh"
+[[ -f "$XDG_CONFIG_HOME/zsh/secrets.zsh" ]] && source "$XDG_CONFIG_HOME/zsh/secrets.zsh"
 
 ### Aliases ###
-[[ -f "$HOME/.dotfiles/config/zsh/aliases.zsh" ]] && source "$HOME/.dotfiles/config/zsh/aliases.zsh"
+[[ -f "$XDG_CONFIG_HOME/zsh/aliases.zsh" ]] && source "$XDG_CONFIG_HOME/zsh/aliases.zsh"
 
 ### Functions ###
-[[ -f "$HOME/.dotfiles/config/zsh/functions.zsh" ]] && source "$HOME/.dotfiles/config/zsh/functions.zsh"
+[[ -f "$XDG_CONFIG_HOME/zsh/functions.zsh" ]] && source "$XDG_CONFIG_HOME/zsh/functions.zsh"
 
 ### Key bindings ###
-[[ -f "$HOME/.dotfiles/config/zsh/keybindings.zsh" ]] && source "$HOME/.dotfiles/config/zsh/keybindings.zsh"
+[[ -f "$XDG_CONFIG_HOME/zsh/keybindings.zsh" ]] && source "$XDG_CONFIG_HOME/zsh/keybindings.zsh"
 
 ### Local config ###
 # Load ignored machine-local config
-[[ -f "$HOME/.dotfiles/config/zsh/local.zsh" ]] && source "$HOME/.dotfiles/config/zsh/local.zsh"
+[[ -f "$XDG_CONFIG_HOME/zsh/local.zsh" ]] && source "$XDG_CONFIG_HOME/zsh/local.zsh"
 
 # Starship prompt
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"

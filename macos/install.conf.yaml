@@ -29,6 +29,7 @@
     ~/.zshenv: config/zsh/zshenv.zsh
     ~/.zprofile: config/zsh/zprofile.zsh
     ~/.zshrc: config/zsh/zshrc.zsh
+    ~/.config/zsh: config/zsh
     ~/.config/bat/config: config/bat/config
     ~/.config/starship/starship.toml: config/starship/starship.toml
     ~/.config/ghostty/config: config/ghostty/config
