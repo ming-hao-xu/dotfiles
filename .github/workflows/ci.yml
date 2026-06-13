@@ -39,38 +39,10 @@ jobs:
             config/zsh/keybindings.zsh \
             config/fzf/fzf.zsh
 
-      - name: Build core Brewfile
-        shell: bash
-        run: |
-          set -euo pipefail
-          formulas=(
-            bat
-            eza
-            fd
-            fzf
-            gh
-            git
-            lazygit
-            neovim
-            ripgrep
-            starship
-            tmux
-            zoxide
-          )
-
-          : > "$RUNNER_TEMP/Brewfile.core"
-          for formula in "${formulas[@]}"; do
-            if ! grep -Fx "brew \"$formula\"" macos/Brewfile >> "$RUNNER_TEMP/Brewfile.core"; then
-              echo "::error file=macos/Brewfile::missing required core formula: brew \"$formula\""
-              exit 1
-            fi
-          done
-
       - name: Install dotfiles
         shell: bash
         env:
           HOME: ${{ runner.temp }}/home
-          DOTFILES_BREWFILE: ${{ runner.temp }}/Brewfile.core
           HOMEBREW_BUNDLE_NO_UPGRADE: "1"
         run: |
           set -euo pipefail
@@ -81,7 +53,6 @@ jobs:
         shell: bash
         env:
           HOME: ${{ runner.temp }}/home
-          DOTFILES_BREWFILE: ${{ runner.temp }}/Brewfile.core
           HOMEBREW_BUNDLE_NO_UPGRADE: "1"
         run: |
           set -euo pipefail
@@ -151,6 +122,7 @@ jobs:
           bat --list-themes | grep -Fx "Catppuccin Mocha"
           starship explain >"$RUNNER_TEMP/starship.txt"
 
+          btop --version
           fd --version
           fzf --version
           rg --version
