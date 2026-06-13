@@ -1,0 +1,140 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  install-macos:
+    runs-on: macos-26
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Validate source files
+        shell: bash
+        run: |
+          set -euo pipefail
+          ruby -e 'require "yaml"; YAML.load_file(".github/workflows/ci.yml"); YAML.load_file("macos/install.conf.yaml")'
+          bash -n install
+          zsh -n \
+            config/zsh/.zshenv \
+            config/zsh/.zprofile \
+            config/zsh/.zshrc \
+            config/zsh/aliases.zsh \
+            config/zsh/functions.zsh \
+            config/zsh/keybindings.zsh \
+            config/fzf/fzf.zsh
+
+      - name: Install dotfiles
+        shell: bash
+        env:
+          HOME: ${{ runner.temp }}/home
+          HOMEBREW_BUNDLE_NO_UPGRADE: "1"
+        run: |
+          set -euo pipefail
+          mkdir -p "$HOME"
+          ./install -x
+
+      - name: Rerun installer
+        shell: bash
+        env:
+          HOME: ${{ runner.temp }}/home
+          HOMEBREW_BUNDLE_NO_UPGRADE: "1"
+        run: |
+          set -euo pipefail
+          ln -s "$PWD/config/dotfiles-ci-missing-target" "$HOME/.config/dotfiles-ci-stale-link"
+          ./install -x
+          test ! -L "$HOME/.config/dotfiles-ci-stale-link"
+
+      - name: Verify installation
+        shell: bash
+        env:
+          HOME: ${{ runner.temp }}/home
+          STARSHIP_CONFIG: ${{ runner.temp }}/home/.config/starship/starship.toml
+          TERM: xterm-256color
+          ZSH_DISABLE_COMPFIX: "true"
+        run: |
+          set -euo pipefail
+          brew_bin=/opt/homebrew/bin/brew
+          if [ ! -x "$brew_bin" ]; then
+            echo "::error::brew was not found after install"
+            exit 1
+          fi
+          brew_shellenv="$("$brew_bin" shellenv)"
+          eval "$brew_shellenv"
+          sw_vers
+          uname -m
+          brew --version
+          brew --prefix
+
+          test ! -e "$HOME/.zshrc"
+          test -f "$HOME/.oh-my-zsh/oh-my-zsh.sh"
+
+          ruby <<'RUBY'
+          require "yaml"
+
+          home = ENV.fetch("HOME")
+          YAML.load_file("macos/install.conf.yaml").each do |entry|
+            links = entry["link"]
+            next unless links
+
+            links.each_key do |dest|
+              path = dest.sub(/\A~/, home)
+              abort "#{path} is not a symlink" unless File.symlink?(path)
+              abort "#{path} target is missing" unless File.exist?(path)
+            end
+          end
+          RUBY
+
+          plugins=(
+            "$HOME/.oh-my-zsh/custom/plugins/autoupdate"
+            "$HOME/.oh-my-zsh/custom/plugins/you-should-use"
+            "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+            "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+            "$HOME/.oh-my-zsh/custom/plugins/zsh-completions"
+          )
+
+          for plugin in "${plugins[@]}"; do
+            test -d "$plugin/.git"
+          done
+
+          test -f "$HOME/.local/share/tmux/plugins/catppuccin/tmux/catppuccin.tmux"
+
+          git --version
+          git config --file "$HOME/.config/git/config" --list >/dev/null
+          gh config list >/dev/null
+
+          bat --config-file "$HOME/.config/bat/config" --style=plain README.md >"$RUNNER_TEMP/bat.txt"
+          bat --list-themes | grep -Fx "Catppuccin Mocha"
+          starship explain >"$RUNNER_TEMP/starship.txt"
+
+          btop --version
+          fd --version
+          fzf --version
+          rg --version
+          eza --version
+          lazygit --version
+          nvim --version >/dev/null
+          zoxide --version
+          tmux -f "$HOME/.config/tmux/tmux.conf" start-server \; source-file "$HOME/.config/tmux/tmux.conf" \; display-message install \; kill-server
+          zsh_error_pattern='(^|[[:space:]:])(command not found|no such file|permission denied|cannot (load|open)|failed to (load|initialize)|invalid subscript)([[:space:]:]|$)'
+          TERM=xterm-256color script -q "$RUNNER_TEMP/zsh.log" zsh -i -c 'true'
+          test -s "$RUNNER_TEMP/zsh.log"
+          ! grep -Ei "$zsh_error_pattern" "$RUNNER_TEMP/zsh.log"
+          TERM=xterm-256color script -q "$RUNNER_TEMP/zsh-login.log" zsh -lic 'true'
+          test -s "$RUNNER_TEMP/zsh-login.log"
+          ! grep -Ei "$zsh_error_pattern" "$RUNNER_TEMP/zsh-login.log"
