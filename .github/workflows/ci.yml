@@ -1,4 +1,4 @@
-name: Dotfiles
+name: CI
 
 on:
   push:
@@ -20,7 +20,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10
+        uses: actions/checkout@v6
         with:
           persist-credentials: false
 
@@ -98,11 +98,8 @@ jobs:
           ZSH_DISABLE_COMPFIX: "true"
         run: |
           set -euo pipefail
-          if [ -x /opt/homebrew/bin/brew ]; then
-            brew_bin=/opt/homebrew/bin/brew
-          elif [ -x /usr/local/bin/brew ]; then
-            brew_bin=/usr/local/bin/brew
-          else
+          brew_bin=/opt/homebrew/bin/brew
+          if [ ! -x "$brew_bin" ]; then
             echo "::error::brew was not found after install"
             exit 1
           fi
@@ -151,6 +148,7 @@ jobs:
           gh config list >/dev/null
 
           bat --config-file "$HOME/.config/bat/config" --style=plain README.md >"$RUNNER_TEMP/bat.txt"
+          bat --list-themes | grep -Fx "Catppuccin Mocha"
           starship explain >"$RUNNER_TEMP/starship.txt"
 
           fd --version

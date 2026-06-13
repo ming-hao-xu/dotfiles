@@ -1,7 +1,8 @@
 - defaults:
     link:
       create: true
-      force: true
+      relink: true
+      backup: true
     shell:
       stdout: true
       stderr: true
@@ -10,23 +11,17 @@
 - shell:
     - command: |
         set -e
-        if [ -x /opt/homebrew/bin/brew ]; then
-          brew_bin=/opt/homebrew/bin/brew
-        elif [ -x /usr/local/bin/brew ]; then
-          brew_bin=/usr/local/bin/brew
-        else
+        brew_bin=/opt/homebrew/bin/brew
+        if [ ! -x "$brew_bin" ]; then
           homebrew_install="$(mktemp)"
           trap 'rm -f "$homebrew_install"' EXIT
           curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh -o "$homebrew_install"
           NONINTERACTIVE=1 /bin/bash "$homebrew_install"
-          if [ -x /opt/homebrew/bin/brew ]; then
-            brew_bin=/opt/homebrew/bin/brew
-          elif [ -x /usr/local/bin/brew ]; then
-            brew_bin=/usr/local/bin/brew
-          else
-            printf '%s\n' 'Homebrew install completed, but brew was not found.' >&2
-            exit 1
-          fi
+        fi
+
+        if [ ! -x "$brew_bin" ]; then
+          printf '%s\n' 'Homebrew install completed, but brew was not found at /opt/homebrew/bin/brew.' >&2
+          exit 1
         fi
 
         brew_shellenv="$("$brew_bin" shellenv)"
@@ -82,6 +77,14 @@
       clone_repo "zsh-autosuggestions plugin" https://github.com/zsh-users/zsh-autosuggestions "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
       clone_repo "zsh-syntax-highlighting plugin" https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
       clone_repo "zsh-completions plugin" https://github.com/zsh-users/zsh-completions "$HOME/.oh-my-zsh/custom/plugins/zsh-completions"
+
+      bat_theme_dir="$(bat --config-dir)/themes"
+      mkdir -p "$bat_theme_dir"
+      if [ ! -f "$bat_theme_dir/Catppuccin Mocha.tmTheme" ]; then
+        printf '%s\n' 'Installing Catppuccin bat theme'
+        curl -fsSL https://raw.githubusercontent.com/catppuccin/bat/main/themes/Catppuccin%20Mocha.tmTheme -o "$bat_theme_dir/Catppuccin Mocha.tmTheme"
+      fi
+      bat cache --build >/dev/null
 
       if [ ! -d "$HOME/.local/share/tmux/plugins/catppuccin/tmux" ]; then
         printf '%s\n' 'Installing Catppuccin tmux theme'
