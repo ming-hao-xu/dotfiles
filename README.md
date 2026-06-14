@@ -69,7 +69,7 @@ GitHub-hosted macOS runners already provide Homebrew, so the cold Homebrew boots
 
     Uncomment the only line there:
 
-    ```shell
-    - #auth       sufficient     pam_tid.so
-    +  auth       sufficient     pam_tid.so
+    ```diff
+    -#auth       sufficient     pam_tid.so
+    +auth       sufficient     pam_tid.so
     ```
