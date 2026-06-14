@@ -65,13 +65,23 @@
         name=$1
         url=$2
         dest=$3
-        if [ ! -d "$dest" ]; then
-          printf 'Installing %s\n' "$name"
-          git clone --quiet --depth 1 "$url" "$dest"
+        shift 3
+
+        if [ -d "$dest/.git" ]; then
+          return 0
         fi
+
+        if [ -e "$dest" ]; then
+          printf '%s exists but is not a git checkout: %s\n' "$name" "$dest" >&2
+          exit 1
+        fi
+
+        printf 'Installing %s\n' "$name"
+        git clone --quiet --depth 1 "$@" "$url" "$dest"
       }
 
       clone_repo "Oh My Zsh" https://github.com/ohmyzsh/ohmyzsh.git "$HOME/.oh-my-zsh"
+      test -f "$HOME/.oh-my-zsh/oh-my-zsh.sh"
       clone_repo "autoupdate plugin" https://github.com/TamCore/autoupdate-oh-my-zsh-plugins "$HOME/.oh-my-zsh/custom/plugins/autoupdate"
       clone_repo "you-should-use plugin" https://github.com/MichaelAquilina/zsh-you-should-use.git "$HOME/.oh-my-zsh/custom/plugins/you-should-use"
       clone_repo "zsh-autosuggestions plugin" https://github.com/zsh-users/zsh-autosuggestions "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
@@ -86,7 +96,5 @@
       fi
       bat cache --build >/dev/null
 
-      if [ ! -d "$HOME/.local/share/tmux/plugins/catppuccin/tmux" ]; then
-        printf '%s\n' 'Installing Catppuccin tmux theme'
-        git -c advice.detachedHead=false clone --quiet --depth 1 --branch v2.3.0 https://github.com/catppuccin/tmux.git "$HOME/.local/share/tmux/plugins/catppuccin/tmux"
-      fi
+      clone_repo "Catppuccin tmux theme" https://github.com/catppuccin/tmux.git "$HOME/.local/share/tmux/plugins/catppuccin/tmux" --branch v2.3.0
+      test -f "$HOME/.local/share/tmux/plugins/catppuccin/tmux/catppuccin.tmux"
