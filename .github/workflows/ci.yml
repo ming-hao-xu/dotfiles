@@ -28,16 +28,21 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          ruby -e 'require "yaml"; YAML.load_file(".github/workflows/ci.yml"); YAML.load_file("macos/install.conf.yaml")'
+          ruby -e 'require "yaml"; YAML.load_file("macos/install.conf.yaml")'
           bash -n install
-          zsh -n \
-            config/zsh/.zshenv \
-            config/zsh/.zprofile \
-            config/zsh/.zshrc \
-            config/zsh/aliases.zsh \
-            config/zsh/functions.zsh \
-            config/zsh/keybindings.zsh \
+          zsh_files=(
+            config/zsh/.zshenv
+            config/zsh/.zprofile
+            config/zsh/.zshrc
+            config/zsh/aliases.zsh
+            config/zsh/functions.zsh
+            config/zsh/keybindings.zsh
             config/fzf/fzf.zsh
+          )
+
+          for file in "${zsh_files[@]}"; do
+            zsh -n "$file"
+          done
 
       - name: Install dotfiles
         shell: bash
