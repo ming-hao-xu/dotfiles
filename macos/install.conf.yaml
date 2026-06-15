@@ -3,10 +3,49 @@
       create: true
       relink: true
       backup: true
+    create:
+      mode: 0755
     shell:
       stdout: true
       stderr: true
       quiet: true
+
+- create:
+    ~/.ssh:
+      mode: 0700
+    ~/.cache/zsh:
+    ~/.cache/oh-my-zsh:
+    ~/.local/state/zsh:
+    ~/.local/share/tmux/plugins/catppuccin:
+
+- shell:
+    - command: |
+        set -e
+        chmod go-w \
+          "$HOME/.cache/zsh" \
+          "$HOME/.cache/oh-my-zsh" \
+          "$HOME/.local/state/zsh" \
+          "$HOME/.local/share/tmux/plugins/catppuccin"
+      description: Secure managed directories
+
+- clean:
+    ~/:
+    ~/.config:
+      recursive: true
+
+- link:
+    ~/.zshenv: config/zsh/.zshenv
+    ~/.config/zsh: config/zsh
+    ~/.config/bat/config: config/bat/config
+    ~/.config/starship/starship.toml: config/starship/starship.toml
+    ~/.config/ghostty/config: config/ghostty/config
+    ~/.hushlogin: config/hushlogin
+    ~/.config/tmux/tmux.conf: config/tmux/tmux.conf
+    ~/.config/git/config: config/git/config
+    ~/.config/fd/ignore: macos/config/fd/ignore
+    ~/.config/gh/config.yml: config/gh/config.yml
+    ~/.config/homebrew/brew.env: config/homebrew/brew.env
+    ~/.config/fzf/fzf.zsh: config/fzf/fzf.zsh
 
 - shell:
     - command: |
@@ -29,35 +68,6 @@
         brew bundle install --file="${DOTFILES_BREWFILE:-macos/Brewfile}"
         brew completions link >/dev/null
       description: Install Homebrew packages
-
-- create:
-    ~/.ssh:
-      mode: 0700
-    ~/.cache/zsh:
-    ~/.cache/oh-my-zsh:
-    ~/.local/state/zsh:
-    ~/.local/share/tmux/plugins/catppuccin:
-
-- clean:
-    ~/:
-    ~/.config:
-      recursive: true
-
-- link:
-    ~/.zshenv: config/zsh/.zshenv
-    ~/.config/zsh: config/zsh
-    ~/.config/bat/config: config/bat/config
-    ~/.config/starship/starship.toml: config/starship/starship.toml
-    ~/.config/ghostty/config: config/ghostty/config
-    ~/.hushlogin: config/hushlogin
-    ~/.config/tmux/tmux.conf: config/tmux/tmux.conf
-    ~/.config/git/config: config/git/config
-    ~/.config/fd/ignore: macos/config/fd/ignore
-    ~/.config/gh/config.yml: config/gh/config.yml
-    ~/.config/homebrew/brew.env: config/homebrew/brew.env
-    ~/.config/fzf/fzf.zsh: config/fzf/fzf.zsh
-
-- shell:
     - |
       set -e
 
