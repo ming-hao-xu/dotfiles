@@ -26,6 +26,8 @@ case "${PROFILE}" in
         ;;
 esac
 
-git submodule update --init --recursive "${DOTBOT_DIR}"
+if ! git submodule update --init --recursive "${DOTBOT_DIR}"; then
+    GIT_CONFIG_GLOBAL=/dev/null git submodule update --init --recursive "${DOTBOT_DIR}"
+fi
 
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"

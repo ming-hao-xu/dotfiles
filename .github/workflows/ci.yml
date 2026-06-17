@@ -52,7 +52,12 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p "$HOME"
+          mkdir -p "$HOME/.config/git"
+          old_git_config_target="$PWD/config/git"
+          new_git_config_target="$PWD/config/git/config"
+          ln -s "$old_git_config_target" "$HOME/.config/git/config"
           ./install -x
+          test "$(readlink "$HOME/.config/git/config")" = "$new_git_config_target"
 
       - name: Rerun installer
         shell: bash
@@ -62,6 +67,12 @@ jobs:
         run: |
           set -euo pipefail
           ln -s "$PWD/config/dotfiles-ci-missing-target" "$HOME/.config/dotfiles-ci-stale-link"
+          chmod 777 \
+            "$HOME/.ssh" \
+            "$HOME/.cache/zsh" \
+            "$HOME/.cache/oh-my-zsh" \
+            "$HOME/.local/state/zsh" \
+            "$HOME/.local/share/tmux/plugins/catppuccin"
           ./install -x
           test ! -L "$HOME/.config/dotfiles-ci-stale-link"
 
@@ -88,6 +99,22 @@ jobs:
 
           test ! -e "$HOME/.zshrc"
           test -f "$HOME/.oh-my-zsh/oh-my-zsh.sh"
+
+          test "$(stat -f '%Lp' "$HOME/.ssh")" = "700"
+          managed_dirs=(
+            "$HOME/.cache/zsh"
+            "$HOME/.cache/oh-my-zsh"
+            "$HOME/.local/state/zsh"
+            "$HOME/.local/share/tmux/plugins/catppuccin"
+          )
+
+          for dir in "${managed_dirs[@]}"; do
+            mode="$(stat -f '%Lp' "$dir")"
+            if (( (8#$mode & 0022) != 0 )); then
+              echo "::error::$dir has insecure permissions: $mode"
+              exit 1
+            fi
+          done
 
           ruby <<'RUBY'
           require "yaml"
