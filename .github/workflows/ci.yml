@@ -68,6 +68,7 @@ jobs:
           set -euo pipefail
           ln -s "$PWD/config/dotfiles-ci-missing-target" "$HOME/.config/dotfiles-ci-stale-link"
           chmod 777 \
+            "$HOME/.ssh" \
             "$HOME/.cache/zsh" \
             "$HOME/.cache/oh-my-zsh" \
             "$HOME/.local/state/zsh" \

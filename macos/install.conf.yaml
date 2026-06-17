@@ -21,6 +21,7 @@
 - shell:
     - command: |
         set -e
+        chmod 0700 "$HOME/.ssh"
         chmod go-w \
           "$HOME/.cache/zsh" \
           "$HOME/.cache/oh-my-zsh" \
