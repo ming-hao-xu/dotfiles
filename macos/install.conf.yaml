@@ -100,12 +100,10 @@
       clone_repo "zsh-completions plugin" https://github.com/zsh-users/zsh-completions "$HOME/.oh-my-zsh/custom/plugins/zsh-completions"
 
       # Remove the custom theme managed by installs predating bat 0.26.0.
-      bat_theme_dir="$(bat --config-dir)/themes"
-      legacy_bat_theme="$bat_theme_dir/Catppuccin Mocha.tmTheme"
+      legacy_bat_theme="$(bat --config-dir)/themes/Catppuccin Mocha.tmTheme"
       if [ -f "$legacy_bat_theme" ]; then
         printf '%s\n' 'Removing legacy Catppuccin bat theme'
-        rm -f "$legacy_bat_theme"
-        rmdir "$bat_theme_dir" 2>/dev/null || true
+        rm "$legacy_bat_theme"
         bat cache --build >/dev/null
       fi
 
