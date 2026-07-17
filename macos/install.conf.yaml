@@ -99,13 +99,5 @@
       clone_repo "zsh-syntax-highlighting plugin" https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
       clone_repo "zsh-completions plugin" https://github.com/zsh-users/zsh-completions "$HOME/.oh-my-zsh/custom/plugins/zsh-completions"
 
-      bat_theme_dir="$(bat --config-dir)/themes"
-      mkdir -p "$bat_theme_dir"
-      if [ ! -f "$bat_theme_dir/Catppuccin Mocha.tmTheme" ]; then
-        printf '%s\n' 'Installing Catppuccin bat theme'
-        curl -fsSL https://raw.githubusercontent.com/catppuccin/bat/main/themes/Catppuccin%20Mocha.tmTheme -o "$bat_theme_dir/Catppuccin Mocha.tmTheme"
-      fi
-      bat cache --build >/dev/null
-
       clone_repo "Catppuccin tmux theme" https://github.com/catppuccin/tmux.git "$HOME/.local/share/tmux/plugins/catppuccin/tmux" --branch v2.3.0
       test -f "$HOME/.local/share/tmux/plugins/catppuccin/tmux/catppuccin.tmux"
