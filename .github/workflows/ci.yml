@@ -66,6 +66,11 @@ jobs:
           HOMEBREW_BUNDLE_NO_UPGRADE: "1"
         run: |
           set -euo pipefail
+          bat_theme_dir="$(bat --config-dir)/themes"
+          bat_cache_dir="$(bat --cache-dir)"
+          mkdir -p "$bat_theme_dir" "$bat_cache_dir"
+          printf '%s\n' 'legacy bat theme' >"$bat_theme_dir/Catppuccin Mocha.tmTheme"
+          printf '%s\n' 'legacy bat cache' >"$bat_cache_dir/themes.bin"
           ln -s "$PWD/config/dotfiles-ci-missing-target" "$HOME/.config/dotfiles-ci-stale-link"
           chmod 777 \
             "$HOME/.ssh" \
@@ -150,7 +155,10 @@ jobs:
           git config --file "$HOME/.config/git/config" --list >/dev/null
           gh config list >/dev/null
 
-          test ! -e "$HOME/.config/bat/themes"
+          test ! -e "$HOME/.config/bat/themes/Catppuccin Mocha.tmTheme"
+          bat_cache_dir="$(bat --cache-dir)"
+          test -f "$bat_cache_dir/themes.bin"
+          ! grep -qF 'legacy bat cache' "$bat_cache_dir/themes.bin"
           mkdir -p "$RUNNER_TEMP/bat-empty-config" "$RUNNER_TEMP/bat-empty-cache"
           BAT_CONFIG_DIR="$RUNNER_TEMP/bat-empty-config" \
             XDG_CACHE_HOME="$RUNNER_TEMP/bat-empty-cache" \
