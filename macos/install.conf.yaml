@@ -99,13 +99,5 @@
       clone_repo "zsh-syntax-highlighting plugin" https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
       clone_repo "zsh-completions plugin" https://github.com/zsh-users/zsh-completions "$HOME/.oh-my-zsh/custom/plugins/zsh-completions"
 
-      # Remove the custom theme managed by installs predating bat 0.26.0.
-      legacy_bat_theme="$(bat --config-dir)/themes/Catppuccin Mocha.tmTheme"
-      if [ -f "$legacy_bat_theme" ]; then
-        printf '%s\n' 'Removing legacy Catppuccin bat theme'
-        rm "$legacy_bat_theme"
-        bat cache --build >/dev/null
-      fi
-
       clone_repo "Catppuccin tmux theme" https://github.com/catppuccin/tmux.git "$HOME/.local/share/tmux/plugins/catppuccin/tmux" --branch v2.3.0
       test -f "$HOME/.local/share/tmux/plugins/catppuccin/tmux/catppuccin.tmux"
