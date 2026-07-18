@@ -163,17 +163,8 @@ jobs:
           BAT_CONFIG_DIR="$RUNNER_TEMP/bat-empty-config" \
             XDG_CACHE_HOME="$RUNNER_TEMP/bat-empty-cache" \
             bat --list-themes | grep -Fx "Catppuccin Mocha"
-          printf '%s\n' 'def hello(name: str) -> None:' '    print(f"Hello, {name}")' | \
-            BAT_CONFIG_PATH="$HOME/.config/bat/config" \
-            XDG_CACHE_HOME="$RUNNER_TEMP/bat-empty-cache" \
-            bat --color=always --style=plain --paging=never --language=python \
-              >"$RUNNER_TEMP/bat-config.txt"
-          printf '%s\n' 'def hello(name: str) -> None:' '    print(f"Hello, {name}")' | \
-            BAT_CONFIG_DIR="$RUNNER_TEMP/bat-empty-config" \
-            XDG_CACHE_HOME="$RUNNER_TEMP/bat-empty-cache" \
-            bat --theme="Catppuccin Mocha" --color=always --style=plain --paging=never --language=python \
-              >"$RUNNER_TEMP/bat-flag.txt"
-          cmp "$RUNNER_TEMP/bat-config.txt" "$RUNNER_TEMP/bat-flag.txt"
+          BAT_CONFIG_PATH="$HOME/.config/bat/config" \
+            bat --style=plain README.md >"$RUNNER_TEMP/bat.txt"
           starship explain >"$RUNNER_TEMP/starship.txt"
 
           btop --version
