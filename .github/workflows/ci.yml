@@ -150,8 +150,9 @@ jobs:
           git config --file "$HOME/.config/git/config" --list >/dev/null
           gh config list >/dev/null
 
-          bat --config-file "$HOME/.config/bat/config" --style=plain README.md >"$RUNNER_TEMP/bat.txt"
+          test "$(bat --config-file)" = "$HOME/.config/bat/config"
           bat --list-themes | grep -Fx "Catppuccin Mocha"
+          bat --style=plain README.md >/dev/null
           starship explain >"$RUNNER_TEMP/starship.txt"
 
           btop --version
