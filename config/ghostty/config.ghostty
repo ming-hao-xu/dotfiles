@@ -1,6 +1,6 @@
 # Appearance
 theme = Catppuccin Mocha
-font-size = 18
+font-size = 16
 window-padding-x = 10
 window-padding-y = 8
 window-padding-balance = true
