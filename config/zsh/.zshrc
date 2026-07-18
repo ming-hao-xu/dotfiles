@@ -31,7 +31,6 @@ plugins=(
     extract                 # Extract many archive formats
     git                     # Git aliases and functions
     vi-mode                 # Vi keybindings for the shell
-    tmux                    # Tmux aliases
     colored-man-pages       # Use colored man pages
 
     # Third-party plugins loaded last

@@ -52,7 +52,7 @@ If `git status` shows local changes, review them before pulling. Running `./inst
 
 ## CI Coverage
 
-CI runs the real installer on macOS 26 with a clean temporary `$HOME`, then reruns it to check idempotency and stale managed-link cleanup. It validates Homebrew bundle installation, Dotbot links, Oh My Zsh plugins, bat's built-in Catppuccin theme, the Catppuccin tmux resource, core CLI tools, tmux config loading, and interactive/login zsh startup.
+CI runs the real installer on macOS 26 with a clean temporary `$HOME`, then reruns it to check idempotency and stale managed-link cleanup. It validates Homebrew bundle installation, Dotbot links, Oh My Zsh plugins, bat's built-in Catppuccin theme, core CLI tools including Herdr, and interactive/login zsh startup.
 
 GitHub-hosted macOS runners already provide Homebrew, so the cold Homebrew bootstrap branch remains best-effort and should be manually checked on a truly fresh machine when needed.
 
