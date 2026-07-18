@@ -155,7 +155,7 @@ jobs:
           git config --file "$HOME/.config/git/config" --list >/dev/null
           gh config list >/dev/null
 
-          test ! -e "$HOME/.config/bat/themes/Catppuccin Mocha.tmTheme"
+          test ! -e "$(bat --config-dir)/themes/Catppuccin Mocha.tmTheme"
           bat_cache_dir="$(bat --cache-dir)"
           test -f "$bat_cache_dir/themes.bin"
           ! grep -qF 'legacy bat cache' "$bat_cache_dir/themes.bin"
