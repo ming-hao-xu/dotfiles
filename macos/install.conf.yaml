@@ -16,7 +16,6 @@
     ~/.cache/zsh:
     ~/.cache/oh-my-zsh:
     ~/.local/state/zsh:
-    ~/.local/share/tmux/plugins/catppuccin:
 
 - shell:
     - command: |
@@ -25,8 +24,7 @@
         chmod go-w \
           "$HOME/.cache/zsh" \
           "$HOME/.cache/oh-my-zsh" \
-          "$HOME/.local/state/zsh" \
-          "$HOME/.local/share/tmux/plugins/catppuccin"
+          "$HOME/.local/state/zsh"
       description: Secure managed directories
 
 - clean:
@@ -41,7 +39,6 @@
     ~/.config/starship/starship.toml: config/starship/starship.toml
     ~/.config/ghostty/config.ghostty: config/ghostty/config.ghostty
     ~/.hushlogin: config/hushlogin
-    ~/.config/tmux/tmux.conf: config/tmux/tmux.conf
     ~/.config/git/config: config/git/config
     ~/.config/fd/ignore: macos/config/fd/ignore
     ~/.config/gh/config.yml: config/gh/config.yml
@@ -98,6 +95,3 @@
       clone_repo "zsh-autosuggestions plugin" https://github.com/zsh-users/zsh-autosuggestions "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
       clone_repo "zsh-syntax-highlighting plugin" https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
       clone_repo "zsh-completions plugin" https://github.com/zsh-users/zsh-completions "$HOME/.oh-my-zsh/custom/plugins/zsh-completions"
-
-      clone_repo "Catppuccin tmux theme" https://github.com/catppuccin/tmux.git "$HOME/.local/share/tmux/plugins/catppuccin/tmux" --branch v2.3.0
-      test -f "$HOME/.local/share/tmux/plugins/catppuccin/tmux/catppuccin.tmux"

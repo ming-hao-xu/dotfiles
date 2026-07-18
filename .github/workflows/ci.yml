@@ -71,8 +71,7 @@ jobs:
             "$HOME/.ssh" \
             "$HOME/.cache/zsh" \
             "$HOME/.cache/oh-my-zsh" \
-            "$HOME/.local/state/zsh" \
-            "$HOME/.local/share/tmux/plugins/catppuccin"
+            "$HOME/.local/state/zsh"
           ./install -x
           test ! -L "$HOME/.config/dotfiles-ci-stale-link"
 
@@ -105,7 +104,6 @@ jobs:
             "$HOME/.cache/zsh"
             "$HOME/.cache/oh-my-zsh"
             "$HOME/.local/state/zsh"
-            "$HOME/.local/share/tmux/plugins/catppuccin"
           )
 
           for dir in "${managed_dirs[@]}"; do
@@ -144,11 +142,10 @@ jobs:
             test -d "$plugin/.git"
           done
 
-          test -f "$HOME/.local/share/tmux/plugins/catppuccin/tmux/catppuccin.tmux"
-
           git --version
           git config --file "$HOME/.config/git/config" --list >/dev/null
           gh config list >/dev/null
+          herdr --version
 
           test "$(bat --config-file)" = "$HOME/.config/bat/config"
           bat --list-themes | grep -Fx "Catppuccin Mocha"
@@ -163,7 +160,6 @@ jobs:
           lazygit --version
           nvim --version >/dev/null
           zoxide --version
-          tmux -f "$HOME/.config/tmux/tmux.conf" start-server \; source-file "$HOME/.config/tmux/tmux.conf" \; display-message install \; kill-server
           zsh_error_pattern='(^|[[:space:]:])(command not found|no such file|permission denied|cannot (load|open)|failed to (load|initialize)|invalid subscript)([[:space:]:]|$)'
           TERM=xterm-256color script -q "$RUNNER_TEMP/zsh.log" zsh -i -c 'true'
           test -s "$RUNNER_TEMP/zsh.log"
