@@ -39,7 +39,7 @@
     ~/.config/zsh: config/zsh
     ~/.config/bat/config: config/bat/config
     ~/.config/starship/starship.toml: config/starship/starship.toml
-    ~/.config/ghostty/config: config/ghostty/config
+    ~/.config/ghostty/config.ghostty: config/ghostty/config.ghostty
     ~/.hushlogin: config/hushlogin
     ~/.config/tmux/tmux.conf: config/tmux/tmux.conf
     ~/.config/git/config: config/git/config
