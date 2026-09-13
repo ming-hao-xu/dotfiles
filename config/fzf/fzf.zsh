@@ -1,4 +1,5 @@
-# Set up fzf key bindings and fuzzy completion
+# Keep fzf history/completion; file actions use dedicated widgets below.
+export FZF_CTRL_T_COMMAND= FZF_ALT_C_COMMAND=
 source <(fzf --zsh)
 
 # Default fzf command and options
@@ -11,8 +12,6 @@ export FZF_DEFAULT_OPTS='
     --color=selected-bg:#45475A
     --color=border:#6C7086,label:#CDD6F4'
 
-clipboard_cmd="pbcopy"
-
 export FZF_CTRL_R_OPTS="
     --height=25%
     --layout=reverse
@@ -22,29 +21,46 @@ export FZF_CTRL_R_OPTS="
     --prompt='  '
     --preview='echo {2..} | bat --color=always --language=zsh --style=plain'
     --preview-window='down,40%,wrap'
-    --bind='ctrl-e:execute-silent(echo -n {2..} | $clipboard_cmd)+abort'"
+    --bind='ctrl-e:execute-silent(printf %s {2..} | pbcopy)+abort'"
 
-# ctrl-t (ripgrep)
-RG_PREFIX='rg --column --line-number --no-heading --color=always --smart-case'
-export FZF_CTRL_T_OPTS="
-    --disabled
-    --ansi
-    --height=100%
-    --preview='bat --color=always {1} --highlight-line {2} --style=plain'
-    --preview-window='right,60%,+{2}+3/3'
-    --info=inline-right
-    --delimiter :
-    --bind='start:reload:$RG_PREFIX {q}'
-    --bind='change:reload:sleep 0.1; $RG_PREFIX {q} || true'
-    --bind='enter:become(nvim {1} +\"call cursor({2},{3})\" > /dev/tty)'"
+# Search file contents and open the selected match.
+fzf-grep-widget() {
+    emulate -L zsh
+    local rg_prefix='rg --column --line-number --no-heading --color=always --smart-case --'
+    command fzf \
+        --disabled --ansi --no-multi --height=100% --layout=reverse \
+        --preview='bat --color=always --highlight-line {2} --style=plain -- {1}' \
+        --preview-window='right,60%,+{2}+3/3' \
+        --info=inline-right --delimiter : \
+        --bind="start:reload:$rg_prefix {q} || true" \
+        --bind="change:reload:sleep 0.1; $rg_prefix {q} || true" \
+        --bind='enter:become(nvim +"call cursor({2},{3})" -- {1})' < /dev/null
+    local ret=$?
+    zle reset-prompt
+    return $ret
+}
 
-# option-c / alt-c (view file)
-export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_OPTS="
-    --height=100%
-    --preview='bat --color=always --line-range :200 {} --style=plain'
-    --preview-window='right,60%'
-    --info=inline-right
-    --header='Press CTRL-E to open in VSCode 󰨞 '
-    --bind='enter:become(nvim {} > /dev/tty)'
-    --bind='ctrl-e:execute(code {})+abort'"
+# Open a file without inserting its name or changing the shell directory.
+fzf-edit-widget() {
+    emulate -L zsh
+    command fzf \
+        --no-multi --height=100% --layout=reverse \
+        --preview='bat --color=always --line-range :200 --style=plain -- {}' \
+        --preview-window='right,60%' \
+        --info=inline-right \
+        --header='Press CTRL-E to open in VSCode 󰨞 ' \
+        --bind='enter:become(nvim -- {})' \
+        --bind='ctrl-e:execute(code -- {})+abort' < /dev/tty
+    local ret=$?
+    zle reset-prompt
+    return $ret
+}
+
+zle -N fzf-grep-widget
+zle -N fzf-edit-widget
+bindkey -M emacs '^T' fzf-grep-widget
+bindkey -M vicmd '^T' fzf-grep-widget
+bindkey -M viins '^T' fzf-grep-widget
+bindkey -M emacs '\ec' fzf-edit-widget
+bindkey -M vicmd '\ec' fzf-edit-widget
+bindkey -M viins '\ec' fzf-edit-widget
