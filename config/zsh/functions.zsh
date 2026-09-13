@@ -20,6 +20,12 @@ pdfs_light() {
         return 1
     fi
 
+    local profile="$XDG_CONFIG_HOME/pdfs_light.pdfscp"
+    if [[ ! -r "$profile" ]]; then
+        print "PDF Squeezer profile not found: $profile" >&2
+        return 1
+    fi
+
     local file
     local -a files_to_process=()
 
@@ -43,7 +49,7 @@ pdfs_light() {
     if (( ${#files_to_process[@]} > 0 )); then
         print
         print "Compressing ${#files_to_process[@]} file(s)..."
-        pdfs "${files_to_process[@]}" --profile "$XDG_CONFIG_HOME/pdfs_light.pdfscp" --replace
+        pdfs "${files_to_process[@]}" --profile "$profile" --replace || return $?
         print "Done."
     else
         print "All valid files have already been processed or skipped."
