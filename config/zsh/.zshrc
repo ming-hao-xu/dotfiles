@@ -48,7 +48,6 @@ source "$ZSH/oh-my-zsh.sh"
 
 # Keep history order for zsh-autosuggestion's match_prev_cmd strategy
 unsetopt HIST_EXPIRE_DUPS_FIRST
-unsetopt HIST_IGNORE_ALL_DUPS
 # Limit zsh-autosuggestion triggering for long strings
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 # Prefer previous-command-aware suggestions first
@@ -62,13 +61,10 @@ VI_MODE_SET_CURSOR=true
 # Bold and blinking mode
 less_termcap[mb]="${fg[green]}"
 less_termcap[md]="${fg[green]}"
-less_termcap[me]="${reset_color}"
 # Standout mode
 less_termcap[so]="${fg_bold[black]}${bg[blue]}"
-less_termcap[se]="${reset_color}"
 # Underlining
 less_termcap[us]="${fg[magenta]}"
-less_termcap[ue]="${reset_color}"
 # Show less status information in man pages
 export MANPAGER='less --squeeze-blank-lines --long-prompt +Gg'
 
