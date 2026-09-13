@@ -50,15 +50,6 @@ git pull --ff-only
 
 If `git status` shows local changes, review them before pulling. Running `./install -x` will update managed symlinks and install missing core CLI packages, but it will not uninstall old GUI apps, Casks, VS Code extensions, or other machine-local software.
 
-## Machine-local configuration
-
-The installer does not manage `~/.config/nvim` or `~/.config/eza/theme.yml`.
-Restore these separately if you want your personal Neovim configuration and eza theme.
-
-The optional `pdfs_light` helper requires PDF Squeezer's `pdfs` CLI, `pdfinfo`
-(provided by Homebrew's `poppler`), and an exported compression profile at
-`~/.config/pdfs_light.pdfscp`. These are outside the core installation.
-
 ## CI Coverage
 
 CI runs the real installer on macOS 26 with a clean temporary `$HOME`, then reruns it to check idempotency and stale managed-link cleanup. It validates Homebrew bundle installation, Dotbot links, Oh My Zsh plugins, bat's built-in Catppuccin theme, core CLI tools including Herdr, and interactive/login zsh startup.
