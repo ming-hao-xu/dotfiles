@@ -79,12 +79,6 @@ export MANPAGER='less --squeeze-blank-lines --long-prompt +Gg'
 # Initialize zoxide as cd
 eval "$(zoxide init zsh --cmd cd)"
 
-# `cdi`: enter a directory interactively using fzf
-export _ZO_FZF_OPTS="
-    $FZF_DEFAULT_OPTS
-    --height=10%
-    --layout=reverse"
-
 ### Secrets ###
 # Load ignored local secrets
 [[ -f "$ZDOTDIR/secrets.zsh" ]] && source "$ZDOTDIR/secrets.zsh"
