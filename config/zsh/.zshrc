@@ -55,7 +55,6 @@ ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd history completion)
 
 # Change cursor style in different vi modes
-VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 VI_MODE_SET_CURSOR=true
 
 # Override colors set by colored-man-pages
