@@ -1,7 +1,7 @@
 {
   "files.associations": {
     "**/config/bat/config": "shellscript",
-    "**/config/ghostty/config": "ini",
+    "**/config/ghostty/config.ghostty": "ini",
     "**/config/git/config": "properties",
     "**/macos/config/fd/ignore": "ignore"
   }
