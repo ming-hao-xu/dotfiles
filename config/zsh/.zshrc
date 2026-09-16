@@ -40,11 +40,11 @@ plugins=(
 # zsh-completions must be in fpath before OMZ runs compinit
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
-# Enable tab completion for hidden files
-_comp_options+=(globdots)
-
 # OMZ runs compinit during initialization
 source "$ZSH/oh-my-zsh.sh"
+
+# compinit resets this array; enable hidden-file completion afterwards.
+_comp_options+=(globdots)
 
 # Keep history order for zsh-autosuggestion's match_prev_cmd strategy
 unsetopt HIST_EXPIRE_DUPS_FIRST
