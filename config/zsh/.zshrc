@@ -18,7 +18,7 @@ HIST_STAMPS='%y/%m/%d %H:%M'
 
 # Keep zsh runtime files out of versioned config.
 ZSH_CACHE_DIR="$XDG_CACHE_HOME/oh-my-zsh"
-ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/zcompdump-${(%):-%m}-${ZSH_VERSION}"
+ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/zcompdump-${ZSH_VERSION}"
 HISTFILE="$XDG_STATE_HOME/zsh/history"
 
 plugins=(
