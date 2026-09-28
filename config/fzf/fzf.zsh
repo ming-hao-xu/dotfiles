@@ -11,8 +11,6 @@ export FZF_DEFAULT_OPTS='
     --color=selected-bg:#45475A
     --color=border:#6C7086,label:#CDD6F4'
 
-clipboard_cmd="pbcopy"
-
 export FZF_CTRL_R_OPTS="
     --height=25%
     --layout=reverse
@@ -22,7 +20,7 @@ export FZF_CTRL_R_OPTS="
     --prompt='  '
     --preview='echo {2..} | bat --color=always --language=zsh --style=plain'
     --preview-window='down,40%,wrap'
-    --bind='ctrl-e:execute-silent(echo -n {2..} | $clipboard_cmd)+abort'"
+    --bind='ctrl-e:execute-silent(echo -n {2..} | pbcopy)+abort'"
 
 # ctrl-t (ripgrep)
 RG_PREFIX='rg --column --line-number --no-heading --color=always --smart-case'

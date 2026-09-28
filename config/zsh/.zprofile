@@ -1,7 +1,5 @@
 # Homebrew
-if [[ "$OSTYPE" == darwin* ]]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
+eval "$(/opt/homebrew/bin/brew shellenv zsh)"
 
 # Add user-local binaries
 if [[ -d "$HOME/.local/bin" ]]; then
