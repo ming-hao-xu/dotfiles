@@ -158,6 +158,7 @@ jobs:
           rg --version
           eza --version
           lazygit --version
+          mise --version
           nvim --version >/dev/null
           zoxide --version
           zsh_error_pattern='(^|[[:space:]:])(command not found|no such file|permission denied|cannot (load|open)|failed to (load|initialize)|invalid subscript)([[:space:]:]|$)'
