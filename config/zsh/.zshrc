@@ -72,6 +72,9 @@ less_termcap[ue]="${reset_color}"
 export MANPAGER='less --squeeze-blank-lines --long-prompt +Gg'
 
 ### general config ###
+# mise
+eval "$(mise activate zsh)"
+
 # fzf
 [[ -f "$XDG_CONFIG_HOME/fzf/fzf.zsh" ]] && source "$XDG_CONFIG_HOME/fzf/fzf.zsh"
 
