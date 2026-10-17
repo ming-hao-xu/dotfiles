@@ -4,14 +4,10 @@
 [commit]
 	gpgSign = true
 
-[tag]
-	gpgSign = true
-
 [init]
 	defaultBranch = main
 
 [core]
-	editor = nvim
 	quotePath = false
 
 [user]
@@ -21,6 +17,7 @@
 	conflictStyle = zdiff3
 
 [diff]
+	algorithm = histogram
 	colorMoved = dimmed-zebra
 	colorMovedWS = allow-indentation-change
 
