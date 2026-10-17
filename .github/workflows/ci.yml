@@ -146,6 +146,7 @@ jobs:
           git config --file "$HOME/.config/git/config" --list >/dev/null
           gh config list >/dev/null
           herdr --version
+          herdr config check
 
           test "$(bat --config-file)" = "$HOME/.config/bat/config"
           bat --list-themes | grep -Fx "Catppuccin Mocha"

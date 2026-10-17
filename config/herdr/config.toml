@@ -1,0 +1,8 @@
+onboarding = false
+
+[ui.sound]
+enabled = false
+
+[experimental]
+# Switch to an ASCII input source in prefix mode so keys register while a CJK IME is active
+switch_ascii_input_source_in_prefix = true

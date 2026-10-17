@@ -38,6 +38,7 @@
     ~/.config/bat/config: config/bat/config
     ~/.config/starship/starship.toml: config/starship/starship.toml
     ~/.config/ghostty/config.ghostty: config/ghostty/config.ghostty
+    ~/.config/herdr/config.toml: config/herdr/config.toml
     ~/.hushlogin: config/hushlogin
     ~/.config/git/config: config/git/config
     ~/.config/fd/ignore: macos/config/fd/ignore
