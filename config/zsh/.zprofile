@@ -10,5 +10,9 @@ fi
 export EDITOR='nvim'
 export VISUAL="$EDITOR"
 
+# Quit less when output fits on one screen; set before OMZ defaults LESS to -R,
+# which stops git and gh from adding their own -F
+export LESS='-FR'
+
 # Load ignored machine-local config
 [[ -f "$ZDOTDIR/.zprofile.local" ]] && source "$ZDOTDIR/.zprofile.local"
