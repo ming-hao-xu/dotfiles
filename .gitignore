@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/macos,linux,vim,visualstudiocode,zsh
-# Edit at https://www.toptal.com/developers/gitignore?templates=macos,linux,vim,visualstudiocode,zsh
+# Created by https://www.toptal.com/developers/gitignore/api/macos,linux,vim,zsh
+# Edit at https://www.toptal.com/developers/gitignore?templates=macos,linux,vim,zsh
 
 ### Linux ###
 *~
@@ -68,25 +68,6 @@ tags
 # Persistent undo
 [._]*.un~
 
-### VisualStudioCode ###
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/*.code-snippets
-
-# Local History for Visual Studio Code
-.history/
-
-# Built Visual Studio Code Extensions
-*.vsix
-
-### VisualStudioCode Patch ###
-# Ignore all local history of files
-.history
-.ionide
-
 ### Zsh ###
 # Zsh compiled script + zrecompile backup
 *.zwc
@@ -123,7 +104,7 @@ zsdoc/data
 /tests/_output/*
 !/tests/_output/.gitkeep
 
-# End of https://www.toptal.com/developers/gitignore/api/macos,linux,vim,visualstudiocode,zsh
+# End of https://www.toptal.com/developers/gitignore/api/macos,linux,vim,zsh
 config/zsh/secrets.zsh
 config/zsh/.zshenv.local
 config/zsh/.zprofile.local
