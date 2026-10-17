@@ -125,6 +125,8 @@ zsdoc/data
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,linux,vim,visualstudiocode,zsh
 config/zsh/secrets.zsh
-config/zsh/local.zsh
+config/zsh/.zshenv.local
+config/zsh/.zprofile.local
+config/zsh/.zshrc.local
 .gitingestignore
 digest.txt

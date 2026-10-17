@@ -14,3 +14,6 @@ export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
 
 # Store zsh startup files under XDG_CONFIG_HOME.
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+
+# Load ignored machine-local config
+[[ -f "$ZDOTDIR/.zshenv.local" ]] && source "$ZDOTDIR/.zshenv.local"

@@ -9,3 +9,6 @@ fi
 # Set neovim as default editor
 export EDITOR='nvim'
 export VISUAL="$EDITOR"
+
+# Load ignored machine-local config
+[[ -f "$ZDOTDIR/.zprofile.local" ]] && source "$ZDOTDIR/.zprofile.local"
