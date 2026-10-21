@@ -11,7 +11,8 @@ export FZF_DEFAULT_OPTS='
     --color=selected-bg:#45475A
     --color=border:#6C7086,label:#CDD6F4'
 
-export FZF_CTRL_R_OPTS="
+# Widget settings are read by the sourced key bindings, not fzf itself
+FZF_CTRL_R_OPTS="
     --height=25%
     --layout=reverse
     --header='Press CTRL-E to copy command into clipboard 󰅍'
@@ -24,7 +25,7 @@ export FZF_CTRL_R_OPTS="
 
 # ctrl-t (ripgrep)
 RG_PREFIX='rg --column --line-number --no-heading --color=always --smart-case'
-export FZF_CTRL_T_OPTS="
+FZF_CTRL_T_OPTS="
     --disabled
     --ansi
     --height=100%
@@ -37,8 +38,8 @@ export FZF_CTRL_T_OPTS="
     --bind='enter:become(nvim {1} +\"call cursor({2},{3})\" > /dev/tty)'"
 
 # option-c / alt-c (view file)
-export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_OPTS="
+FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
+FZF_ALT_C_OPTS="
     --height=100%
     --preview='bat --color=always --line-range :200 {} --style=plain'
     --preview-window='right,60%'
